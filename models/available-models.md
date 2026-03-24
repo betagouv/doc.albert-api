@@ -1,0 +1,28 @@
+# Modèles disponibles
+
+## Lister les modèles — `GET /v1/models`
+
+Retourne la liste des modèles exposés sur l’instance Albert à laquelle vous êtes connectés. Chaque entrée suit le schéma **`Model`** :
+
+- **`id`** — identifiant à passer aux endpoints (`model` des requêtes chat, embeddings, ASR, rerank, OCR…) ;
+- **`type`** — famille fonctionnelle (`text-generation`, `text-embeddings-inference`, etc.) ;
+- **`aliases`** — autres noms acceptés pour référencer le même modèle ;
+- **`max_context_length`** — taille maximale de contexte en **tokens** ;
+- **`costs`** — tarification indicielle (`prompt_tokens`, `completion_tokens` **par million de tokens** pour la composante correspondante).
+
+## Détail — `GET /v1/models/{model}`
+
+Récupère la fiche d’un modèle précis à partir de son **identifiant ou d’un alias** accepté par la plateforme.
+
+## Choisir un modèle
+
+1. Filtrez mentalement par **`type`** selon l’endpoint (voir [Types de modèles](model-types.md)).
+2. Vérifiez **`max_context_length`** pour dimensionner prompts + sortie.
+3. Comparez **`costs`** si votre compte est soumis à budget (voir aussi [Quotas & limites](../account/quotas.md)).
+
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/models" \
+  -H "Authorization: Bearer $ALBERT_API_KEY"
+```
+
+Les modèles réellement déployés varient selon l’environnement (recette, production interministérielle, etc.) : la liste HTTP fait **foi** pour votre intégration.

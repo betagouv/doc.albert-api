@@ -93,3 +93,7 @@ model: <VOTRE_MODEL_ID>
 
 Si vous voulez valider que le `model` que vous sélectionnez correspond au bon type, commencez par la liste des modèles : [Guide “Modèles”](models.md).
 
+Pour une vue “publique” des modèles (familles, licences, alias) vous pouvez aussi consulter :
+
+[Catalogue des modèles](https://albert.sites.beta.gouv.fr/solutions/models/)
+

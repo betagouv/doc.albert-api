@@ -20,3 +20,34 @@ Cette documentation vise les **développeurs et développeuses** qui intègrent 
 ## Ressources complémentaires
 
 * [Notebooks OpenGateLLM](https://github.com/etalab-ia/opengatellm/tree/main/docs/tutorials) — pas-à-pas Colab/Jupyter (RAG, OCR, modèles, etc.) ; croiser avec la spec OpenAPI Albert pour les noms de champs à jour.
+
+## Obtenir un accès
+
+Si vous êtes agent de la fonction publique d’État, l’accès à Albert API est ouvert via une demande en ligne : vous recevrez un mail avec vos identifiants et la documentation dans les 24 heures.
+
+[Demander un accès](https://albert.sites.beta.gouv.fr/access/)
+
+## Tarifs & quotas (vision par modèle)
+
+La page “Tarifs et limites” liste, pour des familles de modèles, des quotas d’usage en mode **expérimentation** et **production** (RPM/RPD/TPM/TPD).
+
+[Tarifs et limites](https://albert.sites.beta.gouv.fr/prices/)
+
+{% hint style="warning" %}
+⚠️ Les quotas indiqués sur le site sont une vue “tarifs” : pour connaître vos limites exactes (compte, routeurs, fenêtres), consultez l’objet `limits` dans **`GET /v1/me/info`** et la page [Quotas & limites](compte-and-usage/quotas.md).
+{% endhint %}
+
+## Sécurité & hébergement souverain
+
+Albert API bénéficie d’un environnement cloud souverain (certification **SecNumCloud** via Outscale) et a des engagements de traitement des données :
+
+* Albert API ne conserve aucune trace des conversations envoyées aux modèles.
+* Albert API n’envoie aucune de vos données sur Internet.
+
+[Sécurité & hébergement](https://albert.sites.beta.gouv.fr/solutions/security/)
+
+## Statut en production
+
+Pour suivre le statut opérationnel de l’API (quand publié), voir :
+
+[Statut en production](https://albert.sites.beta.gouv.fr/about/status/)

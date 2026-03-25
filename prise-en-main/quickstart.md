@@ -2,6 +2,10 @@
 
 Objectif : obtenir une réponse du modèle via **`POST /v1/chat/completions`** en moins de cinq minutes.
 
+Si vous n’avez pas encore d’accès, demandez une clé Albert API ici :
+
+[Demander un accès](https://albert.sites.beta.gouv.fr/access/)
+
 ## Étape 1 — Obtenir un jeton
 
 Créez une clé API avec `POST /v1/me/keys` (voir [Clés API](../compte-and-usage/api-keys.md)). Exportez-la dans votre environnement, par exemple :

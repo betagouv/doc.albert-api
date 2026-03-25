@@ -51,6 +51,14 @@ En pratique, choisissez un modèle selon son champ `type` :
 ⚠️ À vérifier — Le mapping exact entre `type` et les endpoints dépend de la configuration de votre instance. Utilisez la liste des modèles et vérifiez le comportement sur votre environnement.
 {% endhint %}
 
+## Vue catalogue (site officiel)
+
+Pour une vue “humaine” des modèles (familles, licences, aliases), vous pouvez aussi consulter :
+
+[Catalogue des modèles](https://albert.sites.beta.gouv.fr/solutions/models/)
+
+Le site précise que les modèles proviennent de tiers (ex. Mistral, Meta) mais sont **hébergés sur nos serveurs** : aucune de vos données n’est envoyée à ces fournisseurs de modèles.
+
 ## Détail d’un modèle (`GET /v1/models/{model}`)
 
 ```python

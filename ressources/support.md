@@ -4,6 +4,7 @@
 
 * Ce site (GitBook) — parcours guidés et la [liste des endpoints GitBook](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint)
 * Fichier **`openapi.json`** — comportement exact des schémas et énumérations pour votre environnement.
+* Statut en production : [Statut de l’API](https://albert.sites.beta.gouv.fr/about/status/)
 * [Notebooks OpenGateLLM](https://github.com/etalab-ia/opengatellm/tree/main/docs/tutorials) — exemples pas-à-pas (à recouper avec la spec Albert pour les champs exacts).
 
 ## Signaler un problème

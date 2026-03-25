@@ -25,6 +25,31 @@ Lorsque le trafic ou les tokens dépassent les plafonds configurés pour votre c
 [page de l’endpoint Me](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/me)
 {% endhint %}
 
+## Quotas “tarifs” (par famille de modèles)
+
+En complément de vos limites propres au compte (champ `limits` dans `GET /v1/me/info`), la page officielle **Tarifs et limites** fournit une vue indicative par type de modèle et par niveau d’accès (**expérimentation** vs **production**).
+
+[Tarifs et limites](https://albert.sites.beta.gouv.fr/prices/)
+
+| Famille de modèles (ex.) | Accès | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- | --- |
+| `openai/gpt-oss-120b` (chat) | expérimentation | 10 | 1000 | 128 000 | 1 280 000 |
+| `openai/gpt-oss-120b` (chat) | production | 50 | 5000 | 246 000 | Illimité |
+| `mistralai/Mistral-Small-*` / `Ministral-*` (chat) | expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
+| `mistralai/Mistral-Small-*` / `Ministral-*` (chat) | production | 100 | 50 000 | 246 000 | illimité |
+| `Qwen/Qwen3-Coder-*` (code) | expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
+| `Qwen/Qwen3-Coder-*` (code) | production | 100 | 50 000 | 246 000 | illimité |
+| `openai/whisper-large-v3` (audio) | expérimentation | 50 | 1000 | illimité | illimité |
+| `openai/whisper-large-v3` (audio) | production | 100 | 5000 | illimité | illimité |
+| `BAAI/bge-m3` (embeddings) | expérimentation | 500 | 50 000 | illimité | illimité |
+| `BAAI/bge-m3` (embeddings) | production | 2000 | 200 000 | illimité | illimité |
+| `BAAI/bge-reranker-v2-m3` (rerank) | expérimentation | 500 | 50 000 | illimité | illimité |
+| `BAAI/bge-reranker-v2-m3` (rerank) | production | 2000 | 200 000 | illimité | illimité |
+
+{% hint style="warning" %}
+⚠️ À vérifier — la page “tarifs” peut évoluer. Les compteurs `Limit` dans `GET /v1/me/info` restent la source de vérité opérationnelle.
+{% endhint %}
+
 ## Budget (`UserInfo.budget`)
 
 * Valeur **numérique** — enveloppe budgétaire restante ou autorisée selon les règles plateforme (coûts agrégés).

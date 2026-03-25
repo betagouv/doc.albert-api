@@ -2,5 +2,5 @@
 
 La référence complète et interactive de l'API Albert.
 
-{% openapi src="https://albert.api.etalab.gouv.fr/openapi.json" %}
+{% openapi src="https://raw.githubusercontent.com/betagouv/doc.albert-api/main/openapi-3.0.json" %}
 {% endopenapi %}

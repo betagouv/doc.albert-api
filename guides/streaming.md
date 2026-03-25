@@ -18,8 +18,7 @@ Lorsque `stream` est à `true`, vous pouvez renseigner **`stream_options`** pour
 ```
 
 {% hint style="warning" %}
-⚠️ À vérifier — Clés exactes supportées dans `stream_options` et compatibilité `include_usage` selon les modèles : consulter le schéma `CreateChatCompletion` dans la page de l’endpoint Chat :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat
+⚠️ À vérifier — Clés exactes supportées dans `stream_options` et compatibilité `include_usage` selon les modèles : consulter le schéma `CreateChatCompletion` dans la [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).
 {% endhint %}
 
 ## Exemple Python (SDK OpenAI)

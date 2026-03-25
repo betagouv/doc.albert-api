@@ -64,4 +64,4 @@ print(tr.text)
 ```
 
 Pour le détail des champs de réponse (`verbose_json`, etc.), voir la page de l’endpoint **Audio** :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/audio
+[page de l’endpoint Audio](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/audio).

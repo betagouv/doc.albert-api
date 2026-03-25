@@ -8,7 +8,7 @@ Albert API expose un **outil de recherche natif** utilisable directement dans la
 
 ## Schéma usuel dans `tools`
 
-Ajoutez un objet correspondant à **`SearchTool`** (voir la page de l’endpoint **Search** : https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/search).
+Ajoutez un objet correspondant à **`SearchTool`** (voir la [page de l’endpoint Search](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/search)).
 
 | Champ              | Description |
 | --- | --- |
@@ -135,8 +135,7 @@ print(resp.choices[0].message.content)
 ```
 
 {% hint style="warning" %}
-⚠️ Les anciens exemples utilisant `collections` / `prompt` (au lieu de `collection_ids` / `query`), ou un chemin `/search` sans le préfixe `/v1`, sont **obsolètes**. Alignez votre corps JSON sur la page **Search** :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/search
+⚠️ Les anciens exemples utilisant `collections` / `prompt` (au lieu de `collection_ids` / `query`), ou un chemin `/search` sans le préfixe `/v1`, sont **obsolètes**. Alignez votre corps JSON sur la [page de l’endpoint Search](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/search).
 {% endhint %}
 
 {% hint style="warning" %}

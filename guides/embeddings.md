@@ -15,8 +15,7 @@ Champs principaux du schéma **`EmbeddingsRequest`** :
 
 La réponse suit le format OpenAI embeddings : `data[]` contient des objets avec `embedding` et `index` ; et un objet `usage` de facturation/monitoring.
 
-Pour les schémas exacts, voir la page de l’endpoint **Embeddings** :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/embeddings
+Pour les schémas exacts, voir la [page de l’endpoint Embeddings](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/embeddings).
 
 ## Exemple curl
 

@@ -64,4 +64,4 @@ Lorsque le moteur d’inférence est saturé, les endpoints concernés peuvent r
 3. **Idempotence** — pour les opérations non naturellement idempotentes, gardez un identifiant métier côté client avant de relancer.
 4. **Streaming** — si vous ouvrez déjà un flux, anticipez une coupure réseau ou une erreur mid-stream identique à traiter comme échec retriable.
 
-Pour une cartographie complète des réponses par route : https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint
+Pour une cartographie complète des réponses par route : la [liste des endpoints GitBook](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint)

@@ -1,64 +1,139 @@
 # OCR
 
-L’endpoint **`POST /v1/ocr`** extrait du texte (et, selon votre configuration, des annotations/structure) à partir d’un **document** ou d’une **image** référencés par URL dans le corps JSON.
+L’endpoint **`POST /v1/ocr`** extrait du texte (et selon la configuration) des **annotations** à partir d’un **document** ou d’une **image** référencé(e) dans le corps JSON.
 
-Pour le détail des clés et schémas, voir la page d’endpoint **OCR** :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/ocr
+Pour le détail des clés et schémas : la [page d’endpoint OCR](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/ocr).
 
-## Exemple minimal (document PDF par URL)
+## Choisir un modèle OCR
 
-```bash
-curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
-  -H "Authorization: Bearer $ALBERT_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "REMPLACER_PAR_MODELE_OCR",
-    "document": {
-      "type": "document_url",
-      "document_url": "https://example.org/document.pdf"
-    }
-  }'
-```
+Le modèle utilisé pour l’OCR doit correspondre à un type de modèle adapté (souvent `image-to-text` ou une variante liée à l’OCR).
 
-## Variante : OCR d’une image (URL)
+Voir aussi :
 
-```bash
-curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
-  -H "Authorization: Bearer $ALBERT_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "REMPLACER_PAR_MODELE_OCR",
-    "document": {
-      "type": "image_url",
-      "url": "https://example.org/image.png"
-    },
-    "include_image_base64": true
-  }'
-```
+* [Guide “Modèles (liste)”](models.md) pour récupérer `GET /v1/models` et filtrer par `type`.
 
-## Pages, images et indexation
+{% hint style="warning" %}
+⚠️ À vérifier — Le champ `type` exact et/ou l’alias du modèle OCR peut varier selon l’instance. Sélectionnez un `model` observé dans `GET /v1/models`.
+{% endhint %}
 
-La réponse retourne typiquement une liste de **pages**.
+## Paramètres importants
+
+Champs courants :
+
+* **`document`** (requis) — objet de type :
+  * `{"type": "document_url", "document_url": "https://..."}` pour un PDF/document ;
+  * `{"type": "image_url", "url": "https://..."}` pour une image.
+* **`pages`** — liste d’indices de pages à traiter (indexation **à partir de 0**).
+* **`include_image_base64`** — inclusion éventuelle d’images en base64 dans la réponse (utile si vous souhaitez archiver/visualiser).
+* **`document_annotation_format`** / **`bbox_annotation_format`** — format de sortie pour texte/annotations (logique proche de `response_format` côté chat : `text`, `json_object`, `json_schema`, etc.).
 
 {% hint style="warning" %}
 ⚠️ Les indices de page sont **à partir de 0** (page 0 = première page).
 {% endhint %}
 
-Selon les options, la réponse peut aussi inclure des images (par exemple `images[]`) et leurs coordonnées de type bbox.
+## Exemple : OCR d’un PDF par URL (document_url)
 
-## Contrôler la sortie
+```python
+import os
+import requests
 
-Champs courants (voir `CreateOCR`) :
+server_url = "https://albert.api.etalab.gouv.fr"
+api_key = os.environ["ALBERT_API_KEY"]
 
-* **`pages`** — liste d’indices de pages à traiter uniquement.
-* **`image_limit`** / **`image_min_size`** — contrôle du nombre de vues/images produites.
-* **`include_image_base64`** — inclusion éventuelle des images en base64 (utile pour visualiser/archiver).
-* **`document_annotation_format`** / **`bbox_annotation_format`** — format de sortie pour texte/annotations (même logique que `response_format` côté chat : `text`, `json_object`, `json_schema`, etc.).
+headers = {"Authorization": f"Bearer {api_key}"}
+
+model = "REMPLACER_PAR_MODELE_OCR"
+pdf_url = "https://www.princexml.com/samples/magic6/magic.pdf"
+
+resp = requests.post(
+    url=f"{server_url}/v1/ocr",
+    headers=headers,
+    json={
+        "model": model,
+        "document": {"type": "document_url", "document_url": pdf_url},
+        "include_image_base64": True,
+    },
+)
+resp.raise_for_status()
+data = resp.json()
+
+# Exemples de champs attendus (selon la config/format) :
+# print(data["pages"][0]["markdown"])
+print("Pages disponibles :", len(data.get("pages", [])))
+```
+
+## Variante : OCR d’un PDF encodé en base64 (data URL)
+
+```python
+import base64
+import os
+import requests
+
+server_url = "https://albert.api.etalab.gouv.fr"
+api_key = os.environ["ALBERT_API_KEY"]
+
+headers = {"Authorization": f"Bearer {api_key}"}
+model = "REMPLACER_PAR_MODELE_OCR"
+
+pdf_url = "https://www.princexml.com/samples/textbook/somatosensory.pdf"
+pdf_bytes = requests.get(pdf_url).content
+pdf_base64 = base64.b64encode(pdf_bytes).decode("utf-8")
+
+resp = requests.post(
+    url=f"{server_url}/v1/ocr",
+    headers=headers,
+    json={
+        "model": model,
+        "document": {
+            "type": "document_url",
+            "document_url": f"data:application/pdf;base64,{pdf_base64}",
+        },
+        "include_image_base64": True,
+    },
+)
+resp.raise_for_status()
+data = resp.json()
+
+print("Markdown (ex.) :", (data.get("pages", [{}])[0]).get("markdown", "")[:200])
+```
+
+{% hint style="warning" %}
+⚠️ À vérifier — Support “data URLs” (format `data:application/pdf;base64,...`) selon votre instance et votre politique d’ingestion.
+{% endhint %}
+
+## Exemple : OCR d’une image par URL (image_url)
+
+```python
+import os
+import requests
+
+server_url = "https://albert.api.etalab.gouv.fr"
+api_key = os.environ["ALBERT_API_KEY"]
+
+headers = {"Authorization": f"Bearer {api_key}"}
+
+model = "REMPLACER_PAR_MODELE_OCR"
+image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg"
+
+resp = requests.post(
+    url=f"{server_url}/v1/ocr",
+    headers=headers,
+    json={
+        "model": model,
+        "document": {"type": "image_url", "url": image_url},
+        "include_image_base64": True,
+    },
+)
+resp.raise_for_status()
+data = resp.json()
+
+print("Markdown (ex.) :", (data.get("pages", [{}])[0]).get("markdown", "")[:200])
+```
 
 ## Dépréciation de `parse-beta`
 
 L’endpoint **`POST /v1/parse-beta`** est **déprécié**. Pour tout nouveau développement, utilisez **`POST /v1/ocr`**.
 
 {% hint style="warning" %}
-⚠️ À vérifier — Quotas spécifiques, tailles maximales de document et formats d’URL autorisés (HTTP/HTTPS, authentification) peuvent varier selon l’offre. Validez sur votre compte.
+⚠️ À vérifier — quotas spécifiques, tailles maximales de document et formats d’URL autorisés (HTTP/HTTPS, authentification) peuvent varier selon l’offre.
 {% endhint %}

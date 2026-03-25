@@ -34,6 +34,6 @@ Le volet **empreinte carbone** (kWh et kgCO₂eq avec fourchettes min/max) est u
 ## Conteneur de réponse
 
 La réponse **`Usages`** renvoie un tableau `data` d’objets `Usage`. Pour le détail des champs optionnels, ouvrez les schémas `Usages`, `Usage` et `UsageDetail` dans la page de l’endpoint **Me** :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/me
+[page de l’endpoint Me](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/me).
 
 Pour les plafonds appliqués à votre compte : [Quotas & limites](quotas.md).

@@ -62,4 +62,4 @@ print(resp.json())
 ```
 
 Pour la structure exacte de la réponse (scores, indices, etc.), voir la page de l’endpoint **Rerank** :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/rerank
+[page de l’endpoint Rerank](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/rerank).

@@ -22,7 +22,7 @@ Lorsque le trafic ou les tokens dépassent les plafonds configurés pour votre c
 
 {% hint style="warning" %}
 ⚠️ À vérifier — Codes HTTP exacts (429 vs autre) et format du `detail` pour les dépassements sur l’instance Albert : consulter la page de l’endpoint **Me** :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/me
+[page de l’endpoint Me](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/me)
 {% endhint %}
 
 ## Budget (`UserInfo.budget`)

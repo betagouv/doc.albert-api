@@ -113,8 +113,7 @@ print(resp.choices[0].message.content)
 En dehors des extensions propres à Albert (notamment `SearchTool` et certains endpoints métiers), les conventions générales restent proches des clients OpenAI : mêmes noms de champs, mêmes rôles de `messages`, mêmes conventions SSE.
 
 {% hint style="warning" %}
-⚠️ À vérifier — Champs additionnels exacts et valeurs par défaut : se référer au schéma `CreateChatCompletion` dans la page de l’endpoint Chat :
-https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat
+⚠️ À vérifier — Champs additionnels exacts et valeurs par défaut : se référer au schéma `CreateChatCompletion` dans la [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).
 {% endhint %}
 
 ## Champs de recherche dépréciés

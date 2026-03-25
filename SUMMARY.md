@@ -25,6 +25,7 @@
 ## Guides
 
 * [Chat completions](guides/chat-completions.md)
+* [Modèles (liste)](guides/models.md)
 * [Streaming](guides/streaming.md)
 * [Function calling & outils](guides/function-calling.md)
 * [Outil de recherche RAG intégré](guides/rag-search-tool.md)
@@ -33,6 +34,7 @@
 * [OCR](guides/ocr.md)
 * [Reranking](guides/reranking.md)
 * [Collections & documents](guides/collections-documents.md)
+* [IDE (code models)](guides/ide.md)
 
 ## Compte & usage
 

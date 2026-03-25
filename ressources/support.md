@@ -23,4 +23,4 @@
 ## Ressources liées
 
 * Obtenir ou gérer des clés : [Clés API](../compte-and-usage/api-keys.md).
-* Comprendre les erreurs : [Codes d'erreur](errors/).
+* Comprendre les erreurs : [Codes d'erreur](errors.md).

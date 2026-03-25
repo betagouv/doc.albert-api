@@ -47,17 +47,6 @@
 
 ## Ressources
 
-* [Codes d'erreur](ressources/errors/README.md)
-  * ```yaml
-    type: builtin:openapi
-    props:
-      models: true
-      downloadLink: true
-    dependencies:
-      spec:
-        ref:
-          kind: openapi
-          spec: albert-api
-    ```
+* [Codes d'erreur](ressources/errors.md)
 * [Changelog](ressources/changelog.md)
 * [Support](ressources/support.md)

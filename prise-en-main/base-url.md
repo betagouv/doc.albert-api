@@ -34,6 +34,6 @@ Le numéro `v1` dans les chemins indique la **version majeure** de la surface HT
 
 Des endpoints de monitoring existent en dehors de `/v1`, par exemple `GET /health` et `GET /metrics`. Ils servent surtout à l’observabilité de la plateforme et ne remplacent pas une authentification applicative sur les routes métier.
 
-Pour le détail des chemins et schémas : [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7).
+Pour le détail des chemins et schémas : https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint
 
 

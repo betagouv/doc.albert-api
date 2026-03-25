@@ -2,21 +2,20 @@
 
 L’endpoint **`POST /v1/rerank`** réordonne une liste de documents textuels selon leur pertinence par rapport à une **requête**, via un modèle de type **`text-classification`**.
 
-## Corps de requête (`CreateRerank`)
+## Requête (`CreateRerank`)
 
-* **`query`** (requis) — texte de la question ou de la requête utilisateur.
-* **`documents`** (requis) — tableau de chaînes non vides à classer.
-* **`model`** (requis) — identifiant d’un modèle `text-classification` listé sous `/v1/models`.
-* **`top_n`** — nombre maximal de résultats à retourner ; si absent, la spec indique que **tous** les documents peuvent être renvoyés réordonnés.
-
-La description OpenAPI mentionne que **`query`** et **`prompt`** ne peuvent pas être fournis ensemble ; seul `query` apparaît comme propriété documentée dans le schéma public — en cas de doute, ne passez que `query`.
+* **`query`** (requis) — la question ou requête utilisateur ;
+* **`documents`** (requis) — tableau de chaînes à classer ;
+* **`model`** (requis) — identifiant d’un modèle `text-classification` retourné par `GET /v1/models` ;
+* **`top_n`** — nombre max de résultats à retourner.
 
 ## Intégration typique
 
-1. **Recherche large** — `POST /v1/search` ou moteur texte classique pour récupérer un ensemble candidat.
-2. **Rerank** — `POST /v1/rerank` pour affiner l’ordre avant envoi au modèle de chat ou affichage utilisateur.
+1. **Recherche large** — récupérez des candidats avec `POST /v1/search` (ou un moteur de recherche externe) ;
+2. **Rerank** — appelez `POST /v1/rerank` pour améliorer l’ordre ;
+3. **Chat / UI** — utilisez les meilleurs résultats pour générer une réponse ou afficher une liste ordonnée.
 
-## Exemple minimal
+## Exemple curl
 
 ```bash
 curl -sS "https://albert.api.etalab.gouv.fr/v1/rerank" \
@@ -24,7 +23,7 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/rerank" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "REMPLACER_PAR_MODELE_RERANK",
-    "query": "Quelle est la capital de la France ?",
+    "query": "Quelle est la capitale de la France ?",
     "documents": [
       "Paris est la capitale.",
       "Le croissant est une viennoiserie.",
@@ -34,4 +33,33 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/rerank" \
   }'
 ```
 
-La structure exacte de la réponse (scores, indices) est définie dans le schéma de réponse associé à l’opération `rerank` dans la [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7).
+## Exemple Python (SDK OpenAI)
+
+```python
+import os
+import requests
+
+base_url = "https://albert.api.etalab.gouv.fr/v1"
+api_key = os.environ["ALBERT_API_KEY"]
+headers = {"Authorization": f"Bearer {api_key}"}
+
+resp = requests.post(
+    url=f"{base_url}/rerank",
+    headers=headers,
+    json={
+        "model": "REMPLACER_PAR_MODELE_RERANK",
+        "query": "Quelle est la capitale de la France ?",
+        "documents": [
+            "Paris est la capitale.",
+            "Le croissant est une viennoiserie.",
+            "Lyon est une ville française.",
+        ],
+        "top_n": 2,
+    },
+)
+resp.raise_for_status()
+print(resp.json())
+```
+
+Pour la structure exacte de la réponse (scores, indices, etc.), voir la page de l’endpoint **Rerank** :
+https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/rerank

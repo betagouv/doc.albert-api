@@ -21,7 +21,8 @@ Les compteurs s’appliquent en général **par utilisateur** (chaque consommati
 Lorsque le trafic ou les tokens dépassent les plafonds configurés pour votre compte, l’API peut répondre **429 Too Many Requests** (détail dans le corps ou les en-têtes selon la version). Stratégie recommandée : **backoff exponentiel**, respect éventuel d’un en-tête **`Retry-After`**, et réduction du parallélisme.
 
 {% hint style="warning" %}
-⚠️ À vérifier — Codes HTTP exacts (429 vs autre) et format du `detail` pour les dépassements sur l’instance Albert : consulter la [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7) et les réponses observées en préproduction.
+⚠️ À vérifier — Codes HTTP exacts (429 vs autre) et format du `detail` pour les dépassements sur l’instance Albert : consulter la page de l’endpoint **Me** :
+https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/me
 {% endhint %}
 
 ## Budget (`UserInfo.budget`)

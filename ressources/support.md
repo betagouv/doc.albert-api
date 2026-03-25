@@ -2,7 +2,7 @@
 
 ## Documentation technique
 
-* Ce site (GitBook) — parcours guidés et [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7).
+* Ce site (GitBook) — parcours guidés et https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint
 * Fichier **`openapi.json`** — comportement exact des schémas et énumérations pour votre environnement.
 * [Notebooks OpenGateLLM](https://github.com/etalab-ia/opengatellm/tree/main/docs/tutorials) — exemples pas-à-pas (à recouper avec la spec Albert pour les champs exacts).
 

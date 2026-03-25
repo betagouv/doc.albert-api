@@ -6,14 +6,17 @@ L’endpoint **`POST /v1/embeddings`** calcule des vecteurs pour du texte (ou de
 
 Champs principaux du schéma **`EmbeddingsRequest`** :
 
-* **`model`** — identifiant retourné par `GET /v1/models` pour un modèle d’embeddings.
-* **`input`** — chaîne unique, **tableau de chaînes** (plusieurs phrases en un appel), ou représentations en tokens selon la spec. La chaîne vide n’est pas valide ; chaque entrée doit respecter la limite du modèle (**`max_context_length`** côté objet `Model`).
-* **`dimensions`** — dimension vectorielle souhaitée lorsque le modèle le permet (sinon `null`).
-* **`encoding_format`** — seule la valeur **`float`** est supportée (c’est la valeur par défaut).
+* **`model`** : identifiant d’un modèle d’embeddings (obtenu via `GET /v1/models`) ;
+* **`input`** : chaîne unique ou **liste de chaînes** (batch) ; chaque entrée doit respecter la limite du modèle (**`max_context_length`** côté `Model`) ;
+* **`dimensions`** : dimension vectorielle souhaitée (si supportée par le modèle) ;
+* **`encoding_format`** : format des valeurs (en pratique, `float` est le format attendu).
 
 ## Réponse
 
-La réponse suit la forme habituelle **OpenAI embeddings** : liste d’objets avec `embedding`, `index`, et métadonnées d’usage (`usage`). Consultez le schéma `Embeddings` dans la [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7).
+La réponse suit le format OpenAI embeddings : `data[]` contient des objets avec `embedding` et `index` ; et un objet `usage` de facturation/monitoring.
+
+Pour les schémas exacts, voir la page de l’endpoint **Embeddings** :
+https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/embeddings
 
 ## Exemple curl
 
@@ -23,11 +26,14 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/embeddings" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "REMPLACER_PAR_MODELE_EMBEDDINGS",
-    "input": "Le chat embeddings sert à la recherche sémantique."
+    "input": [
+      "Le chat est un animal domestique.",
+      "La France a pour capitale Paris."
+    ]
   }'
 ```
 
-## Exemple Python
+## Exemple Python (SDK OpenAI)
 
 ```python
 import os
@@ -42,8 +48,11 @@ r = client.embeddings.create(
     model="REMPLACER_PAR_MODELE_EMBEDDINGS",
     input=["Première phrase.", "Deuxième phrase."],
 )
+
 for item in r.data:
-    print(item.index, len(item.embedding))
+    print("index=", item.index, "dim=", len(item.embedding))
 ```
 
-Les vecteurs obtenus alimentent typiquement une base vectorielle ou la couche de recherche décrite dans [Outil de recherche RAG intégré](rag-search-tool.md) et [Collections & documents](collections-documents.md).
+## Bon à savoir
+
+Si votre objectif est de faire de la recherche RAG “bout en bout”, vous pouvez aussi éviter de gérer un index vectoriel vous-même : utilisez `POST /v1/search` et/ou `SearchTool` via [Outil de recherche RAG intégré](rag-search-tool.md).

@@ -1,23 +1,36 @@
 # Transcription audio
 
-L’endpoint **`POST /v1/audio/transcriptions`** transcrit (ou traduit) un fichier audio à l’aide d’un modèle de type **`automatic-speech-recognition`**.
+L’endpoint **`POST /v1/audio/transcriptions`** transcrit (et selon les modèles, traduit) un fichier audio via un modèle de type **`automatic-speech-recognition`**.
 
 ## Corps multipart
 
 Le schéma attend un formulaire **`multipart/form-data`** avec notamment :
 
-* **`file`** (requis) — flux binaire du média ;
-* **`model`** (requis) — identifiant de modèle ASR ;
-* **`language`** — code ISO-639-1 optionnel (par ex. `fr`, `en`) pour cibler la langue de sortie et réduire la latence ;
-* **`prompt`** — consigne textuelle optionnelle pour guider le modèle ;
+* **`file`** (requis) — contenu binaire du média ;
+* **`model`** (requis) — identifiant du modèle ASR ;
+* **`language`** — code ISO-639-1 optionnel (par ex. `fr`, `en`) ;
+* **`prompt`** — consigne textuelle optionnelle ;
 * **`response_format`** — `json`, `text` ou `verbose_json` ;
 * **`temperature`** — tirage entre `0` et `1`.
 
-Les formats de fichier explicitement mentionnés dans la spec sont **`mp3`** et **`wav`**.
+Les formats explicitement mentionnés dans la spec sont **`mp3`** et **`wav`**.
 
 {% hint style="warning" %}
-⚠️ À vérifier — Autres formats MIME réellement acceptés en production (m4a, flac, etc.) : tester sur votre environnement ou consulter les notes opérationnelles associées au modèle.
+⚠️ À vérifier — Autres formats MIME réellement acceptés en production (m4a, flac, etc.) : testez sur votre environnement.
 {% endhint %}
+
+## Choisir `response_format`
+
+Par défaut, vous récupérez généralement une forme “texte” (selon SDK). Si vous avez besoin d’une sortie structurée, passez par `response_format`.
+
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/audio/transcriptions" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -F "file=@enregistrement.mp3" \
+  -F "model=REMPLACER_PAR_MODELE_ASR" \
+  -F "language=fr" \
+  -F "response_format=json"
+```
 
 ## Exemple curl
 
@@ -45,8 +58,10 @@ with open("enregistrement.mp3", "rb") as f:
         model="REMPLACER_PAR_MODELE_ASR",
         file=f,
         language="fr",
+        # response_format="json",  # optionnel
     )
 print(tr.text)
 ```
 
-Pour le détail des champs de réponse (`verbose_json`, etc.), ouvrez le schéma `AudioTranscription` dans la [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7).
+Pour le détail des champs de réponse (`verbose_json`, etc.), voir la page de l’endpoint **Audio** :
+https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/audio

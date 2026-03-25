@@ -1,49 +1,64 @@
 # OCR
 
-L’endpoint **`POST /v1/ocr`** extrait du texte (et éventuellement de la structure) à partir d’un **document** ou d’une **image** référencés par URL dans le corps JSON. La forme des blocs **`document`** est **proche des conventions Mistral** (types `document_url` / URL d’image) ; pour le détail des clés, ouvrez le schéma `CreateOCR` dans la [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7).
+L’endpoint **`POST /v1/ocr`** extrait du texte (et, selon votre configuration, des annotations/structure) à partir d’un **document** ou d’une **image** référencés par URL dans le corps JSON.
 
-## Exemple minimal (PDF distant)
+Pour le détail des clés et schémas, voir la page d’endpoint **OCR** :
+https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/ocr
 
-```http
-POST /v1/ocr HTTP/1.1
-Host: albert.api.etalab.gouv.fr
-Authorization: Bearer <token>
-Content-Type: application/json
+## Exemple minimal (document PDF par URL)
+
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "REMPLACER_PAR_MODELE_OCR",
+    "document": {
+      "type": "document_url",
+      "document_url": "https://example.org/document.pdf"
+    }
+  }'
 ```
 
-```json
-{
-  "model": "identifiant-modele-image-to-text-ou-vision",
-  "document": {
-    "type": "document_url",
-    "document_url": "https://example.org/document.pdf"
-  }
-}
+## Variante : OCR d’une image (URL)
+
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "REMPLACER_PAR_MODELE_OCR",
+    "document": {
+      "type": "image_url",
+      "url": "https://example.org/image.png"
+    },
+    "include_image_base64": true
+  }'
 ```
 
-Vous pouvez aussi utiliser un **client Mistral** compatible en pointant `server_url` vers `https://albert.api.etalab.gouv.fr` et la même clé Bearer, si votre stack l’impose déjà.
+## Pages, images et indexation
 
-## Corps de requête (`CreateOCR`)
+La réponse retourne typiquement une liste de **pages**.
 
-Champs notables :
+{% hint style="warning" %}
+⚠️ Les indices de page sont **à partir de 0** (page 0 = première page).
+{% endhint %}
 
-* **`document`** (requis) — soit un bloc `DocumentURLChunk`, soit un bloc `ImageURLChunk` (voir la spec pour les clés exactes `type` / `url`).
-* **`model`** — identifiant du modèle OCR ; si `null`, le comportement par défaut dépend de la configuration plateforme.
-* **`pages`** — liste d’entiers (indices de pages, **à partir de 0**) pour ne traiter qu’un sous-ensemble de pages.
-* **`image_limit`**, **`image_min_size`**, **`include_image_base64`** — contrôle du nombre d’images extraites, taille minimale et inclusion éventuelle en base64 dans la réponse.
-* **`document_annotation_format`**, **`bbox_annotation_format`** — `response_format` au même titre que pour le chat : `text`, `json_object`, `json_schema`, etc., pour contraindre la sortie.
+Selon les options, la réponse peut aussi inclure des images (par exemple `images[]`) et leurs coordonnées de type bbox.
 
-## Cas d’usage
+## Contrôler la sortie
 
-* Numérisation de PDF administratifs pour alimenter un RAG.
-* Exploitation de captures d’écran ou scans dans un flux entièrement API.
+Champs courants (voir `CreateOCR`) :
+
+* **`pages`** — liste d’indices de pages à traiter uniquement.
+* **`image_limit`** / **`image_min_size`** — contrôle du nombre de vues/images produites.
+* **`include_image_base64`** — inclusion éventuelle des images en base64 (utile pour visualiser/archiver).
+* **`document_annotation_format`** / **`bbox_annotation_format`** — format de sortie pour texte/annotations (même logique que `response_format` côté chat : `text`, `json_object`, `json_schema`, etc.).
 
 ## Dépréciation de `parse-beta`
 
 L’endpoint **`POST /v1/parse-beta`** est **déprécié**. Pour tout nouveau développement, utilisez **`POST /v1/ocr`**.
 
-La réponse suit les schémas `OCR`, `OCRPageObject`, etc., décrits dans la [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7).
-
 {% hint style="warning" %}
-⚠️ À vérifier — Quotas spécifiques, tailles maximales de document et formats d’URL autorisés (HTTP, HTTPS, authentification) peuvent varier selon l’offre ; valider sur votre compte.
+⚠️ À vérifier — Quotas spécifiques, tailles maximales de document et formats d’URL autorisés (HTTP/HTTPS, authentification) peuvent varier selon l’offre. Validez sur votre compte.
 {% endhint %}

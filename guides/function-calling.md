@@ -10,7 +10,8 @@ Le champ **`tools`** est une liste d’objets. Chaque outil de type fonction com
 * une **description** ;
 * des **paramètres** au format JSON Schema (`parameters`) décrivant les arguments attendus.
 
-Le détail des schémas suit la convention **Chat Completions** OpenAI. Consultez le schéma `CreateChatCompletion` dans la [Référence OpenAPI](/broken/pages/vRZwVxl3vzeW4GecHnw7) pour la forme exacte attendue par le serveur.
+Le détail des schémas suit la convention **Chat Completions** OpenAI. Consultez le schéma `CreateChatCompletion` dans la page de l’endpoint **Chat** :
+https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat
 
 ## `tool_choice`
 

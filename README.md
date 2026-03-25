@@ -9,7 +9,8 @@ Cette documentation vise les **développeurs et développeuses** qui intègrent 
 ## URL et spécification
 
 * **URL de base :** `https://albert.api.etalab.gouv.fr`
-* **OpenAPI 3.1 :** [Référence OpenAPI interactive](/broken/pages/vRZwVxl3vzeW4GecHnw7) (fichier `openapi.json` à la racine du même hôte)
+* **OpenAPI 3.1 :** [Référence OpenAPI interactive] (et schémas) via la liste GitBook des endpoints :
+https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint
 
 ## Prochaines étapes
 

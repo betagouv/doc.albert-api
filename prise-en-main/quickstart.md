@@ -10,11 +10,36 @@ Pour le workflow complet (validation admin, email, Playground, création de clé
 
 ## Étape 1 — Obtenir un jeton
 
-Créez une clé API avec `POST /v1/me/keys` (voir [Clés API](../compte-and-usage/api-keys.md)). Exportez-la dans votre environnement, par exemple :
+La méthode principale pour obtenir une clé est de la **générer dans le Playground** (interface web). Une alternative consiste à créer une clé via l’API (`POST /v1/me/keys`, voir [Clés API](../compte-and-usage/api-keys.md)).
+
+### 1) Ouvrir la page « API keys » du Playground
+
+Allez sur : [Créer / gérer vos clés API (Playground)](https://albert.playground.etalab.gouv.fr/keys)
+
+![Créer une clé — formulaire vide](../assets/playground-workflow/key-create-empty.png)
+
+### 2) Renseigner le nom et, si besoin, la date d’expiration
+
+- **Name** : obligatoire (nom lisible pour vous retrouver dans la liste).
+- **Expires at** : optionnel (date de fin de validité).
+
+![Créer une clé — nom et expiration](../assets/playground-workflow/key-create-filled.png)
+
+### 3) Copier et stocker la clé en lieu sûr
+
+Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas la réafficher** ensuite.
+
+![Clé créée — copie unique](../assets/playground-workflow/key-created-once.png)
+
+### 4) Utiliser la clé dans votre code ou un outil compatible OpenAI
+
+Exportez-la dans votre environnement, par exemple :
 
 ```bash
 export ALBERT_API_KEY="votre_jeton"
 ```
+
+Puis utilisez-la comme `api_key` / jeton Bearer dans un client OpenAI ou tout outil compatible (voir section **Compatibilité OpenAI** ci-dessous).
 
 ## Étape 2 — Choisir un modèle
 

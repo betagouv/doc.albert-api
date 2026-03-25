@@ -32,13 +32,13 @@ Le détail exact des règles de validation peut évoluer. Si votre demande est r
 Une fois l’accès validé, vous recevez un email qui contient notamment :
 
 * vos identifiants pour vous connecter au **Playground** : ID + mot de passe ;
-* un lien vers le canal **Tchap** “Assistant IA” ;
+* un lien vers le canal **Tchap** “Albert API - Support & retours utilisateurs” ;
 * une invitation à créer vos **clés API** dans le Playground ;
 * un rappel : **changer votre mot de passe dès la première connexion**.
 
 Lien (canal Tchap) indiqué dans le modèle d’email :
 
-[Ouvrir “Assistant IA” sur Tchap](https://www.tchap.gouv.fr/#/room/!gpLYRJyIwdkcHBGYeC:agent.dinum.tchap.gouv.fr)
+[Ouvrir “Albert API - Support & retours utilisateurs” sur Tchap](https://www.tchap.gouv.fr/#/room/!gpLYRJyIwdkcHBGYeC:agent.dinum.tchap.gouv.fr)
 
 Lien vers le Playground :
 
@@ -48,7 +48,7 @@ Lien vers le Playground :
 
 Après connexion à Tchap, vous retrouvez aussi des liens “guidés” (statut, documentation, Playground, etc.) dans le canal associé.
 
-Exemples de liens (contenu de `TchapLinks.md`) :
+Exemples de liens :
 
 * [Statuts de l’API (quand publiés)](https://albert.status.etalab.gouv.fr)
 * [Formulaire de demande d’accès](https://albert.sites.beta.gouv.fr/access/)

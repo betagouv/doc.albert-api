@@ -6,6 +6,8 @@ Si vous n’avez pas encore d’accès, demandez une clé Albert API ici :
 
 [Demander un accès](https://albert.sites.beta.gouv.fr/access/)
 
+Pour le workflow complet (validation admin, email, Playground, création de clés) : [Créer un compte & accès](creation-compte.md).
+
 ## Étape 1 — Obtenir un jeton
 
 Créez une clé API avec `POST /v1/me/keys` (voir [Clés API](../compte-and-usage/api-keys.md)). Exportez-la dans votre environnement, par exemple :

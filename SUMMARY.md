@@ -4,6 +4,7 @@
 
 * [Introduction](README.md)
 * [Authentification](prise-en-main/authentication.md)
+* [Création de compte & accès](prise-en-main/creation-compte.md)
 * [Démarrage rapide](prise-en-main/quickstart.md)
 * [URL de base & versioning](prise-en-main/base-url.md)
 

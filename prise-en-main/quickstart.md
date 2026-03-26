@@ -45,17 +45,50 @@ Puis utilisez-la comme `api_key` / jeton Bearer dans un client OpenAI ou tout ou
 
 Listez les modèles disponibles :
 
+{% tabs %}
+{% tab title="curl" %}
 ```bash
 curl -sS "https://albert.api.etalab.gouv.fr/v1/models" \
   -H "Authorization: Bearer $ALBERT_API_KEY"
 ```
+{% endtab %}
+
+{% tab title="Python" %}
+```python
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://albert.api.etalab.gouv.fr/v1",
+    api_key=os.environ["ALBERT_API_KEY"],
+)
+
+models = client.models.list().data
+print([m.id for m in models])
+```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://albert.api.etalab.gouv.fr/v1",
+  apiKey: process.env.ALBERT_API_KEY,
+});
+
+const models = await client.models.list();
+console.log(models.data.map((m) => m.id));
+```
+{% endtab %}
+{% endtabs %}
 
 Choisissez un modèle dont le champ `type` est **`text-generation`** (voir [Types de modèles](../modeles/model-types.md)). Notez son `id` (par ex. `Meta-Llama-3.1-8B-Instruct` — l’offre exacte dépend de la plateforme).
 
 ## Étape 3 — Envoyer une complétion de chat
 
-### curl
-
+{% tabs %}
+{% tab title="curl" %}
 ```bash
 curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
@@ -68,9 +101,9 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
     ]
   }'
 ```
+{% endtab %}
 
-### Python (SDK OpenAI)
-
+{% tab title="Python" %}
 ```python
 import os
 from openai import OpenAI
@@ -89,6 +122,29 @@ r = client.chat.completions.create(
 )
 print(r.choices[0].message.content)
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://albert.api.etalab.gouv.fr/v1",
+  apiKey: process.env.ALBERT_API_KEY,
+});
+
+const r = await client.chat.completions.create({
+  model: "REMPLACER_PAR_ID_MODELE",
+  messages: [
+    { role: "system", content: "Tu réponds en français, de façon concise." },
+    { role: "user", content: "Explique ce qu’est une API compatible OpenAI en deux phrases." }
+  ],
+});
+
+console.log(r.choices[0].message.content);
+```
+{% endtab %}
+{% endtabs %}
 
 ## Compatibilité OpenAI
 

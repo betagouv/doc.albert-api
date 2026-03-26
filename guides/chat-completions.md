@@ -20,6 +20,15 @@ export ALBERT_API_KEY="votre_jeton"
 
 ### 2) Choisir un modèle `text-generation`
 
+{% tabs %}
+{% tab title="curl" %}
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/models" \
+  -H "Authorization: Bearer $ALBERT_API_KEY"
+```
+{% endtab %}
+
+{% tab title="Python" %}
 ```python
 import os
 from openai import OpenAI
@@ -33,9 +42,44 @@ models = client.models.list().data
 model = [m for m in models if m.type == "text-generation"][0].id
 print("Modèle chat trouvé :", model)
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://albert.api.etalab.gouv.fr/v1",
+  apiKey: process.env.ALBERT_API_KEY,
+});
+
+const models = (await client.models.list()).data;
+const model = models.find((m) => m.type === "text-generation")?.id;
+console.log("Modèle chat trouvé :", model);
+```
+{% endtab %}
+{% endtabs %}
 
 ## Unstreamed chat
 
+{% tabs %}
+{% tab title="curl" %}
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "REMPLACER_PAR_MODELE_TEXT_GENERATION",
+    "messages": [
+      {"role": "system", "content": "Tu réponds en français, de façon concise."},
+      {"role": "user", "content": "Explique ce qu’est une API compatible OpenAI en deux phrases."}
+    ],
+    "stream": false
+  }'
+```
+{% endtab %}
+
+{% tab title="Python" %}
 ```python
 resp = client.chat.completions.create(
     model=model,
@@ -48,11 +92,43 @@ resp = client.chat.completions.create(
 
 print(resp.choices[0].message.content)
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+const resp = await client.chat.completions.create({
+  model,
+  messages: [
+    { role: "system", content: "Tu réponds en français, de façon concise." },
+    { role: "user", content: "Explique ce qu’est une API compatible OpenAI en deux phrases." },
+  ],
+  stream: false,
+});
+
+console.log(resp.choices[0].message.content);
+```
+{% endtab %}
+{% endtabs %}
 
 ## Streaming (SSE)
 
 Pour activer le streaming, passez **`stream=True`**. Le SDK OpenAI renvoie une suite de chunks (deltas) jusqu’à la fin du flux.
 
+{% tabs %}
+{% tab title="curl" %}
+```bash
+curl -N "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "REMPLACER_PAR_MODELE_TEXT_GENERATION",
+    "messages": [{"role": "user", "content": "Raconte une phrase sur la météo."}],
+    "stream": true
+  }'
+```
+{% endtab %}
+
+{% tab title="Python" %}
 ```python
 stream = client.chat.completions.create(
     model=model,
@@ -66,6 +142,24 @@ for chunk in stream:
         print(delta.content, end="", flush=True)
 print()
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+const stream = await client.chat.completions.create({
+  model,
+  messages: [{ role: "user", content: "Raconte une phrase sur la météo." }],
+  stream: true,
+});
+
+for await (const chunk of stream) {
+  const delta = chunk.choices?.[0]?.delta;
+  if (delta?.content) process.stdout.write(delta.content);
+}
+process.stdout.write("\n");
+```
+{% endtab %}
+{% endtabs %}
 
 Voir aussi le guide [Streaming](streaming.md).
 
@@ -89,6 +183,29 @@ Le mécanisme `tools` / `tool_choice` est décrit dans [Function calling](functi
 
 Exemple minimal d’activation de `SearchTool` :
 
+{% tabs %}
+{% tab title="curl" %}
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "REMPLACER_PAR_MODELE_TEXT_GENERATION",
+    "messages": [{"role": "user", "content": "Résume les points clés du document."}],
+    "tools": [
+      {
+        "type": "search",
+        "collection_ids": [123],
+        "method": "semantic",
+        "limit": 5
+      }
+    ],
+    "tool_choice": "auto"
+  }'
+```
+{% endtab %}
+
+{% tab title="Python" %}
 ```python
 tools = [
     {
@@ -107,13 +224,38 @@ resp = client.chat.completions.create(
 )
 print(resp.choices[0].message.content)
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+const tools = [
+  {
+    type: "search",
+    collection_ids: [123],
+    method: "semantic",
+    limit: 5,
+  },
+];
+
+const resp = await client.chat.completions.create({
+  model,
+  messages: [{ role: "user", content: "Résume les points clés du document." }],
+  tools,
+  tool_choice: "auto",
+});
+
+console.log(resp.choices[0].message.content);
+```
+{% endtab %}
+{% endtabs %}
 
 ## Compatibilité OpenAI
 
 En dehors des extensions propres à Albert (notamment `SearchTool` et certains endpoints métiers), les conventions générales restent proches des clients OpenAI : mêmes noms de champs, mêmes rôles de `messages`, mêmes conventions SSE.
 
 {% hint style="warning" %}
-⚠️ À vérifier — Champs additionnels exacts et valeurs par défaut : se référer au schéma `CreateChatCompletion` dans la [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).
+⚠️ À vérifier — Champs additionnels exacts et valeurs par défaut : se référer au schéma `CreateChatCompletion` dans la page de l’endpoint Chat :
+[page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat)
 {% endhint %}
 
 ## Champs de recherche dépréciés

@@ -32,8 +32,10 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/audio/transcriptions" \
   -F "response_format=json"
 ```
 
-## Exemple curl
+## Exemples (curl / Python / JavaScript)
 
+{% tabs %}
+{% tab title="curl" %}
 ```bash
 curl -sS "https://albert.api.etalab.gouv.fr/v1/audio/transcriptions" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
@@ -41,9 +43,9 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/audio/transcriptions" \
   -F "model=REMPLACER_PAR_MODELE_ASR" \
   -F "language=fr"
 ```
+{% endtab %}
 
-## Exemple Python (SDK OpenAI)
-
+{% tab title="Python" %}
 ```python
 import os
 from openai import OpenAI
@@ -62,6 +64,28 @@ with open("enregistrement.mp3", "rb") as f:
     )
 print(tr.text)
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+import fs from "node:fs";
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://albert.api.etalab.gouv.fr/v1",
+  apiKey: process.env.ALBERT_API_KEY,
+});
+
+const tr = await client.audio.transcriptions.create({
+  model: "REMPLACER_PAR_MODELE_ASR",
+  file: fs.createReadStream("enregistrement.mp3"),
+  language: "fr",
+});
+
+console.log(tr.text);
+```
+{% endtab %}
+{% endtabs %}
 
 Pour le détail des champs de réponse (`verbose_json`, etc.), voir la page de l’endpoint **Audio** :
 [page de l’endpoint Audio](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/audio).

@@ -15,8 +15,10 @@ L’endpoint **`POST /v1/rerank`** réordonne une liste de documents textuels se
 2. **Rerank** — appelez `POST /v1/rerank` pour améliorer l’ordre ;
 3. **Chat / UI** — utilisez les meilleurs résultats pour générer une réponse ou afficher une liste ordonnée.
 
-## Exemple curl
+## Exemples (curl / Python / JavaScript)
 
+{% tabs %}
+{% tab title="curl" %}
 ```bash
 curl -sS "https://albert.api.etalab.gouv.fr/v1/rerank" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
@@ -32,9 +34,9 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/rerank" \
     "top_n": 2
   }'
 ```
+{% endtab %}
 
-## Exemple Python (SDK OpenAI)
-
+{% tab title="Python" %}
 ```python
 import os
 import requests
@@ -60,6 +62,33 @@ resp = requests.post(
 resp.raise_for_status()
 print(resp.json())
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+const resp = await fetch("https://albert.api.etalab.gouv.fr/v1/rerank", {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${process.env.ALBERT_API_KEY}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: "REMPLACER_PAR_MODELE_RERANK",
+    query: "Quelle est la capitale de la France ?",
+    documents: [
+      "Paris est la capitale.",
+      "Le croissant est une viennoiserie.",
+      "Lyon est une ville française.",
+    ],
+    top_n: 2,
+  }),
+});
+
+if (!resp.ok) throw new Error(await resp.text());
+console.log(await resp.json());
+```
+{% endtab %}
+{% endtabs %}
 
 Pour la structure exacte de la réponse (scores, indices, etc.), voir la page de l’endpoint **Rerank** :
 [page de l’endpoint Rerank](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/rerank).

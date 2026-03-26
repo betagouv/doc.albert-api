@@ -33,6 +33,24 @@ Champs courants :
 
 ## Exemple : OCR d’un PDF par URL (document_url)
 
+{% tabs %}
+{% tab title="curl" %}
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "REMPLACER_PAR_MODELE_OCR",
+    "document": {
+      "type": "document_url",
+      "document_url": "https://www.princexml.com/samples/magic6/magic.pdf"
+    },
+    "include_image_base64": true
+  }'
+```
+{% endtab %}
+
+{% tab title="Python" %}
 ```python
 import os
 import requests
@@ -61,9 +79,55 @@ data = resp.json()
 # print(data["pages"][0]["markdown"])
 print("Pages disponibles :", len(data.get("pages", [])))
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+const resp = await fetch("https://albert.api.etalab.gouv.fr/v1/ocr", {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${process.env.ALBERT_API_KEY}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: "REMPLACER_PAR_MODELE_OCR",
+    document: {
+      type: "document_url",
+      document_url: "https://www.princexml.com/samples/magic6/magic.pdf",
+    },
+    include_image_base64: true,
+  }),
+});
+
+if (!resp.ok) throw new Error(await resp.text());
+const data = await resp.json();
+console.log("Pages disponibles :", data.pages?.length ?? 0);
+```
+{% endtab %}
+{% endtabs %}
 
 ## Variante : OCR d’un PDF encodé en base64 (data URL)
 
+{% tabs %}
+{% tab title="curl" %}
+```bash
+PDF_BASE64=$(curl -sS "https://www.princexml.com/samples/textbook/somatosensory.pdf" | base64 -w 0)
+
+curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"model\": \"REMPLACER_PAR_MODELE_OCR\",
+    \"document\": {
+      \"type\": \"document_url\",
+      \"document_url\": \"data:application/pdf;base64,${PDF_BASE64}\"
+    },
+    \"include_image_base64\": true
+  }"
+```
+{% endtab %}
+
+{% tab title="Python" %}
 ```python
 import base64
 import os
@@ -96,6 +160,35 @@ data = resp.json()
 
 print("Markdown (ex.) :", (data.get("pages", [{}])[0]).get("markdown", "")[:200])
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+const pdfBuffer = await (await fetch("https://www.princexml.com/samples/textbook/somatosensory.pdf")).arrayBuffer();
+const pdfBase64 = Buffer.from(pdfBuffer).toString("base64");
+
+const resp = await fetch("https://albert.api.etalab.gouv.fr/v1/ocr", {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${process.env.ALBERT_API_KEY}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: "REMPLACER_PAR_MODELE_OCR",
+    document: {
+      type: "document_url",
+      document_url: `data:application/pdf;base64,${pdfBase64}`,
+    },
+    include_image_base64: true,
+  }),
+});
+
+if (!resp.ok) throw new Error(await resp.text());
+const data = await resp.json();
+console.log("Markdown (ex.) :", (data.pages?.[0]?.markdown ?? "").slice(0, 200));
+```
+{% endtab %}
+{% endtabs %}
 
 {% hint style="warning" %}
 ⚠️ À vérifier — Support “data URLs” (format `data:application/pdf;base64,...`) selon votre instance et votre politique d’ingestion.
@@ -103,6 +196,24 @@ print("Markdown (ex.) :", (data.get("pages", [{}])[0]).get("markdown", "")[:200]
 
 ## Exemple : OCR d’une image par URL (image_url)
 
+{% tabs %}
+{% tab title="curl" %}
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "REMPLACER_PAR_MODELE_OCR",
+    "document": {
+      "type": "image_url",
+      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg"
+    },
+    "include_image_base64": true
+  }'
+```
+{% endtab %}
+
+{% tab title="Python" %}
 ```python
 import os
 import requests
@@ -129,6 +240,32 @@ data = resp.json()
 
 print("Markdown (ex.) :", (data.get("pages", [{}])[0]).get("markdown", "")[:200])
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+const resp = await fetch("https://albert.api.etalab.gouv.fr/v1/ocr", {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${process.env.ALBERT_API_KEY}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    model: "REMPLACER_PAR_MODELE_OCR",
+    document: {
+      type: "image_url",
+      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg",
+    },
+    include_image_base64: true,
+  }),
+});
+
+if (!resp.ok) throw new Error(await resp.text());
+const data = await resp.json();
+console.log("Markdown (ex.) :", (data.pages?.[0]?.markdown ?? "").slice(0, 200));
+```
+{% endtab %}
+{% endtabs %}
 
 ## Dépréciation de `parse-beta`
 

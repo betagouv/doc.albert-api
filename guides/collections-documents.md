@@ -59,6 +59,8 @@ Collection
 
 ### Exemple minimal : créer une collection et uploader un document
 
+{% tabs %}
+{% tab title="curl" %}
 ```bash
 # 1) Collection
 curl -sS "https://albert.api.etalab.gouv.fr/v1/collections" \
@@ -77,6 +79,66 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/documents" \
   -F "chunk_size=2048" \
   -F "chunk_overlap=200"
 ```
+{% endtab %}
+
+{% tab title="Python" %}
+```python
+import os
+import requests
+
+headers = {"Authorization": f"Bearer {os.environ['ALBERT_API_KEY']}"}
+
+collection = requests.post(
+    "https://albert.api.etalab.gouv.fr/v1/collections",
+    headers={**headers, "Content-Type": "application/json"},
+    json={"name": "exemples", "visibility": "private"},
+)
+collection.raise_for_status()
+collection_id = collection.json()["id"]
+
+with open("mon-dossier.pdf", "rb") as f:
+    document = requests.post(
+        "https://albert.api.etalab.gouv.fr/v1/documents",
+        headers=headers,
+        files={"file": ("mon-dossier.pdf", f, "application/pdf")},
+        data={"collection_id": collection_id, "chunk_size": 2048, "chunk_overlap": 200},
+    )
+document.raise_for_status()
+print(document.json())
+```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+const createCollection = await fetch("https://albert.api.etalab.gouv.fr/v1/collections", {
+  method: "POST",
+  headers: {
+    Authorization: `Bearer ${process.env.ALBERT_API_KEY}`,
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ name: "exemples", visibility: "private" }),
+});
+
+if (!createCollection.ok) throw new Error(await createCollection.text());
+const { id: collectionId } = await createCollection.json();
+
+const form = new FormData();
+form.append("file", new Blob(["REMPLACER_PAR_VOTRE_CONTENU_PDF"]), "mon-dossier.pdf");
+form.append("collection_id", String(collectionId));
+form.append("chunk_size", "2048");
+form.append("chunk_overlap", "200");
+
+const upload = await fetch("https://albert.api.etalab.gouv.fr/v1/documents", {
+  method: "POST",
+  headers: { Authorization: `Bearer ${process.env.ALBERT_API_KEY}` },
+  body: form,
+});
+
+if (!upload.ok) throw new Error(await upload.text());
+console.log(await upload.json());
+```
+{% endtab %}
+{% endtabs %}
 
 ## Chunks
 

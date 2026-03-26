@@ -38,6 +38,71 @@ Sans `SearchTool`, vous pouvez enchaîner :
 2. **Prompt** — concaténation des `chunk.content` renvoyés dans un prompt ;
 3. **Chat** — `POST /v1/chat/completions` avec un modèle **`text-generation`**.
 
+### Exemple rapide (curl / Python / JavaScript) avec `SearchTool`
+
+{% tabs %}
+{% tab title="curl" %}
+```bash
+curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "REMPLACER_PAR_MODELE_TEXT_GENERATION",
+    "messages": [{"role": "user", "content": "Résume les points clés du document."}],
+    "tools": [
+      {
+        "type": "search",
+        "collection_ids": [123],
+        "method": "hybrid",
+        "limit": 5
+      }
+    ],
+    "tool_choice": "auto"
+  }'
+```
+{% endtab %}
+
+{% tab title="Python" %}
+```python
+from openai import OpenAI
+import os
+
+client = OpenAI(
+    base_url="https://albert.api.etalab.gouv.fr/v1",
+    api_key=os.environ["ALBERT_API_KEY"],
+)
+
+resp = client.chat.completions.create(
+    model="REMPLACER_PAR_MODELE_TEXT_GENERATION",
+    messages=[{"role": "user", "content": "Résume les points clés du document."}],
+    tools=[{"type": "search", "collection_ids": [123], "method": "hybrid", "limit": 5}],
+    tool_choice="auto",
+)
+print(resp.choices[0].message.content)
+```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://albert.api.etalab.gouv.fr/v1",
+  apiKey: process.env.ALBERT_API_KEY,
+});
+
+const resp = await client.chat.completions.create({
+  model: "REMPLACER_PAR_MODELE_TEXT_GENERATION",
+  messages: [{ role: "user", content: "Résume les points clés du document." }],
+  tools: [{ type: "search", collection_ids: [123], method: "hybrid", limit: 5 }],
+  tool_choice: "auto",
+});
+
+console.log(resp.choices[0].message.content);
+```
+{% endtab %}
+{% endtabs %}
+
 ### Exemple Python : recherche puis chat
 
 Cet exemple illustre le flux “manuel” avec `requests` pour la recherche et le SDK OpenAI pour le chat.

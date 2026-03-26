@@ -21,8 +21,23 @@ Lorsque `stream` est à `true`, vous pouvez renseigner **`stream_options`** pour
 ⚠️ À vérifier — Clés exactes supportées dans `stream_options` et compatibilité `include_usage` selon les modèles : consulter le schéma `CreateChatCompletion` dans la [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).
 {% endhint %}
 
-## Exemple Python (SDK OpenAI)
+## Exemples (curl / Python / JavaScript)
 
+{% tabs %}
+{% tab title="curl" %}
+```bash
+curl -N "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "votre-modele-text-generation",
+    "messages": [{"role": "user", "content": "Raconte une phrase sur la météo."}],
+    "stream": true
+  }'
+```
+{% endtab %}
+
+{% tab title="Python" %}
 ```python
 import os
 from openai import OpenAI
@@ -44,6 +59,31 @@ for chunk in stream:
         print(delta.content, end="", flush=True)
 print()
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://albert.api.etalab.gouv.fr/v1",
+  apiKey: process.env.ALBERT_API_KEY,
+});
+
+const stream = await client.chat.completions.create({
+  model: "votre-modele-text-generation",
+  messages: [{ role: "user", content: "Raconte une phrase sur la météo." }],
+  stream: true,
+});
+
+for await (const chunk of stream) {
+  const delta = chunk.choices?.[0]?.delta;
+  if (delta?.content) process.stdout.write(delta.content);
+}
+process.stdout.write("\n");
+```
+{% endtab %}
+{% endtabs %}
 
 ## Bonnes pratiques
 

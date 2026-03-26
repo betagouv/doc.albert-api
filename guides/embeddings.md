@@ -17,8 +17,10 @@ La réponse suit le format OpenAI embeddings : `data[]` contient des objets avec
 
 Pour les schémas exacts, voir la [page de l’endpoint Embeddings](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/embeddings).
 
-## Exemple curl
+## Exemples (curl / Python / JavaScript)
 
+{% tabs %}
+{% tab title="curl" %}
 ```bash
 curl -sS "https://albert.api.etalab.gouv.fr/v1/embeddings" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
@@ -31,9 +33,9 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/embeddings" \
     ]
   }'
 ```
+{% endtab %}
 
-## Exemple Python (SDK OpenAI)
-
+{% tab title="Python" %}
 ```python
 import os
 from openai import OpenAI
@@ -51,6 +53,28 @@ r = client.embeddings.create(
 for item in r.data:
     print("index=", item.index, "dim=", len(item.embedding))
 ```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://albert.api.etalab.gouv.fr/v1",
+  apiKey: process.env.ALBERT_API_KEY,
+});
+
+const r = await client.embeddings.create({
+  model: "REMPLACER_PAR_MODELE_EMBEDDINGS",
+  input: ["Première phrase.", "Deuxième phrase."],
+});
+
+for (const item of r.data) {
+  console.log("index=", item.index, "dim=", item.embedding.length);
+}
+```
+{% endtab %}
+{% endtabs %}
 
 ## Bon à savoir
 

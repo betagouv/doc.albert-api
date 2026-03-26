@@ -1,2 +1,15 @@
 .cursor/rules/
 
+# Local secrets (created by user)
+.env
+
+# Local test runner (not committed) + generated report
+scripts/doc_test_runner.py
+doc_test_discrepancies*.md
+doc_test_discrepancies*.json
+
+# Local test artifacts (do not push to GitBook)
+/Voice-message.mp3
+/archi_mistral.png
+/Security Assurance Plan - Mistral AI Suite self-hosted - v1 DINUM.pdf
+

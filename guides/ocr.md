@@ -22,7 +22,7 @@ Champs courants :
 
 * **`document`** (requis) — objet de type :
   * `{"type": "document_url", "document_url": "https://..."}` pour un PDF/document ;
-  * `{"type": "image_url", "url": "https://..."}` pour une image.
+  * `{"type": "image_url", "image_url": "https://..."}` pour une image (ou une data URL `data:image/...;base64,...`).
 * **`pages`** — liste d’indices de pages à traiter (indexation **à partir de 0**).
 * **`include_image_base64`** — inclusion éventuelle d’images en base64 dans la réponse (utile si vous souhaitez archiver/visualiser).
 * **`document_annotation_format`** / **`bbox_annotation_format`** — format de sortie pour texte/annotations (logique proche de `response_format` côté chat : `text`, `json_object`, `json_schema`, etc.).
@@ -206,7 +206,7 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
     "model": "REMPLACER_PAR_MODELE_OCR",
     "document": {
       "type": "image_url",
-      "url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg"
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg"
     },
     "include_image_base64": true
   }'
@@ -231,7 +231,7 @@ resp = requests.post(
     headers=headers,
     json={
         "model": model,
-        "document": {"type": "image_url", "url": image_url},
+        "document": {"type": "image_url", "image_url": image_url},
         "include_image_base64": True,
     },
 )
@@ -254,7 +254,7 @@ const resp = await fetch("https://albert.api.etalab.gouv.fr/v1/ocr", {
     model: "REMPLACER_PAR_MODELE_OCR",
     document: {
       type: "image_url",
-      url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg",
+      image_url: "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg",
     },
     include_image_base64: true,
   }),

@@ -16,10 +16,14 @@ Corps JSON **`CreateKey`** :
 Réponse **`CreateKeyResponse`** :
 
 * **`id`** — identifiant entier de la clé ;
-* **`token`** — secret **affiché intégralement une seule fois** à la création.
+* **`token`** — secret **affiché intégralement une seule fois** à la création (selon configuration / environnement).
 
 {% hint style="danger" %}
 Le champ **`token`** n’est pas récupérable après coup par l’API documentée : enregistrez-le dans un coffre-fort de secrets (`ALBERT_API_KEY`, gestionnaire d’identifiants, vault). Toute perte implique la révocation et la création d’une nouvelle clé.
+{% endhint %}
+
+{% hint style="warning" %}
+⚠️ Comportement observé en test (runner) : `POST /v1/me/keys` peut renvoyer **uniquement** `id` (sans `token`). Dans ce cas, la méthode recommandée pour récupérer une nouvelle clé utilisable est de la générer via le **Playground** (qui affiche la clé une seule fois), puis de la stocker en lieu sûr.
 {% endhint %}
 
 ### Exemple

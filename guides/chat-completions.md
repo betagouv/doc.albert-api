@@ -253,6 +253,101 @@ console.log(resp.choices[0].message.content);
 
 En dehors des extensions propres à Albert (notamment `SearchTool` et certains endpoints métiers), les conventions générales restent proches des clients OpenAI : mêmes noms de champs, mêmes rôles de `messages`, mêmes conventions SSE.
 
+## Multimodal (image + texte) via `chat/completions`
+
+Albert API peut accepter des entrées multimodales via `POST /v1/chat/completions` en passant, dans un message `user`, un `content` **structuré** (liste) combinant :
+
+* `{"type": "text", "text": "..."}`
+* `{"type": "image_url", "image_url": {"url": "data:image/png;base64,..."}}`
+
+Choisissez un modèle dont le `type` est généralement **`image-text-to-text`** (ou `image-to-text` selon l’instance).
+
+{% tabs %}
+{% tab title="curl" %}
+```bash
+IMG_BASE64=$(base64 -w 0 "archi_mistral.png")
+
+curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d "{
+    \"model\": \"REMPLACER_PAR_MODELE_MULTIMODAL\",
+    \"messages\": [
+      {
+        \"role\": \"user\",
+        \"content\": [
+          {\"type\": \"text\", \"text\": \"Décris l'image et lis le texte visible (si présent). Réponds en français.\"},
+          {\"type\": \"image_url\", \"image_url\": {\"url\": \"data:image/png;base64,${IMG_BASE64}\"}}
+        ]
+      }
+    ],
+    \"max_tokens\": 500
+  }"
+```
+{% endtab %}
+
+{% tab title="Python" %}
+```python
+import base64
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://albert.api.etalab.gouv.fr/v1",
+    api_key=os.environ["ALBERT_API_KEY"],
+)
+
+with open("archi_mistral.png", "rb") as f:
+    img_b64 = base64.b64encode(f.read()).decode("utf-8")
+
+r = client.chat.completions.create(
+    model="REMPLACER_PAR_MODELE_MULTIMODAL",
+    messages=[
+        {
+            "role": "user",
+            "content": [
+                {"type": "text", "text": "Décris l'image et lis le texte visible (si présent). Réponds en français."},
+                {"type": "image_url", "image_url": {"url": f"data:image/png;base64,{img_b64}"}},
+            ],
+        }
+    ],
+    max_tokens=500,
+)
+print(r.choices[0].message.content)
+```
+{% endtab %}
+
+{% tab title="JavaScript" %}
+```javascript
+import fs from "node:fs";
+import OpenAI from "openai";
+
+const client = new OpenAI({
+  baseURL: "https://albert.api.etalab.gouv.fr/v1",
+  apiKey: process.env.ALBERT_API_KEY,
+});
+
+const imgB64 = fs.readFileSync("archi_mistral.png").toString("base64");
+
+const r = await client.chat.completions.create({
+  model: "REMPLACER_PAR_MODELE_MULTIMODAL",
+  messages: [
+    {
+      role: "user",
+      content: [
+        { type: "text", text: "Décris l'image et lis le texte visible (si présent). Réponds en français." },
+        { type: "image_url", image_url: { url: `data:image/png;base64,${imgB64}` } },
+      ],
+    },
+  ],
+  max_tokens: 500,
+});
+
+console.log(r.choices[0].message.content);
+```
+{% endtab %}
+{% endtabs %}
+
 {% hint style="warning" %}
 ⚠️ À vérifier — Champs additionnels exacts et valeurs par défaut : se référer au schéma `CreateChatCompletion` dans la page de l’endpoint Chat :
 [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat)

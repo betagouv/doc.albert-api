@@ -2,98 +2,77 @@
 
 Albert API est compatible “OpenAI-like” sur l’endpoint de chat : vous pouvez donc brancher des modèles (notamment des modèles orientés code) sur des IDE et agents qui parlent l’API OpenAI.
 
-{% hint style="warning" %}
-⚠️ À vérifier — Ces plugins/éditeurs supportent parfois uniquement un sous-ensemble des champs OpenAI. Testez avec un `model` de type `text-generation` et l’URL base `.../v1`.
-{% endhint %}
+Aujourd’hui, nous **maintenons et testons** principalement **2 façons** d’intégrer Albert API à un outil de développement.
 
-## Visual Studio Code (Continue)
+## VS Code (Continue)
 
-[Continue](https://marketplace.visualstudio.com/items?itemName=Continuestral.continue) est une extension VS Code.
+[Continue](https://marketplace.visualstudio.com/items?itemName=Continuestral.continue) est une extension VS Code qui peut se configurer avec un provider “OpenAI”.
 
-Après installation, configurez le fichier `.continue/config.yml` :
+Après installation, configurez `.continue/config.yml`.
+
+Exemple de configuration (Continue) :
 
 ```yaml
-name: Local Assistant
-version: 1.0.0
-schema: v1
 models:
-  - name: Albert API
+  - name: OpenGateLLM-Chat
     provider: openai
-    model: <VOTRE_MODEL_ID>
+    model: Qwen/Qwen3-Coder-30B-A3B-Instruct
     apiBase: https://albert.api.etalab.gouv.fr/v1
-    apiKey: <VOTRE_API_KEY>
-    roles:
-      - chat
-
-context:
-  - provider: docs-legacy
-  - provider: terminal
-  - provider: problems
-  - provider: folder
-  - provider: codebase
-  - provider: code
+    apiKey: PUT_ALBERT_KEY_HERE
 ```
 
-## IntelliJ / PyCharm (ProxyAI)
+Nous recommandons l’usage de **openweight-code** avec Continue. À date, **openweight-code ne propose pas de compatibilité avec la fonctionnalité d’auto-complétion** (autocomplete) : l’intégration est donc principalement pertinente pour les usages “chat / assistance”.
 
-[ProxyAI](https://plugins.jetbrains.com/plugin/21056-proxyai) est un plugin JetBrains.
+## Agentic coding (opencode)
 
-Après installation, configurez `~/.config/ProxyAI/config.yml` :
-
-```yaml
-name: Albert API
-API Key: <VOTRE_API_KEY>
-URL: https://albert.api.etalab.gouv.fr/v1
-model: <VOTRE_MODEL_ID>
-```
-
-## Zed
-
-[Zed](https://zed.dev/) permet de configurer des providers “OpenAI”.
-
-Procédure (résumé) :
-
-1. Ouvrir le panneau “Agent Panel”
-2. Dans “Model”, sélectionner “Configure”
-3. Provider : “OpenAI”
-4. Renseigner `API Key` : `<VOTRE_API_KEY>`
-5. Renseigner l’URL : `<YOUR_API_URL>` (typiquement `https://albert.api.etalab.gouv.fr/v1`)
-
-Exemple de snippet (format JSON) :
+Pour les usages **agentiques** (édition multi-fichiers, planification, exécution d’actions), nous avons testé **opencode** avec la configuration suivante :
 
 ```json
-"language models": {
-  "openai": {
-    "api_url": "https://albert.api.etalab.gouv.fr/v1",
-    "api_key": "<VOTRE_API_KEY>",
-    "role": "chat",
-    "available_models": [
-      {
-        "name": "<VOTRE_MODEL_ID>",
-        "display_name": "<VOTRE_MODEL_ID>",
-        "supports_tools": true
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "litellm": {
+      "models": {
+        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
+          "name": "Qwen/Qwen3-Coder-30B-A3B-Instruct"
+        },
+        "openai/gpt-oss-120b": {
+          "name": "openai/gpt-oss-120b"
+        }
+      },
+      "options": {
+        "apiKey": "PUT ALBERT KEY HERE",
+        "baseURL": "https://albert.api.etalab.gouv.fr/v1"
       }
-    ],
-    "version": "1"
+    }
+  },
+  "mode": {
+    "build": {
+      "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
+      "tools": {
+        "write": true,
+        "edit": true,
+        "bash": false
+      }
+    }
   }
 }
 ```
 
-## Cursor (Kilo Code AI Agent)
+## Compatibilité “théorique” (non garantie)
 
-Le plugin “Kilo Code AI Agent” (Cursor) se configure en “Custom OpenAI”.
+De façon générale, **n’importe quel plugin / IDE** capable d’appeler un modèle via :
 
-Exemple :
+- `POST /v1/chat/completions`, et/ou
+- un SDK “OpenAI”
 
-```yaml
-API Key: <VOTRE_API_KEY>
-URL: https://albert.api.etalab.gouv.fr/v1/chat/completions
-model: <VOTRE_MODEL_ID>
-```
+peut **théoriquement** fonctionner avec Albert API. En revanche, nous ne pouvons pas **garantir** la compatibilité de toutes les combinaisons outil/IDE, ni les champs supportés par chaque client.
 
-Si vous voulez valider que le `model` que vous sélectionnez correspond au bon type, commencez par la liste des modèles : [Guide “Modèles”](models.md).
+Si vous voulez valider que le `model` que vous sélectionnez correspond au bon type, commencez par la liste des modèles : [Guide “Modèles”](models.md). Pour une vue “publique” des modèles (familles, licences, alias) vous pouvez aussi consulter : [Catalogue des modèles](https://albert.sites.beta.gouv.fr/solutions/models/).
 
-Pour une vue “publique” des modèles (familles, licences, alias) vous pouvez aussi consulter :
+{% hint style="info" %}
+À date, le support **`v1/responses` (OpenAI)** et **`v1/messages` (Anthropic)** n’est pas encore disponible dans Albert API. En conséquence, l’intégration avec certains outils de coding (ex. **Claude Code**) n’est pas disponible “par défaut”.
 
-[Catalogue des modèles](https://albert.sites.beta.gouv.fr/solutions/models/)
+Certains utilisateurs ont cependant réussi via leur propre **proxy** qui traduit/adapte les requêtes et réponses d’Albert API vers l’assistant de leur choix. Nous ne pouvons pas maintenir ni lister l’ensemble des proxies existants : pour des conseils et des liens vers les proxies maintenus par la communauté, vous pouvez demander sur Tchap : `https://tchap.gouv.fr/#/room/#albert:agent.dinum.tchap.gouv.fr`.
+{% endhint %}
 

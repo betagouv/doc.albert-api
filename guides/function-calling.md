@@ -29,7 +29,7 @@ Le détail des schémas suit la convention **Chat Completions** OpenAI. Consulte
 
 ## Outils intégrés Albert
 
-Outre les fonctions « génériques », Albert expose l’outil natif de **recherche documentaire** (`SearchTool`, `type: "search"`). Il n’est **pas** équivalent à un connecteur OpenAI hébergé : pipeline, paramètres et sémantique sont ceux d’Albert. Voir [Outil de recherche RAG intégré](rag-search-tool.md).
+Outre les fonctions « génériques », Albert expose l’outil natif de **recherche documentaire** (`SearchTool`, `type: "search"`). Il n’est **pas** équivalent à un connecteur OpenAI hébergé : pipeline, paramètres et sémantique sont ceux d’Albert. Voir [Outil de recherche RAG intégré](rag.md).
 
 ## Erreurs et robustesse
 

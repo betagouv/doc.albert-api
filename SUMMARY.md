@@ -29,7 +29,7 @@
 * [Modèles (liste)](guides/models.md)
 * [Streaming](guides/streaming.md)
 * [Function calling & outils](guides/function-calling.md)
-* [Outil de recherche RAG intégré](guides/rag-search-tool.md)
+* [RAG - Génération Augmentée par Récupération](guides/rag.md)
 * [Embeddings](guides/embeddings.md)
 * [Transcription audio](guides/audio-transcription.md)
 * [OCR](guides/ocr.md)

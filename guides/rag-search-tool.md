@@ -30,11 +30,24 @@ Ajoutez un objet correspondant à **`SearchTool`** (voir la [page de l’endpoin
 
 En pratique, l’endpoint **`POST /v1/search`** permet aussi d’exécuter la recherche **sans** passer par le chat (debug, UIs, pipeline “manuel”).
 
-## Utiliser une collection publique
+### Utiliser une collection publique
 
-Albert API met à disposition des **collections publiques** prêtes à l'emploi, pas besoin de créer ni d'ingérer quoi que ce soit. Il suffit de récupérer l'identifiant de la collection souhaitée, puis de l'utiliser directement dans `SearchTool`.
+Albert API met à disposition des **collections publiques** prêtes à l'emploi. Il suffit de récupérer l'identifiant de la collection souhaitée, puis de l'utiliser directement dans `SearchTool`.
 
-L'exemple ci-dessous interroge la collection **`mediatech-decisions-cnil`** (délibérations de la CNIL) :
+Ces collections sont les suivantes :
+
+| Nom de la collection | Contenu |
+| --- | --- |
+| `mediatech-legifrance` | Législation et réglementation nationale consolidée : codes officiels (73 en vigueur), lois, décrets, ordonnances depuis 1945, arrêtés sélectionnés depuis 1990. Source : legifrance.gouv.fr |
+| `mediatech-fiches-travail-emploi` | Fiches pédagogiques du Ministère du travail sur le droit du travail. Source : travail-emploi.gouv.fr |
+| `mediatech-fiches-service-public` | Fiches pratiques à destination des usagers (droits, démarches administratives, formulaires). Source : service-public.gouv.fr |
+| `mediatech-annuaire-services-publics-locaux` | Annuaire de plus de 86 000 guichets publics locaux (mairies, organismes sociaux, services de l'État) avec coordonnées et horaires. Source : data.gouv.fr |
+| `mediatech-annuaire-services-publics-nationaux` | Référentiel de l'organisation administrative de l'État : ~6 000 organismes, missions, hiérarchie, coordonnées et responsables. Source : data.gouv.fr |
+| `mediatech-dossiers-legislatifs` | Dossiers législatifs : lois depuis juin 2002, ordonnances depuis 2002, projets et propositions de loi en préparation. Source : data.gouv.fr |
+| `mediatech-decisions-conseil-constitutionnel` | Décisions du Conseil constitutionnel depuis 1958 (DC, QPC, contentieux électoral, etc.). Source : data.gouv.fr |
+| `mediatech-decisions-cnil` | Délibérations de la CNIL depuis 1979. Source : echanges.dila.gouv.fr |
+
+L'exemple ci-dessous interroge la collection **`mediatech-decisions-cnil`** :
 
 ```python
 import requests
@@ -43,7 +56,7 @@ BASE_URL = "https://albert.api.etalab.gouv.fr/v1"
 API_KEY = "***"
 headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
 
-# 1. Récupérer l'ID de la collection publique
+# 1. Récupérer l'ID de la collection publique voulue
 resp = requests.get(f"{BASE_URL}/collections?name=mediatech-decisions-cnil", headers=headers)
 collection_id = resp.json()["data"][0]["id"]
 
@@ -73,15 +86,16 @@ print(response.json()["choices"][0]["message"]["content"])
 
 Pour lister toutes les collections publiques disponibles et obtenir leur description, appelez `GET /v1/collections?visibility=public`.
 
-## Parcours type : RAG manuel (recherche puis chat)
+## Parcours type : RAG manuel
 
-Sans `SearchTool`, vous pouvez enchaîner :
+Il est aussi possible de faire du RAG manuel, où la recherche du contexte est une étape dédiée, non intégrée à l'appel `/chat/completions`.
+Pour ce faire, `SearchTool` n'est plus utilisé, et les étapes sont :
 
-1. **Recherche** — `POST /v1/search` avec un corps JSON aligné sur `CreateSearch` (`query`, `collection_ids`, `method`, `limit`, `rff_k` si `hybrid`, etc.) ;
-2. **Prompt** — concaténation des `chunk.content` renvoyés dans un prompt ;
+1. **Recherche** — `POST /v1/search` avec un JSON aligné sur `CreateSearch` (`query`, `collection_ids`, `method`, `limit`, `rff_k` si `hybrid`, etc.) ;
+2. **Prompt** — concaténation des `chunk.content` pour construire un prompt incluant le contexte;
 3. **Chat** — `POST /v1/chat/completions` avec un modèle **`text-generation`**.
 
-### Exemple rapide (curl / Python / JavaScript) avec `SearchTool`
+### Exemple avec `SearchTool`
 
 {% tabs %}
 {% tab title="curl" %}

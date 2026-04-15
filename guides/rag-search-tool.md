@@ -30,6 +30,49 @@ Ajoutez un objet correspondant à **`SearchTool`** (voir la [page de l’endpoin
 
 En pratique, l’endpoint **`POST /v1/search`** permet aussi d’exécuter la recherche **sans** passer par le chat (debug, UIs, pipeline “manuel”).
 
+## Utiliser une collection publique
+
+Albert API met à disposition des **collections publiques** prêtes à l'emploi, pas besoin de créer ni d'ingérer quoi que ce soit. Il suffit de récupérer l'identifiant de la collection souhaitée, puis de l'utiliser directement dans `SearchTool`.
+
+L'exemple ci-dessous interroge la collection **`mediatech-decisions-cnil`** (délibérations de la CNIL) :
+
+```python
+import requests
+
+BASE_URL = "https://albert.api.etalab.gouv.fr/v1"
+API_KEY = "***"
+headers = {"Authorization": f"Bearer {API_KEY}", "Content-Type": "application/json"}
+
+# 1. Récupérer l'ID de la collection publique
+resp = requests.get(f"{BASE_URL}/collections?name=mediatech-decisions-cnil", headers=headers)
+collection_id = resp.json()["data"][0]["id"]
+
+# 2. Chat avec RAG via SearchTool
+prompt = "Quelles sont les durées de conservation des données dans les fichiers de police ? Précise les sources des délibérations CNIL utilisées"
+response = requests.post(
+    f"{BASE_URL}/chat/completions",
+    headers=headers,
+    json={
+        "model": "openweight-large",
+        "messages": [
+            {"role": "user", "content": prompt},
+        ],
+        "tools": [
+            {
+                "type": "search",
+                "collection_ids": [collection_id],
+                "method": "hybrid",
+                "limit": 6,
+            }
+        ],
+        "tool_choice": "auto",
+    },
+)
+print(response.json()["choices"][0]["message"]["content"])
+```
+
+Pour lister toutes les collections publiques disponibles et obtenir leur description, appelez `GET /v1/collections?visibility=public`.
+
 ## Parcours type : RAG manuel (recherche puis chat)
 
 Sans `SearchTool`, vous pouvez enchaîner :

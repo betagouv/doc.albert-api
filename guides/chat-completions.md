@@ -175,7 +175,7 @@ Le champ **`tools`** permet d’activer :
 * des fonctions au format JSON Schema ;
 * des outils intégrés côté Albert, dont le **RAG natif** via `SearchTool`.
 
-Le mécanisme `tools` / `tool_choice` est décrit dans [Function calling](function-calling.md) et l’outil intégré dans [Génération Augmentée par Récupération](rag.md).
+Le mécanisme `tools` / `tool_choice` est décrit dans [Function calling](function-calling.md) et l’outil `SearchTool` dans [Génération Augmentée par Récupération](rag.md).
 
 {% hint style="warning" %}
 ⚠️ `SearchTool` n’est pas une fonctionnalité “OpenAI standard”. Utilisez bien `type: "search"` dans `tools` et des paramètres conformes à la spec Albert.

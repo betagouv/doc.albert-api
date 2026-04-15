@@ -154,4 +154,4 @@ Les routes **`GET /v1/chunks/{document}`** et apparentées sont **dépréciées*
 
 Hors chat, `CreateSearch` accepte une **`query`**, `collection_ids`, `document_ids`, des filtres de métadonnées, `limit` / `offset`, `method` (`semantic`, `lexical`, `hybrid`) et les paramètres `rff_k` / `score_threshold`.
 
-Pour brancher cette même logique au modèle : [Outil de recherche RAG intégré](rag-search-tool.md).
+Pour brancher cette même logique au modèle : [Outil de recherche RAG intégré](rag.md).

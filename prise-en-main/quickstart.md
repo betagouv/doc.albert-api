@@ -16,20 +16,20 @@ La méthode principale pour obtenir une clé est de la **générer dans le Playg
 
 Allez sur : [Créer / gérer vos clés API (Playground)](https://albert.playground.etalab.gouv.fr/keys)
 
-![Créer une clé — formulaire vide](../assets/playground-workflow/key-create-empty.png)
+![Créer une clé — formulaire vide](../.gitbook/assets/key-create-empty.png)
 
 ### 2) Renseigner le nom et, si besoin, la date d’expiration
 
-- **Name** : obligatoire (nom lisible pour vous retrouver dans la liste).
-- **Expires at** : optionnel (date de fin de validité).
+* **Name** : obligatoire (nom lisible pour vous retrouver dans la liste).
+* **Expires at** : optionnel (date de fin de validité).
 
-![Créer une clé — nom et expiration](../assets/playground-workflow/key-create-filled.png)
+![Créer une clé — nom et expiration](../.gitbook/assets/key-create-filled.png)
 
 ### 3) Copier et stocker la clé en lieu sûr
 
 Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas la réafficher** ensuite.
 
-![Clé créée — copie unique](../assets/playground-workflow/key-created-once.png)
+![Clé créée — copie unique](../.gitbook/assets/key-created-once.png)
 
 ### 4) Utiliser la clé dans votre code ou un outil compatible OpenAI
 

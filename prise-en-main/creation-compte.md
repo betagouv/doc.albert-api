@@ -1,4 +1,4 @@
-# Création de compte & accès Albert API (workflow)
+# Création de compte & accès
 
 Cette page décrit le parcours complet pour obtenir un compte Albert API puis commencer à utiliser le service.
 
@@ -14,7 +14,7 @@ Renseignez le formulaire de demande d’accès :
 
 Capture du formulaire :
 
-![Formulaire de demande d’accès](../assets/playground-workflow/access-form.png)
+![Formulaire de demande d’accès](../.gitbook/assets/access-form.png)
 
 ## 2) Validation admin (contrôle du domaine email)
 
@@ -66,7 +66,7 @@ Connectez-vous au Playground avec l’ID et le mot de passe reçus par email.
 
 Capture de la page de connexion :
 
-![Page de connexion Playground](../assets/playground-workflow/playground-sign-in.png)
+![Page de connexion Playground](../.gitbook/assets/playground-sign-in.png)
 
 ## 6) Créer vos clés API
 
@@ -74,11 +74,10 @@ Dans le Playground, ouvrez la section **API keys** pour créer une première cl�
 
 Capture de la page “API keys” :
 
-![Création de clés API](../assets/playground-workflow/playground-api-keys.png)
+![Création de clés API](../.gitbook/assets/playground-api-keys.png)
 
 {% hint style="warning" %}
-La clé API sert ensuite dans l’en-tête HTTP :
-`Authorization: Bearer <votre_clé>`
+La clé API sert ensuite dans l’en-tête HTTP : `Authorization: Bearer <votre_clé>`
 {% endhint %}
 
 ### Changer le mot de passe (si demandé)
@@ -87,7 +86,7 @@ Après la première connexion, la plateforme invite à changer votre mot de pass
 
 Capture de la page “Account settings” :
 
-![Account settings (changer le mot de passe)](../assets/playground-workflow/playground-account-settings.png)
+![Account settings (changer le mot de passe)](../.gitbook/assets/playground-account-settings.png)
 
 ## 7) Premier test rapide
 
@@ -95,4 +94,3 @@ Pour vérifier votre intégration, vous pouvez enchaîner avec :
 
 * le guide [Démarrage rapide](quickstart.md) ;
 * et ensuite [Chat completions](../guides/chat-completions.md).
-

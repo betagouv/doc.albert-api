@@ -1,5 +1,109 @@
 # Quotas & limites
 
+Chaque compte dispose de limites de consommation. Ces limites sont configurées par l'administration de la plateforme. Elles sont de 2 types : limites par token et limites par requête.
+
+## Limites par token
+
+Dans Albert API, les limites par tokens sont exprimées en **tokens par minute (TPM) et par jour (TPD)**. Vous pouvez consulter les limites par token pour chaque modèle en cliquant [ici](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/).
+
+### Qu'est ce qu'un token ?
+
+Un token est une unité de mesure de la consommation des LLM. Un token correspond à un mot ou une partie de mot. 
+
+Exemple : 
+* "Albert" → 1 token
+* "centraliser" → 2 tokens ("centr" et "aliser")
+
+> [!NOTE]
+> La ponctuation est comptabilisée comme un token également !
+
+Le *tokenizer*, c'est-à-dire l'algorithme permettant de transformer le texte en tokens, est généralement celui du modèle utilisé. Sur Albert API, pour que toutes les requêtes soient comptabilisées dans les mêmes conditions, nous utilisons un tokenizer opensource, *[Tiktoken o200k_base](https://github.com/openai/tiktoken)*.
+
+Vous pouvez tester le tokenizer sur des textes sur ce simulateur en cliquant [ici](https://tiktokenizer.vercel.app/?model=o200k_base).
+
+### Comment sont comptabilisés les tokens ?
+
+Les tokens sont comptabilisés uniquements sur des endpoints suivants : `/v1/chat/completions`, `/v1/embeddings` et `/v1/rerank`. Ils sont comptabilisés différement selon les endpoints.
+
+* `/v1/chat/completions` 
+
+    Les tokens sont comptabilisés **uniquement sur les messages** de la requête, pas les tokens générés par le modèle.
+    
+    Voici un exemple de requête qui est comptabilisée comme 37 tokens:
+    ```json
+    {
+        "model": "openweight-large",
+        "messages": [
+            {
+                "role": "system",
+                "content": "Tu es un assistant de chat qui répond à des questions." → 12 tokens
+            },
+            {
+                "role": "user",
+                "content": "Bonjour, comment allez-vous ?" → 6 tokens
+            }
+            {
+                "role": "assistant",
+                "content": "Je vais bien, merci pour votre question." → 9 tokens
+            }
+            {
+                "role": "user",
+                "content": "Quel est votre nom ?" → 5 tokens
+            }
+            {
+                "role": "assistant",
+                "content": "Je m'appelle Albert." → 5 token
+            }
+        ]
+    }
+    ```
+
+* `/v1/embeddings`
+
+    Les tokens sont comptabilisés **uniquement sur les inputs** de la requête.
+
+    Voici un exemple de requête qui est comptabilisée comme 23 tokens:
+    ```json
+    {
+        "model": "openweight-embeddings-large",
+        "input": [
+            "Albert API est un outil de IA open source.", → 10 tokens
+            "Il est développé par la communauté de l'IA open source." → 13 tokens
+        ]
+    }
+    ```
+
+* `/v1/rerank`
+
+    Les tokens sont comptabilisés **uniquement sur le query et les documents** de la requête.
+
+    Voici un exemple de requête qui est comptabilisée comme 33 tokens:
+    ```json
+    {
+        "model": "openweight-rerank-large",
+        "query": "Albert API est un outil de IA open source.", → 10 tokens
+        "documents": [
+            "Albert API est un outil de IA open source.", → 10 tokens
+            "Il est développé par la communauté de l'IA open source." → 13 tokens
+        ]
+    }
+    ```
+
+## Limites par requête
+
+Dans Albert API, les limites par requêtes sont exprimées en **requêtes par minute (RPM) et par jour (RPD)**. Vous pouvez consulter les limites par requête pour chaque modèle en cliquant [ici](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/).
+
+## Qu'est ce qu'une requête ?
+
+Une requête est un appel à un endpoint d'Albert API. Les requêtes sont comptabilisées uniquement sur les endpoints qui appellent un modèle :
+* `/v1/chat/completions`
+* `/v1/embeddings`
+* `/v1/rerank`
+* `/v1/audio/transcriptions`
+* `/v1/ocr`
+
+# Consulter sa consommation
+
 Les paramètres de consommation sont portés par l’objet **`UserInfo`** (`GET /v1/me/info`) et structurés à l’aide de **`Limit`** pour les plafonds par routeur de modèles.
 
 ## Objet `Limit`

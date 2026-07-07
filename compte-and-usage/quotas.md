@@ -18,7 +18,7 @@ La ponctuation est comptabilisée comme un token !
 
 Le *tokenizer*, c'est-à-dire l'algorithme permettant de transformer le texte en tokens, est généralement celui du modèle utilisé. Sur Albert API, pour que toutes les requêtes soient comptabilisées dans les mêmes conditions, nous utilisons un tokenizer opensource, *[Tiktoken o200k_base](https://github.com/openai/tiktoken)*.
 
-Vous pouvez tester le tokenizer sur des textes sur ce simulateur en cliquant [ici](https://tiktokenizer.vercel.app/?model=o200k_base).
+Vous pouvez tester le tokenizer sur des textes sur [ce simulateur](https://tiktokenizer.vercel.app/?model=o200k_base).
 
 ### Comment sont comptabilisés les tokens ?
 

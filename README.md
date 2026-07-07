@@ -17,10 +17,6 @@ Cette documentation vise les **développeurs et développeuses** qui intègrent 
 2. [Démarrage rapide](prise-en-main/quickstart.md) — premier appel `POST /v1/chat/completions`.
 3. [Guides](guides/chat-completions.md) — paramètres avancés, streaming, outils et RAG.
 
-## Ressources complémentaires
-
-* [Notebooks OpenGateLLM](https://github.com/etalab-ia/opengatellm/tree/main/docs/tutorials) — pas-à-pas Colab/Jupyter (RAG, OCR, modèles, etc.) ; croiser avec la spec OpenAPI Albert pour les noms de champs à jour.
-
 ## Obtenir un accès
 
 Si vous êtes agent de la fonction publique d’État, l’accès à Albert API est ouvert via une demande en ligne : vous recevrez un mail avec vos identifiants et la documentation dans les 24 heures.

@@ -15,10 +15,6 @@ La **version du contrat OpenAPI** exposée sur `https://albert.api.etalab.gouv.f
 ⚠️ À vérifier — Journal officiel des versions (releases GitHub, fichier CHANGELOG du dépôt moteur ou page communication beta.gouv) : consolidez le lien canonique utilisé par votre organisation à partir des dépôts `betagouv` / `etalab-ia` associés au produit Albert.
 {% endhint %}
 
-## Tutoriels Jupyter
-
-Le dépôt [etalab-ia/opengatellm — `docs/tutorials/`](https://github.com/etalab-ia/opengatellm/tree/main/docs/tutorials) contient des notebooks (**RAG**, **OCR**, **chat completions**, **audio**, **modèles**) alignés sur la même stack que l’API. **Adaptez** les URLs et les noms de champs JSON à la spec OpenAPI de l’instance Albert (`/v1/...`, `collection_ids`, `query`, etc.).
-
 ## Documentation GitBook
 
 Les mises à jour de ce livre sont **versionnées dans le dépôt Git** synchronisé avec GitBook. Comparez les commits sur la branche `main` pour l’historique détaillé du contenu éditorial.

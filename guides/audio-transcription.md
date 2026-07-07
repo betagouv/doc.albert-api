@@ -1,28 +1,14 @@
 # Transcription audio
 
-L’endpoint **`POST /v1/audio/transcriptions`** transcrit (et selon les modèles, traduit) un fichier audio via un modèle de type **`automatic-speech-recognition`**.
+L’endpoint **`POST /v1/audio/transcriptions`** transcrit un fichier audio via un modèle de type **`automatic-speech-recognition`** ([en savoir plus sur les types de modèles](../modeles/model-types.md)).
 
-## Corps multipart
+## Transcrire un fichier audio
 
-Le schéma attend un formulaire **`multipart/form-data`** avec notamment :
+Le endpoint `/v1/audio/transcriptions` supporte les fichiers `mp3` et `wav` jusqu'à 20 Mb par fichier. 
 
-* **`file`** (requis) — contenu binaire du média ;
-* **`model`** (requis) — identifiant du modèle ASR ;
-* **`language`** — code ISO-639-1 optionnel (par ex. `fr`, `en`) ;
-* **`prompt`** — consigne textuelle optionnelle ;
-* **`response_format`** — `json`, `text` ou `verbose_json` ;
-* **`temperature`** — tirage entre `0` et `1`.
+Pour plus d'information sur les paramètres du endpoint, voir la page [API reference - Audio](https://guides.ia.numerique.gouv.fr/albert-api/api-reference/liste-des-endpoint/audio).
 
-Les formats explicitement mentionnés dans la spec sont **`mp3`** et **`wav`**.
-
-{% hint style="warning" %}
-⚠️ À vérifier — Autres formats MIME réellement acceptés en production (m4a, flac, etc.) : testez sur votre environnement.
-{% endhint %}
-
-## Choisir `response_format`
-
-Par défaut, vous récupérez généralement une forme “texte” (selon SDK). Si vous avez besoin d’une sortie structurée, passez par `response_format`.
-
+**Exemple de requête :**
 ```bash
 curl -sS "https://albert.api.etalab.gouv.fr/v1/audio/transcriptions" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
@@ -60,7 +46,6 @@ with open("enregistrement.mp3", "rb") as f:
         model="REMPLACER_PAR_MODELE_ASR",
         file=f,
         language="fr",
-        # response_format="json",  # optionnel
     )
 print(tr.text)
 ```
@@ -87,5 +72,15 @@ console.log(tr.text);
 {% endtab %}
 {% endtabs %}
 
-Pour le détail des champs de réponse (`verbose_json`, etc.), voir la page de l’endpoint **Audio** :
-[page de l’endpoint Audio](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/audio).
+## Choisir `response_format`
+
+Le paramètre `response_format` permet de choisir le format de la réponse. Ce format dépend de l'usage que vous souhaitez en faire.
+
+| `response_format` | Description |
+|---|---|
+| `json` (defaut) | Réponse au format JSON, contient le texte transcrit. |
+| `text` | Réponse au format TXT, contient uniquement le texte transcrit. |
+| `verbose_json` | Réponse au format JSON en indiquant le début et la fin de chaque phrase. |
+| `srt` | Réponse au format SRT. |
+| `vtt` | Réponse au format VTT. |
+| `diarized_json` | Réponse au format JSON en indiquant le début et la fin de chaque phrase et les changements de speakers. Ce format utilisé pour les transcriptions des réunions.|

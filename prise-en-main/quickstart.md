@@ -148,6 +148,6 @@ console.log(r.choices[0].message.content);
 
 ## Compatibilité OpenAI
 
-Albert API est **compatible OpenAI** sur les endpoints courants : en conservant votre code basé sur le SDK ou sur des appels HTTP OpenAI, vous changez en principe uniquement la **base URL** (ici `https://albert.api.etalab.gouv.fr/v1`) et la **clé** (jeton Albert). Les extensions spécifiques — par exemple l’outil natif **SearchTool** pour le RAG — sont documentées à part ; elles ne sont pas équivalentes aux outils hébergés par OpenAI.
+Albert API est **compatible OpenAI** sur les endpoints courants : en conservant votre code basé sur le SDK ou sur des appels HTTP OpenAI, vous changez en principe uniquement la **base URL** (ici `https://albert.api.etalab.gouv.fr/v1`) et la **clé** (jeton Albert).
 
 Pour aller plus loin : [Chat completions](../guides/chat-completions.md), [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).

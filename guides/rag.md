@@ -1,3 +1,7 @@
+---
+icon: file-lines
+---
+
 # RAG - Génération Augmentée par Récupération
 
 ## Qu'est-ce que le RAG ?
@@ -84,7 +88,6 @@ flowchart TB
     style DOC fill:#E8F5E9,stroke:#43A047,stroke-width:1px,color:#1B5E20,rx:18,ry:18
     style CHK fill:#FFF3E0,stroke:#FB8C00,stroke-width:1px,color:#E65100,rx:14,ry:14
 ```
-
 
 ### Les collections publiques
 

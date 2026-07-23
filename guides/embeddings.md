@@ -75,7 +75,3 @@ for (const item of r.data) {
 ```
 {% endtab %}
 {% endtabs %}
-
-## Bon à savoir
-
-Si votre objectif est de faire de la recherche RAG “bout en bout”, vous pouvez aussi éviter de gérer un index vectoriel vous-même : utilisez `POST /v1/search` et/ou `SearchTool`, voir [Génération Augmentée par Récupération (RAG)](rag.md).

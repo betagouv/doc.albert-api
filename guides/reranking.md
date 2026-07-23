@@ -1,94 +1,250 @@
+---
+icon: ranking-star
+---
+
 # Reranking
 
-L’endpoint **`POST /v1/rerank`** réordonne une liste de documents textuels selon leur pertinence par rapport à une **requête**, via un modèle de type **`text-classification`**.
+Albert API propose un endpoint POST `/v1/rerank` qui permet d'appeler des modèles de reranking. Ces modèles sont particulièrement intéressants pour améliorer votre pipeline de RAG (Retrieval Augmented Generation).
 
-## Requête (`CreateRerank`)
+{% hint style="info" %}
+Albert API propose un endpoint POST `/v1/rerank` sur les convention de l'API v2 de Cohere (voir [Cohere API - Reranking](https://docs.cohere.com/reference/rerank)). Cette convention permet de s'intégrer nativement dans la plupart des frameworks de IA générative comme par exemple [OpenWebUI](https://openwebui.com/).
+{% endhint %}
 
-* **`query`** (requis) — la question ou requête utilisateur ;
-* **`documents`** (requis) — tableau de chaînes à classer ;
-* **`model`** (requis) — identifiant d’un modèle `text-classification` retourné par `GET /v1/models` ;
-* **`top_n`** — nombre max de résultats à retourner.
+**Dans ce tutoriel nous allons voir :**
 
-## Intégration typique
+* **pourquoi utiliser un modèle de reranking,**
+* **qu'est-ce qu'un modèle reranking**,
+* **quand l'utiliser**
+* **comment l'utiliser.**
 
-1. **Recherche large** — récupérez des candidats avec `POST /v1/search` (ou un moteur de recherche externe) ;
-2. **Rerank** — appelez `POST /v1/rerank` pour améliorer l’ordre ;
-3. **Chat / UI** — utilisez les meilleurs résultats pour générer une réponse ou afficher une liste ordonnée.
+## Prérequis
 
-## Exemples (curl / Python / JavaScript)
+* Connaissance des notions de RAG, de vector-store, d'embeddings et de chunks
+* Connaissance de l'upload et de la recherche de documents avec Albert API.
+
+Pour en savoir plus sur ces notions, voir le guide Construire un RAG avec Albert API _(à venir)_.
+
+## Pourquoi utiliser le reranking ?
+
+Lorsque vous construisez un système de RAG, vous devez :
+
+1. Rechercher des documents pertinents dans un vector store
+2. Sélectionner les meilleurs passages
+3. Les envoyer au modèle de génération
+
+Le problème : la recherche vectorielle retourne souvent **des résultats approximatifs**. 
+
+En effet, que ce soit avec une recherche sémantique, lexicale ou hybride, **la recherche dans un vector store est une recherche à larges mailles**. Elle permet ainsi de retrouver les _chunks_ qui gravitent autour de la requête recherchée mais cela peut prendre dans le filet des chunks relativement éloignés contextuellement.
+
+En conséquence, un moteur vectoriel est très rapide, mais il peut retourner :
+
+* des résultats **un peu hors sujet**
+* des passages **moins pertinents que d'autres**
+* des résultats dans **un ordre sous-optimal**
+
+Ainsi si certains résultats de recherche sont pertinents, d'autres beaucoup moins. C'est précisément le rôle de l'endpoint **`/v1/rerank`** : **réordonner les résultats de recherche pour ne garder que les passages les plus pertinents pour une requête.**
+
+***
+
+## Qu'est ce que le reranking ?
+
+Le **reranking** utilise un petit modèle puissant pour :
+
+* comparer **la requête utilisateur**
+* avec **chaque document trouvé**
+* et produire **un score de pertinence**
+
+Albert API propose un modèle de reranking _**openweight-rerank**_. Pour plus d'informations sur ce modèle, voir les [modèles disponibles](https://albert.sites.beta.gouv.fr/solutions/models/).
+
+Pour connaître quels sont les modèles de reranking disponibles, faites une requête au endpoint `/v1/models` . Parmi ceux retourné, les modèles de reranking ont le type `text-classification`.
+
+{% hint style="info" %}
+Un modèle de reranking est généralement un modèle de classification de quelques millions de paramètres spécialement entraîné sur des paires questions-documents. Lors de son entrainement le modèle a appris à inférer sur la base de millions d'exemples des patterns permettant d'attribuer un score à la pertinence d'un document vis-à-vis d'une question.
+{% endhint %}
+
+## Quand utiliser le reranking ?
+
+Le reranking est utile lorsque :
+
+* vous avez beaucoup de documents
+* le contexte du LLM est limité (ex : openweight-large)
+* les capacités du LLM à analyser un grand contexte sont limitées (ex : openweight-small)
+
+***
+
+## Comment utiliser le reranking ?
+
+### Fonctionnement général
+
+L'endpoint `/v1/rerank` prend :
+
+* une **query**
+* une **liste de documents**
+
+et retourne les documents **triés par pertinence.** Chaque document reçoit un **score de pertinence**.
+
+### Pipeline de RAG avec le reranking
+
+Si vous souhaitez un RAG avec 5 chunks pour augmenter le contexte de la requête utilisateur, alors dans un premier temps récupérez 40 chunks proches avec `/v1/search`. Puis vous affinez avec `/v1/rerank` pour obtenir les 5 chunks les plus pertinents.
+
+<pre class="language-mermaid"><code class="lang-mermaid"><strong>graph TD
+</strong>  user_request(Requête utilisateur)
+  response(Réponse)
+  
+  
+  user_request 
+  --> /v1/search 
+  --"40 chunks" --> /v1/rerank 
+  -- "5 chunks" --> /v1/chat/completions 
+  --> response
+  
+  
+</code></pre>
+
+### Étape 1. Recherche vectorielle
+
+On commence par récupérer les documents les plus proches de la requête utilisateur.
 
 {% tabs %}
-{% tab title="curl" %}
-```bash
-curl -sS "https://albert.api.etalab.gouv.fr/v1/rerank" \
-  -H "Authorization: Bearer $ALBERT_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "REMPLACER_PAR_MODELE_RERANK",
-    "query": "Quelle est la capitale de la France ?",
-    "documents": [
-      "Paris est la capitale.",
-      "Le croissant est une viennoiserie.",
-      "Lyon est une ville française."
-    ],
-    "top_n": 2
-  }'
-```
-{% endtab %}
-
 {% tab title="Python" %}
 ```python
 import os
 import requests
 
-base_url = "https://albert.api.etalab.gouv.fr/v1"
-api_key = os.environ["ALBERT_API_KEY"]
-headers = {"Authorization": f"Bearer {api_key}"}
-
-resp = requests.post(
-    url=f"{base_url}/rerank",
-    headers=headers,
+response = requests.post(
+    url="https://api.albert.etalab.gouv.fr/v1/rerank",
+    headers={"Authorization": f"Bearer {os.environ.get('ALBERT_API_KEY')}"},
     json={
-        "model": "REMPLACER_PAR_MODELE_RERANK",
-        "query": "Quelle est la capitale de la France ?",
-        "documents": [
-            "Paris est la capitale.",
-            "Le croissant est une viennoiserie.",
-            "Lyon est une ville française.",
-        ],
-        "top_n": 2,
+        "query": "Comment déployer une application Docker ?",
+        "method": "semantic",
+        "limit": 40,
     },
 )
-resp.raise_for_status()
-print(resp.json())
-```
-{% endtab %}
 
-{% tab title="JavaScript" %}
-```javascript
-const resp = await fetch("https://albert.api.etalab.gouv.fr/v1/rerank", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${process.env.ALBERT_API_KEY}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: "REMPLACER_PAR_MODELE_RERANK",
-    query: "Quelle est la capitale de la France ?",
-    documents: [
-      "Paris est la capitale.",
-      "Le croissant est une viennoiserie.",
-      "Lyon est une ville française.",
-    ],
-    top_n: 2,
-  }),
-});
-
-if (!resp.ok) throw new Error(await resp.text());
-console.log(await resp.json());
+data = response.json()["data"]
+chunks = [chunk.content for chunk in data.chunk]
 ```
 {% endtab %}
 {% endtabs %}
 
-Pour la structure exacte de la réponse (scores, indices, etc.), voir la page de l’endpoint **Rerank** :
-[page de l’endpoint Rerank](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/rerank).
+À ce stade, les documents sont **proches sémantiquement**, mais pas forcément les plus pertinents pour répondre précisément à la question.
+
+C’est pourquoi on ajoute une étape de **reranking**.
+
+{% hint style="tip" %}
+Le reranking est utile quelque soit la méthode de recherche utilisée (sémantique, lexicale, hybride). Attention toutefois, il peut être inutile, voir contre-productif. Voir les [bonnes pratiques](#bonnes-pratiques) pour plus d'informations.
+{% endhint %}
+
+### Étape 2. Reranking
+
+Le reranker réévalue les documents retournés par la recherche vectorielle afin de déterminer **les plus pertinents pour la requête**.
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+import os
+import requests
+
+user_query = "Comment déployer une application Docker ?"
+
+response = requests.post(
+    url="https://api.albert.etalab.gouv.fr/v1/rerank",
+    headers={"Authorization": f"Bearer {os.environ.get('ALBERT_API_KEY')}"},
+    json={
+        "model": "openweight-rerank",
+        "query": user_query,
+        "documents": chunks,
+        "top_n": 5,
+    },
+)
+data = response.json()
+```
+{% endtab %}
+{% endtabs %}
+
+**Réponse**
+
+```json
+{
+  "results": [
+    {
+      "index": 2, // Position du document dans la liste d'entrée
+      "relevance_score": 0.98 // Score de pertinence calculé par le modèle
+    },
+    ...
+  ]
+}
+``` 
+
+### Étape 3. Reconstruction des documents triés
+
+On récupère les documents dans le bon ordre à partir des indices retournés.
+
+{% tabs %}
+{% tab title="Python" %}
+```
+ranked_chunks = [chunks[result["index"]] for result in data["results"]]
+```
+{% endtab %}
+{% endtabs %}
+
+### Étape 4. Génération avec le contexte
+
+On injecte les documents les plus pertinents dans le prompt du LLM comme _openweight-small_ par exemple.
+
+{% tabs %}
+{% tab title="Python" %}
+```python
+rag_template = """Réponds à la question en te basant sur les documents suivants. 
+Si la réponse à la question n'est pas  dans les documents, indique que tu ne 
+t'es pas appuyé sur ces documents pour générer la réponse, sinon cite les 
+sources de ta réponse.
+
+[QUESTION]
+{user_query}
+
+[DOCS]
+{chunks}
+"""
+
+query = rag_template % {"user_query": user_query, "chunks": "\n\n".join(chunks)}
+
+response = requests.post(
+    url="https://api.albert.etalab.gouv.fr/v1/chat/completions",
+    headers={"Authorization": f"Bearer {os.environ.get('ALBERT_API_KEY')}"},
+    json={
+        "model": "openweight-small",
+        "messages": [{"role": "user", "content": query}],
+    },
+)
+data = response.json()
+```
+{% endtab %}
+{% endtabs %}
+
+Le modèle utilise alors **le contexte fourni pour générer une réponse plus fiable et précise**.
+
+***
+
+## Bonnes pratiques
+
+### 1. Reranker plus de documents que nécessaire
+
+Pipeline recommandée :
+* Search : limit = 20 à 50
+* Rerank : top_n = 3 à 10
+
+Cela permet au reranker de choisir les documents les plus pertinents parmi un ensemble suffisamment large.
+
+### 2. Utiliser des chunks courts
+
+La qualité du reranking dépend fortement de la taille des documents. Nous recommandons 100 à 500 tokens par chunk.
+
+Les documents trop longs diluent l’information importante et réduisent la précision du reranker.
+
+### 3. Le reranking peut être inutile ou contre-productif
+
+Le reranking est un outil puissant, mais il ne faut pas l'utiliser à chaque fois. 
+Vous devez déterminer si le reranking est nécessaire pour votre cas d'usage en testant des requêtes sur vos documents. Par exemple, la recherche hybride peut obtenir des scores de pertinence dans certains cas plus précis que le reranking. Dans ce cas, ce dernier va éliminer des documents pertinents.
+
+Comme pour toute technique, il faut tester et mesurer les performances à l'aide d'un processus de d'évaluation.

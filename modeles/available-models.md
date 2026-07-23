@@ -1,5 +1,37 @@
 # Modèles disponibles
 
+## Caractéristiques des modèles
+
+Albert API propose plusieurs modèles avec des capacités différentes. Pour connaitre les caractéristiques de chaque modèle, rendez-vous sur notre guide [Modèles (liste)](../guides/models.md).
+
+## Recommandations d'usage des modèles
+
+{ % hint style="warning" %}
+Les recommandations d'usage proviennent de l'expérience des utilisateurs et ne sont pas garanties. Nous vous recommandons de tester les modèles différents modèles et leurs paramètres pour trouver ceux qui s'adapteront le mieux à vos besoins.
+
+Vos retours nous sont précieux pour améliorer les modèles et les recommandations d'usage. N'hésitez pas nous les partager sur notre canal Tchap ou par mail (voir la page [Contact](https://ia.numerique.gouv.fr/outils-ia/albert-api/albert-api-contact/)).
+{ % endhint %}
+
+* `openai/gpt-oss-120b`
+
+| Propriété | Valeur | Remarques |
+| --- | --- | --- |
+| Type | `text-generation` |
+| Aliases | `openweight-large` |
+| Fenêtre de contexte | 1024 |
+| Température recommandée (`temperature`) | 0 |
+| Maximum de tokens (`max_tokens`)| > 1024 | Même pour des résponses courtes, si le paramètre `max_tokens` est trop petit, les tokens de raisonnement consomme le maximum de tokens défini. |
+
+| Capacités | | Remarques|
+| --- | --- | --- | 
+| Chat | Oui | Modèle pour des analyses complexes. | 
+| Embeddings | Non |
+| Analyse d'image | Non |
+| Audio transcription | Non |
+| Rerank | Non |
+|  | Non |
+| OCR | Non |
+
 ## Lister les modèles — `GET /v1/models`
 
 Retourne la liste des modèles exposés sur l’instance Albert à laquelle vous êtes connectés. Chaque entrée suit le schéma **`Model`** :

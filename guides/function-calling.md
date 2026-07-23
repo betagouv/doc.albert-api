@@ -27,10 +27,6 @@ Le détail des schémas suit la convention **Chat Completions** OpenAI. Consulte
 4. **Message `tool`** — vous ajoutez un message avec `role: "tool"`, le `tool_call_id` correspondant et le **résultat** (souvent une chaîne JSON).
 5. **Nouvelle requête** — vous renvoyez toute l’historique mis à jour pour obtenir la réponse finale de l’assistant.
 
-## Outils intégrés Albert
-
-Outre les fonctions « génériques », Albert expose l’outil natif de **recherche documentaire** (`SearchTool`, `type: "search"`). Il n’est **pas** équivalent à un connecteur OpenAI hébergé : pipeline, paramètres et sémantique sont ceux d’Albert. Voir [Outil de recherche RAG intégré](rag.md).
-
 ## Erreurs et robustesse
 
 * Validez et **sandboxez** les arguments produits par le modèle avant toute action sensible.

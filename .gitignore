@@ -16,4 +16,4 @@ doc_test_discrepancies*.json
 # Local workspace / notes (do not commit)
 Documentation and Conception.md
 doc.albert-api.code-workspace
-
+.DS_Store

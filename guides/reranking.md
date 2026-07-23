@@ -22,7 +22,7 @@ Albert API propose un endpoint POST `/v1/rerank` sur les convention de l'API v2 
 * Connaissance des notions de RAG, de vector-store, d'embeddings et de chunks
 * Connaissance de l'upload et de la recherche de documents avec Albert API.
 
-Pour en savoir plus sur ces notions, voir le guide Construire un RAG avec Albert API _(à venir)_.
+Pour en savoir plus sur ces notions, voir le guide [RAG - Génération Augmentée par Récupération](./rag.md).
 
 ## Pourquoi utiliser le reranking ?
 

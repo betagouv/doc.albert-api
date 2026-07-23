@@ -29,12 +29,11 @@
 * [Modèles (liste)](guides/models.md)
 * [Streaming](guides/streaming.md)
 * [Function calling & outils](guides/function-calling.md)
-* [RAG - Génération Augmentée par Récupération](guides/rag.md)
 * [Embeddings](guides/embeddings.md)
 * [Transcription audio](guides/audio-transcription.md)
-* [OCR](guides/ocr.md)
+* [OCR - Reconnaissance Optique de Caractères](guides/ocr.md "OCR")
+* [RAG - Génération Augmentée par Récupération](guides/rag.md "RAG")
 * [Reranking](guides/reranking.md)
-* [Collections & documents](guides/collections-documents.md)
 * [IDE (code models)](guides/ide.md)
 
 ## Compte & usage

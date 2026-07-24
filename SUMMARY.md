@@ -23,6 +23,9 @@
           spec: albert-api
     ```
 
+* [Modèles disponibles](modeles/available-models.md)
+* [Types de modèles](modeles/model-types.md)
+
 ## Guides
 
 * [Chat completions](guides/chat-completions.md)
@@ -41,11 +44,6 @@
 * [Clés API](compte-and-usage/api-keys.md)
 * [Quotas & limites](compte-and-usage/quotas.md)
 * [Usage & facturation](compte-and-usage/usage.md)
-
-## Modèles
-
-* [Modèles disponibles](modeles/available-models.md)
-* [Types de modèles](modeles/model-types.md)
 
 ## Ressources
 

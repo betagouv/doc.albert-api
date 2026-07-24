@@ -2,6 +2,10 @@
 
 Ce guide montre comment interroger **`GET /v1/models`** avec le SDK OpenAI (version “compatible OpenAI”) pour récupérer les modèles disponibles, puis filtrer par type (chat, embeddings, OCR, audio, etc.).
 
+{% hint style="info" %}
+Pour en savoir plus sur les modèles disponibles et leurs caractéristiques, voir la [page Modèles disponibles](../modeles/available-models.md).
+{% endhint %}
+
 ## Pré-requis
 
 1. Définir votre clé API :

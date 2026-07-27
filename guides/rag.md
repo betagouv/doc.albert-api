@@ -109,7 +109,7 @@ Les collections publiques sont créées et mises à jour régulièrement par l'�
 
 {% endhint %}
 
-## Étape 1. Recherche des extraits de textes pertinents par rapport à une question
+## Step 1 Recherche des extraits de textes pertinents par rapport à une question
 
 ### Créer une collection privée
 
@@ -381,7 +381,7 @@ L'endpoint POST `/v1/search` propose des filtres de recherche configurables avec
 | `document_ids` | Filtre les résultats par document |
 | `metadata_filters` | Filtre les résultats par métadonnées |
 
-## Étape 2. Construire un prompt avec le contexte trouvé
+## Step 2 Construire un prompt avec le contexte trouvé
 
 Une fois les chunks trouvés avec l'endpoint POST `/v1/search`, vous pouvez construire un prompt avec le contexte trouvé.
 
@@ -401,7 +401,7 @@ Réponds uniquement en t'appuyant sur les extraits fournis.
 ... 
 ```
 
-## Étape 3. Envoyer le prompt au LLM (`/v1/chat/completions`)
+## Step 3 Envoyer le prompt au LLM (`/v1/chat/completions`)
 
 À partir du prompt construit à l'étape précédente, vous pouvez envoyer le prompt au LLM en utilisant l'endpoint POST `/v1/chat/completions`.
 

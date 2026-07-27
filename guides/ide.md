@@ -87,3 +87,7 @@ Si vous voulez valider que le `model` que vous sélectionnez correspond au bon t
 Certains utilisateurs ont cependant réussi via leur propre **proxy** qui traduit/adapte les requêtes et réponses d’Albert API vers l’assistant de leur choix. Nous ne pouvons pas maintenir ni lister l’ensemble des proxies existants : pour des conseils et des liens vers les proxies maintenus par la communauté, vous pouvez demander sur [Tchap](https://tchap.gouv.fr/#/room/#albert:agent.dinum.tchap.gouv.fr).
 {% endhint %}
 
+
+## Ressources externes
+
+- [Extension VS Code pour Albert API par Simon Roux](https://forge.apps.education.fr/rouxsimon/albert-vscode)

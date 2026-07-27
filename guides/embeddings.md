@@ -1,3 +1,6 @@
+---
+icon: "draw-polygon"
+---
 # Embeddings
 
 Les **embeddings** sont des vecteurs numériques qui représentent le sens d'un contenu. Ils servent notamment à faire de la recherche sémantique, du clustering, de la déduplication, du RAG ou de la classification. Pour en savoir plus sur le RAG, voir la documentation dédiée [ici](rag.md).

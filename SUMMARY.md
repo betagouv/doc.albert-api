@@ -49,4 +49,5 @@
 
 * [Codes d'erreur](ressources/errors.md)
 * [Changelog](ressources/changelog.md)
+* [FAQ](ressources/faq.md)
 * [Support](ressources/support.md)

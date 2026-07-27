@@ -26,7 +26,7 @@ Le champ **`token`** n’est pas récupérable après coup par l’API document�
 ⚠️ Comportement observé en test (runner) : `POST /v1/me/keys` peut renvoyer **uniquement** `id` (sans `token`). Dans ce cas, la méthode recommandée pour récupérer une nouvelle clé utilisable est de la générer via le **Playground** (qui affiche la clé une seule fois), puis de la stocker en lieu sûr.
 {% endhint %}
 
-### Exemple
+**Exemple de requête :**
 
 {% tabs %}
 {% tab title="curl" %}

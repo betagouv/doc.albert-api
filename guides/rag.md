@@ -184,9 +184,7 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/collections?offset=0&limit=10" \
   -H "Content-Type: application/json" \
 ```
 {% endtab %}
-{% endtabs %}
 
-{% tabs %}
 {% tab title="Python" %}
 ```python
 import requests
@@ -201,10 +199,7 @@ collections.raise_for_status()
 collections = collections.json()
 ```
 {% endtab %}
-{% endtabs %}
 
-
-{% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
 const baseUrl = "https://albert.api.etalab.gouv.fr/v1";
@@ -256,9 +251,7 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/documents" \
   -F "collection_id=1234567890"
 ```
 {% endtab %}
-{% endtabs %}
 
-{% tabs %}
 {% tab title="Python" %}
 ```python
 import requests
@@ -274,9 +267,7 @@ document.raise_for_status()
 document_id = document.json()["id"]
 ```
 {% endtab %}
-{% endtabs %}
 
-{% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
 const baseUrl = "https://albert.api.etalab.gouv.fr/v1";
@@ -317,9 +308,7 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/search" \
   -d '{"query": "Quel est le sujet du document ?"}'
 ```
 {% endtab %}
-{% endtabs %}
 
-{% tabs %}
 {% tab title="Python" %}
 ```python
 import requests
@@ -334,9 +323,7 @@ search.raise_for_status()
 search_results = search.json()
 ```
 {% endtab %}
-{% endtabs %}
 
-{% tabs %}
 {% tab title="JavaScript" %}
 ```javascript
 const baseUrl = "https://albert.api.etalab.gouv.fr/v1";

@@ -32,30 +32,34 @@ Cette méthode s'appuie sur un LLM multimodal capable d'analyser des images (voi
 
 Cette méthode est adaptée si vous voulez, en une seule requête, extraire le texte d'un document **et**, si besoin, en tirer une information (résumé, réponse à une question, etc.).
 
-**Exemple : extraire le texte d'une image distante.**
+{% hint style="warning" %}
+Ce endpoint ne prend en entrée que des images. Si vous avez un document PDF, convertissez-le en images (une image par page) avant de l'envoyer à l'endpoint.
+{% endhint %}
+
+**Exemple de requête :**
 
 {% tabs %}
 {% tab title="curl" %}
 ```bash
-IMG_BASE64=$(curl -sS "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg" | base64 -w 0)
+IMAGE_BASE64=$(curl -sS "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/ReceiptSwiss.jpg/1280px-ReceiptSwiss.jpg" | base64 -w 0)
 
 curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
   -H "Content-Type: application/json" \
-  -d "{
-    \"model\": \"openweight-ocr\",
-    \"messages\": [
+  -d '{
+    "model": "openweight-ocr",
+    "messages": [
       {
-        \"role\": \"user\",
-        \"content\": [
-          {\"type\": \"image_url\", \"image_url\": {\"url\": \"data:image/jpeg;base64,${IMG_BASE64}\"}}
+        "role": "user",
+        "content": [
+          {"type": "image_url", "image_url": {"url": "data:image/jpeg;base64,${IMAGE_BASE64}"}}
         ]
       }
     ],
-    \"max_tokens\": 4096,
-    \"temperature\": 0.2,
-    \"top_p\": 0.9
-  }"
+    "max_tokens": 4096,
+    "temperature": 0.2,
+    "top_p": 0.9
+  }'
 ```
 {% endtab %}
 
@@ -179,7 +183,7 @@ Le seul modèle disponible sur cet endpoint est **`mistral-ocr-2512`**, de type 
 ⚠️ Les indices de page du paramètre `pages` sont **à partir de 0** (`0` = première page).
 {% endhint %}
 
-### Exemple : OCR d'un PDF référencé par URL
+**Exemple de requête :** OCR d'un PDF référencé par URL
 
 {% tabs %}
 {% tab title="curl" %}
@@ -262,14 +266,14 @@ PDF_BASE64=$(curl -sS "https://www.princexml.com/samples/textbook/somatosensory.
 curl -sS "https://albert.api.etalab.gouv.fr/v1/ocr" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
   -H "Content-Type: application/json" \
-  -d "{
-    \"model\": \"mistral-ocr-2512\",
-    \"document\": {
-      \"type\": \"document_url\",
-      \"document_url\": \"data:application/pdf;base64,${PDF_BASE64}\"
+  -d '{
+    "model": "mistral-ocr-2512",
+    "document": {
+      "type": "document_url",
+      "document_url": "data:application/pdf;base64,${PDF_BASE64}"
     },
-    \"include_image_base64\": true
-  }"
+    "include_image_base64": true
+  }'
 ```
 {% endtab %}
 
@@ -330,7 +334,7 @@ console.log(data.pages[0].markdown.slice(0, 200));
 {% endtab %}
 {% endtabs %}
 
-### Exemple : OCR d'une image référencée par URL
+**Exemple de requête :** OCR d'une image référencée par URL
 
 {% tabs %}
 {% tab title="curl" %}

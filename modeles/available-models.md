@@ -1,16 +1,112 @@
+
+
 # Modèles disponibles
 
-## Caractéristiques des modèles
+Albert API offre l’accès à une large gamme de modèle fondation open source d’IA générative. Nous mettons à jour régulièrement les modèles disponibles pour vous permettre d’utiliser les modèles qui font l’état de l’art.
+ 
+| Modèle | Type | Aliases |
+| --- | --- | --- |
+| BAAI/bge-m3 | `text-embeddings-inference` | **openweight-embeddings** |
+| BAAI/bge-reranker-v2-m3 | `text-classification` | **openweight-rerank** |
+| deepseek-v4-flash | `text-generation` | deepseek-ai/DeepSeek-V4-Flash |
+| lightonocr-2-1b | `image-text-to-text` | **openweight-ocr**, lighton/LightOn-OCR-2-1B |
+| mistralai/Ministral-3-8B-Instruct-2512 | `image-text-to-text` | **openweight-small** |
+| mistralai/Mistral-Small-3.2-24B-Instruct-2506 | `image-text-to-text` | **openweight-medium** |
+| mistral-medium-2508 | `text-generation` | |
+| mistral-ocr-2512 | `image-to-text` | |
+| [openai/gpt-oss-120b](#openai-gpt-oss-120b) | `text-generation` | **openweight-large** |
+| openai/whisper-large-v3 | `automatic-speech-recognition` | **openweight-audio** |
+| qwen3-vl-embedding-8b | `text-embeddings-inference` | Qwen/Qwen3-VL-Embedding-8B |
+| Qwen/Qwen3-Coder-30B-A3B-Instruct | `text-generation` | **openweight-code** |
 
-Albert API propose plusieurs modèles avec des capacités différentes. Pour connaitre les caractéristiques de chaque modèle, rendez-vous sur notre guide [Modèles (liste)](../guides/models.md).
+{% hint style="info" %}
+Pour en savoir plus sur les types de modèles, voir [Types de modèles](model-types.md).
+{% endhint %}
 
-## Recommandations d'usage des modèles
-
-{ % hint style="warning" %}
-Les recommandations d'usage proviennent de l'expérience des utilisateurs et ne sont pas garanties. Nous vous recommandons de tester les modèles différents modèles et leurs paramètres pour trouver ceux qui s'adapteront le mieux à vos besoins.
+Les recommandations d'usage ci-dessousproviennent de l'expérience des utilisateurs et ne sont pas garanties. Nous vous recommandons de tester les modèles différents modèles et leurs paramètres pour trouver ceux qui s'adapteront le mieux à vos besoins.
 
 Vos retours nous sont précieux pour améliorer les modèles et les recommandations d'usage. N'hésitez pas nous les partager sur notre canal Tchap ou par mail (voir la page [Contact](https://ia.numerique.gouv.fr/outils-ia/albert-api/albert-api-contact/)).
-{ % endhint %}
+
+## BAAI/bge-m3
+
+*🏗️ En construction...*
+
+| | | |
+| --- | --- | --- |
+| **Model card** | https://huggingface.co/BAAI/bge-m3 |
+| **Nombre de paramètres** | 568M |
+| **Type** | `text-embeddings-inference` |
+| **Aliases** | `openweight-embeddings` |
+| **Format d'entrées** | `text` |
+| **Fenêtre de contexte** | 8192 |
+| **Maximum de texte par batch** | 64 |
+
+
+## BAAI/bge-reranker-v2-m3
+
+*🏗️ En construction...*
+
+| | | |
+| --- | --- | --- |
+| **Model card** | https://huggingface.co/BAAI/bge-reranker-v2-m3 |
+| **Nombre de paramètres** | 568M |
+| **Type** | `text-classification` |
+| **Aliases** | openweight-rerank |
+| **Format d'entrées** | `text` |
+| **Fenêtre de contexte** | 8192 |
+| **Maximum de texte par batch** | 64 |
+
+## deepseek-v4-flash
+
+*🏗️ En construction...*
+
+| | | |
+| --- | --- | --- |
+| **Model card** | https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash |
+| **Nombre de paramètres** | 284B |
+| **Nombre de paramètres actifs** | 13B |
+| **Type** | `image-text-to-text` |
+| **Aliases** | deepseek-ai/DeepSeek-V4-Flash |
+| **Format d'entrées** | `text` |
+| **Fenêtre de contexte** | 393216 |
+| **Fonctionnalités** | `tool calling`, `reasoning` |
+
+## lightonocr-2-1b
+
+*🏗️ En construction...*
+
+| | | |
+| --- | --- | --- |
+| **Model card** | https://huggingface.co/lightonai/LightOnOCR-2-1B |
+| **Nombre de paramètres** | 284B |
+| **Nombre de paramètres actifs** | 13B |
+| **Type** | `image-text-to-text` |
+| **Aliases** | lighton/LightOn-OCR-2-1B |
+| **Format d'entrées** | `text` |
+| **Fenêtre de contexte** | 393216 |
+| **Fonctionnalités** | `tool calling`, `reasoning` |
+
+Nous observons certaines latences du modèle lorsque certains partern de pixel sont présents dans l'image (un QR code par exemple). Si vous observez des latences élevées, vous pouvez essayer de supprimer ces patterns de pixel de l'image avant de l'envoyer au modèle.
+
+## mistralai/Ministral-3-8B-Instruct-2512
+
+*🏗️ En construction...*
+
+## mistralai/Mistral-Small-3.2-24B-Instruct-2506
+
+*🏗️ En construction...*
+
+## mistral-medium-2508
+
+*🏗️ En construction...*
+
+## mistral-ocr-2512
+
+*🏗️ En construction...*
+
+## openai/gpt-oss-120b
+
+*🏗️ En construction...*
 
 * `openai/gpt-oss-120b`
 
@@ -32,65 +128,14 @@ Vos retours nous sont précieux pour améliorer les modèles et les recommandati
 |  | Non |
 | OCR | Non |
 
-## Lister les modèles — `GET /v1/models`
+## openai/whisper-large-v3
 
-Retourne la liste des modèles exposés sur l’instance Albert à laquelle vous êtes connectés. Chaque entrée suit le schéma **`Model`** :
+*🏗️ En construction...*
 
-* **`id`** — identifiant à passer aux endpoints (`model` des requêtes chat, embeddings, ASR, rerank, OCR…) ;
-* **`type`** — famille fonctionnelle (`text-generation`, `text-embeddings-inference`, etc.) ;
-* **`aliases`** — autres noms acceptés pour référencer le même modèle ;
-* **`max_context_length`** — taille maximale de contexte en **tokens** ;
-* **`costs`** — tarification indicielle (`prompt_tokens`, `completion_tokens` **par million de tokens** pour la composante correspondante).
+## qwen3-vl-embedding-8b
 
-## Détail — `GET /v1/models/{model}`
+*🏗️ En construction...*
 
-Récupère la fiche d’un modèle précis à partir de son **identifiant ou d’un alias** accepté par la plateforme.
+## Qwen/Qwen3-Coder-30B-A3B-Instruct
 
-## Choisir un modèle
-
-1. Filtrez mentalement par **`type`** selon l’endpoint (voir [Types de modèles](model-types.md)).
-2. Vérifiez **`max_context_length`** pour dimensionner prompts + sortie.
-3. Comparez **`costs`** si votre compte est soumis à budget (voir aussi [Quotas & limites](../compte-and-usage/quotas.md)).
-
-{% tabs %}
-{% tab title="curl" %}
-```bash
-curl -sS "https://albert.api.etalab.gouv.fr/v1/models" \
-  -H "Authorization: Bearer $ALBERT_API_KEY"
-```
-{% endtab %}
-
-{% tab title="Python" %}
-```python
-import os
-from openai import OpenAI
-
-client = OpenAI(
-    base_url="https://albert.api.etalab.gouv.fr/v1",
-    api_key=os.environ["ALBERT_API_KEY"],
-)
-
-models = client.models.list().data
-for model in models:
-    print(model.id, model.type)
-```
-{% endtab %}
-
-{% tab title="JavaScript" %}
-```javascript
-import OpenAI from "openai";
-
-const client = new OpenAI({
-  baseURL: "https://albert.api.etalab.gouv.fr/v1",
-  apiKey: process.env.ALBERT_API_KEY,
-});
-
-const models = await client.models.list();
-for (const model of models.data) {
-  console.log(model.id, model.type);
-}
-```
-{% endtab %}
-{% endtabs %}
-
-Les modèles réellement déployés varient selon l’environnement (recette, production interministérielle, etc.) : la liste HTTP fait **foi** pour votre intégration.
+*🏗️ En construction...*

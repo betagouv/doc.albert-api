@@ -23,6 +23,8 @@
           spec: albert-api
     ```
 
+## Modèles
+
 * [Modèles disponibles](modeles/available-models.md)
 * [Types de modèles](modeles/model-types.md)
 

@@ -133,9 +133,7 @@ Pour le **texte**, vous pouvez continuer à utiliser `/v1/embeddings` avec un ch
 
 Cette variante image n'est pas documentée comme un usage standard OpenAI, car elle est **spécifique au modèle `qwen3-vl-embedding-8b`**.
 
-### Particularités
-
-* utilisez **`qwen3-vl-embedding-8b`** pour les images **et** pour les textes que vous souhaitez comparer à ces images ;
+**Particularités :**
 * le corps de requête utilise **`messages`** au lieu de `input` ;
 * la réponse reste un objet d'embeddings au format habituel ;
 * **une seule image par requête** est supportée ;

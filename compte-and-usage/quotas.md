@@ -135,10 +135,14 @@ En complément de vos limites propres au compte (champ `limits` dans `GET /v1/me
 | `mistralai/Mistral-Small-*` / `Ministral-*` (chat) | production | 100 | 50 000 | 246 000 | illimité |
 | `Qwen/Qwen3-Coder-*` (code) | expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
 | `Qwen/Qwen3-Coder-*` (code) | production | 100 | 50 000 | 246 000 | illimité |
+| `deepseek-ai/DeepSeek-V4-Flash` (code) | expérimentation | 50 | illimité | 246 000 | illimité |
+| `deepseek-ai/DeepSeek-V4-Flash` (code) | production | 50 | illimité | 246 000 | illimité |
 | `openai/whisper-large-v3` (audio) | expérimentation | 50 | 1000 | illimité | illimité |
 | `openai/whisper-large-v3` (audio) | production | 100 | 5000 | illimité | illimité |
 | `BAAI/bge-m3` (embeddings) | expérimentation | 500 | 50 000 | illimité | illimité |
 | `BAAI/bge-m3` (embeddings) | production | 2000 | 200 000 | illimité | illimité |
+| `Qwen/Qwen3-VL-*` (embeddings) | expérimentation | 50 | 1000 | illimité | illimité |
+| `Qwen/Qwen3-VL-*` (embeddings) | production | 100 | 50 000 | illimité | illimité |
 | `BAAI/bge-reranker-v2-m3` (rerank) | expérimentation | 500 | 50 000 | illimité | illimité |
 | `BAAI/bge-reranker-v2-m3` (rerank) | production | 2000 | 200 000 | illimité | illimité |
 

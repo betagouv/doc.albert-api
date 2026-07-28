@@ -79,7 +79,7 @@ De façon générale, **n’importe quel plugin / IDE** capable d’appeler un m
 
 peut **théoriquement** fonctionner avec Albert API. En revanche, nous ne pouvons pas **garantir** la compatibilité de toutes les combinaisons outil/IDE, ni les champs supportés par chaque client.
 
-Si vous voulez valider que le `model` que vous sélectionnez correspond au bon type, commencez par la liste des modèles : [Guide “Modèles”](models.md). Pour une vue “publique” des modèles (familles, licences, alias) vous pouvez aussi consulter : [Catalogue des modèles](https://albert.sites.beta.gouv.fr/solutions/models/).
+Si vous voulez valider que le `model` que vous sélectionnez correspond au bon type, commencez par la liste des modèles : [Guide “Modèles”](models.md). Pour une vue “publique” des modèles (familles, licences, alias) vous pouvez aussi consulter : [Catalogue des modèles](https://ia.numerique.gouv.fr/outils-ia/albert-api/mod%C3%A8les/).
 
 {% hint style="info" %}
 À date, le support **`v1/responses` (OpenAI)** et **`v1/messages` (Anthropic)** n’est pas encore disponible dans Albert API. En conséquence, l’intégration avec certains outils de coding (ex. **Claude Code**) n’est pas disponible “par défaut”.

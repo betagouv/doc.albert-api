@@ -54,7 +54,7 @@ Le **reranking** utilise un petit modèle puissant pour :
 * avec **chaque document trouvé**
 * et produire **un score de pertinence**
 
-Albert API propose un modèle de reranking _**openweight-rerank**_. Pour plus d'informations sur ce modèle, voir les [modèles disponibles](https://albert.sites.beta.gouv.fr/solutions/models/).
+Albert API propose un modèle de reranking _**openweight-rerank**_. Pour plus d'informations sur ce modèle, voir les [modèles disponibles](https://ia.numerique.gouv.fr/outils-ia/albert-api/mod%C3%A8les/).
 
 Pour connaître quels sont les modèles de reranking disponibles, faites une requête au endpoint `/v1/models` . Parmi ceux retourné, les modèles de reranking ont le type `text-classification`.
 

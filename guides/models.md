@@ -89,7 +89,7 @@ En pratique, choisissez un modèle selon son champ `type` :
 
 Pour une vue “humaine” des modèles (familles, licences, aliases), vous pouvez aussi consulter :
 
-[Catalogue des modèles](https://albert.sites.beta.gouv.fr/solutions/models/)
+[Catalogue des modèles](https://ia.numerique.gouv.fr/outils-ia/albert-api/mod%C3%A8les/)
 
 Le site précise que les modèles proviennent de tiers (ex. Mistral, Meta) mais sont **hébergés sur nos serveurs** : aucune de vos données n’est envoyée à ces fournisseurs de modèles.
 

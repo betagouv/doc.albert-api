@@ -10,7 +10,7 @@ Ce workflow correspond au déroulé typique décrit côté plateforme : demande 
 
 Renseignez le formulaire de demande d’accès :
 
-[Demander un accès](https://albert.sites.beta.gouv.fr/access/)
+[Demander un accès](http://ia.numerique.gouv.fr/contactez-nous/acces-albert-api/)
 
 Capture du formulaire :
 
@@ -51,7 +51,7 @@ Après connexion à Tchap, vous retrouvez aussi des liens “guidés” (statut,
 Exemples de liens :
 
 * [Statuts de l’API (quand publiés)](https://albert.status.etalab.gouv.fr)
-* [Formulaire de demande d’accès](https://albert.sites.beta.gouv.fr/access/)
+* [Formulaire de demande d’accès](http://ia.numerique.gouv.fr/contactez-nous/acces-albert-api/)
 * [Support / prise de rendez-vous](https://albertapi.youcanbookme.com/)
 * [Documentation endpoints](https://albert.api.etalab.gouv.fr/documentation)
 * [Swagger](https://albert.api.etalab.gouv.fr/swagger)

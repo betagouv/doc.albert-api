@@ -21,13 +21,13 @@ Cette documentation vise les **développeurs et développeuses** qui intègrent 
 
 Si vous êtes agent de la fonction publique d’État, l’accès à Albert API est ouvert via une demande en ligne : vous recevrez un mail avec vos identifiants et la documentation dans les 24 heures.
 
-[Demander un accès](https://albert.sites.beta.gouv.fr/access/)
+[Demander un accès](http://ia.numerique.gouv.fr/contactez-nous/acces-albert-api/)
 
 ## Tarifs & quotas (vision par modèle)
 
 La page “Tarifs et limites” liste, pour des familles de modèles, des quotas d’usage en mode **expérimentation** et **production** (RPM/RPD/TPM/TPD).
 
-[Tarifs et limites](https://albert.sites.beta.gouv.fr/prices/)
+[Tarifs et limites](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/)
 
 {% hint style="warning" %}
 ⚠️ Les quotas indiqués sur le site sont une vue “tarifs” : pour connaître vos limites exactes (compte, routeurs, fenêtres), consultez l’objet `limits` dans **`GET /v1/me/info`** et la page [Quotas & limites](compte-and-usage/quotas.md).
@@ -40,10 +40,10 @@ Albert API bénéficie d’un environnement cloud souverain (certification **Sec
 * Albert API ne conserve aucune trace des conversations envoyées aux modèles.
 * Albert API n’envoie aucune de vos données sur Internet.
 
-[Sécurité & hébergement](https://albert.sites.beta.gouv.fr/solutions/security/)
+[Sécurité & hébergement](https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-s%C3%A9curis%C3%A9e/)
 
 ## Statut en production
 
 Pour suivre le statut opérationnel de l’API (quand publié), voir :
 
-[Statut en production](https://albert.sites.beta.gouv.fr/about/status/)
+[Statut en production](https://ia.numerique.gouv.fr/outils-ia/albert-api/statuts-de-lapi/)

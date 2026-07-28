@@ -125,7 +125,7 @@ Lorsque le trafic ou les tokens dépassent les plafonds configurés pour votre c
 
 En complément de vos limites propres au compte (champ `limits` dans `GET /v1/me/info`), la page officielle **Tarifs et limites** fournit une vue indicative par type de modèle et par niveau d’accès (**expérimentation** vs **production**).
 
-[Tarifs et limites](https://albert.sites.beta.gouv.fr/prices/)
+[Tarifs et limites](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/)
 
 | Famille de modèles (ex.) | Accès | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- | --- |

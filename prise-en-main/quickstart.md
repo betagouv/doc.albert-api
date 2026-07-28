@@ -4,7 +4,7 @@ Objectif : obtenir une réponse du modèle via **`POST /v1/chat/completions`** e
 
 Si vous n’avez pas encore d’accès, demandez une clé Albert API ici :
 
-[Demander un accès](https://albert.sites.beta.gouv.fr/access/)
+[Demander un accès](http://ia.numerique.gouv.fr/contactez-nous/acces-albert-api/)
 
 Pour le workflow complet (validation admin, email, Playground, création de clés) : [Créer un compte & accès](creation-compte.md).
 

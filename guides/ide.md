@@ -35,40 +35,47 @@ Pour les usages **agentiques** (édition multi-fichiers, planification, exécuti
 - **Téléchargement / installation** : [OpenCode](https://opencode.ai/)
 - **Fichier de configuration** (préférences utilisateur) : `~/.config/opencode/opencode.json`
 - **Documentation** : [Configuration (OpenCode)](https://opencode.ai/docs/config/)
+- **Environnement testé** : OpenCode **1.18.8** sous Windows avec Git Bash
 
 Exemple de configuration (opencode) :
 
 ```json
 {
   "$schema": "https://opencode.ai/config.json",
+  "model": "deepseek-v4-flash",
+  "shell": "C:\\Program Files\\Git\\bin\\bash.exe",
   "provider": {
-    "litellm": {
-      "models": {
-        "Qwen/Qwen3-Coder-30B-A3B-Instruct": {
-          "name": "Qwen/Qwen3-Coder-30B-A3B-Instruct"
-        },
-        "openai/gpt-oss-120b": {
-          "name": "openai/gpt-oss-120b"
-        }
-      },
+    "albert": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Albert API (DINUM)",
       "options": {
-        "apiKey": "PUT ALBERT KEY HERE",
+        "apiKey": "${API_KEY}",
         "baseURL": "https://albert.api.etalab.gouv.fr/v1"
+      },
+      "models": {
+        "deepseek-v4-flash": {
+          "name": "DeepSeek V4 Flash",
+          "tool_call": true,
+          "reasoning": true,
+          "limit": { "context": 131072, "output": 32768 },
+          "options": {
+            "chat_template_kwargs": { "thinking": true }
+          }
+        }
       }
     }
   },
-  "mode": {
+  "agent": {
     "build": {
-      "model": "Qwen/Qwen3-Coder-30B-A3B-Instruct",
-      "tools": {
-        "write": true,
-        "edit": true,
-        "bash": false
-      }
-    }
+      "model": "deepseek-v4-flash",
+      "tools": { "write": true, "edit": true, "bash": true, "read": true, "grep": true, "glob": true }
+    },
+    "plan": { "model": "deepseek-v4-flash" }
   }
 }
 ```
+
+Sur Windows avec Git Bash, le champ `shell` pointe vers l’exécutable Bash fourni par Git for Windows. Sur macOS / Linux, vous pouvez omettre cette clé (le shell par défaut suffit) ou la remplacer par le chemin de votre shell. La variable `${API_KEY}` doit contenir votre clé Albert API.
 
 ## Compatibilité “théorique” (non garantie)
 

@@ -145,6 +145,8 @@ En complément de vos limites propres au compte (champ `limits` dans `GET /v1/me
 | `Qwen/Qwen3-VL-*` (embeddings) | production | 100 | 50 000 | illimité | illimité |
 | `BAAI/bge-reranker-v2-m3` (rerank) | expérimentation | 500 | 50 000 | illimité | illimité |
 | `BAAI/bge-reranker-v2-m3` (rerank) | production | 2000 | 200 000 | illimité | illimité |
+| `lightonocr-2-1b` (ocr) | expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
+| `lightonocr-2-1b` (ocr) | production | 100 | 50 000 | 246 000 | illimité |
 
 {% hint style="warning" %}
 ⚠️ À vérifier — la page “tarifs” peut évoluer. Les compteurs `Limit` dans `GET /v1/me/info` restent la source de vérité opérationnelle.

@@ -12,42 +12,25 @@ Vos retours nous sont précieux pour améliorer les modèles et les recommandati
 
 <details>
 
-<summary>bge-m3</summary> 
+<summary>bge-m3</summary>
 
 Model d'embeddings de référence pour la vectorisation de texte.
 
 <a href="https://huggingface.co/BAAI/bge-m3" class="button secondary">Model card</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 568M |
-| **Type** | `text-embeddings-inference` |
-| **Aliases** | `BAAI/bge-m3`, `openweight-embeddings` |
-| **Licence** | MIT |
-| **Fenêtre de contexte** | 8192 |
-| **Dimension maximale des vecteurs** | 1024 |
-| **Maximum de texte par batch** | 64 |
+|                                     |                                        |
+| ----------------------------------- | -------------------------------------- |
+| **Nombre de paramètres**            | 568M                                   |
+| **Type**                            | `text-embeddings-inference`            |
+| **Aliases**                         | `BAAI/bge-m3`, `openweight-embeddings` |
+| **Licence**                         | MIT                                    |
+| **Fenêtre de contexte**             | 8192                                   |
+| **Dimension maximale des vecteurs** | 1024                                   |
+| **Maximum de texte par batch**      | 64                                     |
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Text vectorisation</strong></td>
-      <td>/v1/embeddings</td>
-      <td><a href="../guides/embeddings.md">text-embeddings.md</a></td>
-      <td><a href="../.gitbook/assets/icons/arrow-up-1-9.svg">arrow-up-1-9.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Text vectorisation</strong></td><td>/v1/embeddings</td><td><a href="../guides/embeddings.md">embeddings.md</a></td><td><a href="../.gitbook/assets/icons/arrow-up-1-9.svg">arrow-up-1-9.svg</a></td></tr></tbody></table>
 
 </details>
 
@@ -59,14 +42,14 @@ Modèle de reranking multilingue basé sur `bge-m3`. Il est le modèle de réfé
 
 <a href="https://huggingface.co/BAAI/bge-reranker-v2-m3" class="button secondary">Model card</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 568M |
-| **Type** | `text-classification` |
-| **Licence** | MIT |
-| **Aliases** | `BAAI/bge-reranker-v2-m3`, `openweight-rerank` |
-| **Fenêtre de contexte** | 8192 |
-| **Maximum de texte par batch** | 64 |
+|                                |                                                |
+| ------------------------------ | ---------------------------------------------- |
+| **Nombre de paramètres**       | 568M                                           |
+| **Type**                       | `text-classification`                          |
+| **Licence**                    | MIT                                            |
+| **Aliases**                    | `BAAI/bge-reranker-v2-m3`, `openweight-rerank` |
+| **Fenêtre de contexte**        | 8192                                           |
+| **Maximum de texte par batch** | 64                                             |
 
 {% hint style="success" icon="lightbulb" %}
 La limite architecturale est de 8192 tokens, toutefois le modèle a été finetuné pour être utilisé avec des textes de longueur maximale de 1024 tokens. Nous recommandons de ne pas dépasser cette longueur lors de la construction des chunks pour le reranking.
@@ -74,30 +57,13 @@ La limite architecturale est de 8192 tokens, toutefois le modèle a été finetu
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Reranking</strong></td>
-      <td>/v1/reranking</td>
-      <td><a href="../guides/reranking.md">reranking.md</a></td>
-      <td><a href="../.gitbook/assets/icons/ranking-star.svg">ranking-star.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Reranking</strong></td><td>/v1/reranking</td><td><a href="../guides/reranking.md">reranking.md</a></td><td><a href="../.gitbook/assets/icons/ranking-star.svg">ranking-star.svg</a></td></tr></tbody></table>
 
 </details>
 
 <details>
 
-<summary>deepseek-v4-flash <img src="https://img.shields.io/badge/modèle_en_expérimentation-green" alt="modèle en expérimentation" style="float: right;"></summary>
+<summary>deepseek-v4-flash <img src="https://img.shields.io/badge/mod%C3%A8le_en_exp%C3%A9rimentation-green" alt="modèle en expérimentation"></summary>
 
 MoE spécialisé pour les tâches de code.
 
@@ -109,56 +75,26 @@ Ce modèle extra-européen peut présenter certaines formes de censure des répo
 Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de ces limitations afin de déterminer si elles sont compatibles avec une intégration pérenne dans Albert API. Vos retours sur ce sujet seront particulièrement précieux.
 {% endhint %}
 
-<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash" class="button secondary">Model card</a>
-<a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 284B |
-| **Nombre de paramètres actifs** | 13B |
-| **Licence** | MIT |
-| **Type** | `text-generation` |
-| **Aliases** | `deepseek-ai/DeepSeek-V4-Flash` |
-| **Fenêtre de contexte** | 393216 |
-| **Température recommandée** | 1.0 |
+|                                 |                                      |
+| ------------------------------- | ------------------------------------ |
+| **Nombre de paramètres**        | 284B                                 |
+| **Nombre de paramètres actifs** | 13B                                  |
+| **Licence**                     | MIT                                  |
+| **Type**                        | `text-generation`                    |
+| **Aliases**                     | `deepseek-ai/DeepSeek-V4-Flash-0731` |
+| **Fenêtre de contexte**         | 393216                               |
+| **Température recommandée**     | 1.0                                  |
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Code</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/ide.md">ide.md</a></td>
-      <td><a href="../.gitbook/assets/icons/terminal.svg">terminal.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Reasoning</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/reasoning.md">reasoning.md</a></td>
-      <td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Function calling</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/function-calling.md">function-calling.md</a></td>
-      <td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Code</strong></td><td>/v1/chat/completions</td><td><a href="../guides/ide.md">ide.md</a></td><td><a href="../.gitbook/assets/icons/terminal.svg">terminal.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
-Sans le streaming, modèle renvoie un tool call avec un content non vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish_reason: "tool_calls" arrive dans un chunk distinct qui ne contient plus de tool_calls.
+Sans le streaming, modèle renvoie un tool call avec un content non vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
 {% endhint %}
 
 </details>
@@ -169,16 +105,15 @@ Sans le streaming, modèle renvoie un tool call avec un content non vide. En str
 
 Modèle multimodal spécialisé pour l'OCR. Il est le modèle de référence pour l'OCR sur Albert API.
 
-<a href="https://huggingface.co/lightonai/LightOnOCR-2-1B" class="button secondary">Model card</a>
-<a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+<a href="https://huggingface.co/lightonai/LightOnOCR-2-1B" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 1B |
-| **Licence** | Apache 2.0 |
-| **Type** | `image-text-to-text` |
-| **Aliases** | `lighton/LightOn-OCR-2-1B`, `openweight-ocr` |
-| **Fenêtre de contexte** | 16384 |
+|                          |                                              |
+| ------------------------ | -------------------------------------------- |
+| **Nombre de paramètres** | 1B                                           |
+| **Licence**              | Apache 2.0                                   |
+| **Type**                 | `image-text-to-text`                         |
+| **Aliases**              | `lighton/LightOn-OCR-2-1B`, `openweight-ocr` |
+| **Fenêtre de contexte**  | 16384                                        |
 
 {% hint style="success" icon="lightbulb" %}
 Nous observons certaines latences lorsque certains patterns de pixels sont présents dans l'image (un QR code par exemple). Si vous observez des latences élevées, essayez de supprimer ces patterns avant d'envoyer l'image au modèle.
@@ -186,24 +121,7 @@ Nous observons certaines latences lorsque certains patterns de pixels sont prés
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>OCR (chat)</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/ocr.md">ocr.md</a></td>
-      <td><a href="../.gitbook/assets/icons/images.svg">images.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>OCR (chat)</strong></td><td>/v1/chat/completions</td><td><a href="../guides/ocr.md">ocr.md</a></td><td><a href="../.gitbook/assets/icons/images.svg">images.svg</a></td></tr></tbody></table>
 
 </details>
 
@@ -213,56 +131,26 @@ Nous observons certaines latences lorsque certains patterns de pixels sont prés
 
 Modèle multimodal généraliste de petite taille, idéal pour des tâches simples comme de la classification ou de correction de texte.
 
-<a href="https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512" class="button secondary">Model card</a>
-<a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+<a href="https://huggingface.co/mistralai/Ministral-3-8B-Instruct-2512" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 8.9B |
-| **Type** | `text-generation` |
-| **Licence** | Apache 2.0 |
-| **Aliases** | `mistralai/Ministral-3-8B-Instruct-2512`, `openweight-small` |
-| **Format d'entrées** | `text`, `image` |
-| **Fenêtre de contexte** | 262144 |
-| **Température recommandée** | 0.1  |
+|                             |                                                              |
+| --------------------------- | ------------------------------------------------------------ |
+| **Nombre de paramètres**    | 8.9B                                                         |
+| **Type**                    | `text-generation`                                            |
+| **Licence**                 | Apache 2.0                                                   |
+| **Aliases**                 | `mistralai/Ministral-3-8B-Instruct-2512`, `openweight-small` |
+| **Format d'entrées**        | `text`, `image`                                              |
+| **Fenêtre de contexte**     | 262144                                                       |
+| **Température recommandée** | 0.1                                                          |
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Chat</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/chat-completions.md">chat-completions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Analyse d'image</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/chat-completions.md">chat-completions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Function calling</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/function-calling.md">function-calling.md</a></td>
-      <td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
-Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish_reason: "tool_calls" arrive dans un chunk distinct qui ne contient plus de tool_calls.
+Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
 {% endhint %}
 
 </details>
@@ -271,63 +159,33 @@ Sans le streaming, modèle renvoie un tool call avec un content vide. En streami
 
 <summary>mistral-small-3-2-24b-instruct-2506</summary>
 
-<a href="https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506" class="button secondary">Model card</a>
-<a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+<a href="https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 24B |
-| **Type** | `text-generation` |
-| **Licence** | Apache 2.0 |
-| **Aliases** | `mistralai/Mistral-Small-3.2-24B-Instruct-2506`, `openweight-medium` |
-| **Format d'entrées** | `text`, `image` |
-| **Fenêtre de contexte** | 131072 |
-| **Température recommandée** | 0.15 |
+|                             |                                                                      |
+| --------------------------- | -------------------------------------------------------------------- |
+| **Nombre de paramètres**    | 24B                                                                  |
+| **Type**                    | `text-generation`                                                    |
+| **Licence**                 | Apache 2.0                                                           |
+| **Aliases**                 | `mistralai/Mistral-Small-3.2-24B-Instruct-2506`, `openweight-medium` |
+| **Format d'entrées**        | `text`, `image`                                                      |
+| **Fenêtre de contexte**     | 131072                                                               |
+| **Température recommandée** | 0.15                                                                 |
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Chat</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/chat-completions.md">chat-completions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Analyse d'image</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/chat-completions.md">chat-completions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Function calling</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/function-calling.md">function-calling.md</a></td>
-      <td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
-Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish_reason: "tool_calls" arrive dans un chunk distinct qui ne contient plus de tool_calls.
+Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
 {% endhint %}
 
 </details>
 
 <details>
 
-<summary>mistral-medium-2508 <img src="https://img.shields.io/badge/modèle_partenaire-red" alt="modèle partenaire" style="float: right;"></summary>
+<summary>mistral-medium-2508 <img src="https://img.shields.io/badge/mod%C3%A8le_partenaire-red" alt="modèle partenaire"></summary>
 
 {% hint style="warning" %}
 Ce modèle accessible uniquement aux ministères partenaires qui en font la demande. Pour en savoir plus, consultez la page [Tarifs et limites](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/) de notre site.
@@ -337,59 +195,30 @@ Vous pouvez utiliser le modèle `gpt-oss-120b` comme alternative à ce modèle.
 
 <a href="https://docs.mistral.ai/models/model-cards/mistral-medium-3-1-25-08" class="button secondary">Model card</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 123B |
-| **Type** | `text-generation` |
-| **Licence** | `propriétaire` |
-| **Aliases** | `mistral-medium-2508` |
-| **Format d'entrées** | `text`, `image` |
-| **Fenêtre de contexte** | 131072 |
+|                          |                       |
+| ------------------------ | --------------------- |
+| **Nombre de paramètres** | 123B                  |
+| **Type**                 | `text-generation`     |
+| **Licence**              | `propriétaire`        |
+| **Aliases**              | `mistral-medium-2508` |
+| **Format d'entrées**     | `text`, `image`       |
+| **Fenêtre de contexte**  | 131072                |
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Chat</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/chat-completions.md">chat-completions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Analyse d'image</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/chat-completions.md">chat-completions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td>
-    </tr>
-    <tr>
-    <td><strong>Tool calling</strong></td>
-    <td>/v1/chat/completions</td>
-    <td><a href="../guides/function-calling.md">function-calling.md</a></td>
-    <td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td>
-  </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr><tr><td><strong>Tool calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
-Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, quand le tool call est valide, le tool call arrive en un seul chunk qui porte aussi la finish_reason.
+Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, quand le tool call est valide, le tool call arrive en un seul chunk qui porte aussi la finish\_reason.
 {% endhint %}
 
 </details>
 
 <details>
 
-<summary>mistral-ocr-2512 <img src="https://img.shields.io/badge/modèle_partenaire-red" alt="modèle partenaire" style="float: right;"></summary>
+<summary>mistral-ocr-2512 <img src="https://img.shields.io/badge/mod%C3%A8le_partenaire-red" alt="modèle partenaire"></summary>
 
 Modèle d'OCR compatible avec la pile Document AI de Mistral (`/v1/ocr`) permettant d’extraire du texte et des images entremêlés.
 
@@ -399,38 +228,19 @@ Ce modèle accessible uniquement aux ministères partenaires qui en font la dema
 Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèle.
 {% endhint %}
 
-<a href="https://mistral.ai/news/mistral-ocr-3/" class="button secondary">Model card</a>
-<a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+<a href="https://mistral.ai/news/mistral-ocr-3/" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 3B |
-| **Type** | `image-to-text` |
-| **Licence** | `propriétaire` |
-| **Aliases** | `mistral-ocr-2512` |
-| **Fenêtre de contexte** | 16384 |
-
+|                          |                    |
+| ------------------------ | ------------------ |
+| **Nombre de paramètres** | 3B                 |
+| **Type**                 | `image-to-text`    |
+| **Licence**              | `propriétaire`     |
+| **Aliases**              | `mistral-ocr-2512` |
+| **Fenêtre de contexte**  | 16384              |
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Mistral Document AI</strong></td>
-      <td>/v1/ocr</td>
-      <td><a href="../guides/mistral-document-ai.md">mistral-document-ai.md</a></td>
-      <td><a href="../.gitbook/assets/icons/file-image.svg">file-image.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Mistral Document AI</strong></td><td>/v1/ocr</td><td><a href="../guides/mistral-document-ai.md">mistral-document-ai.md</a></td><td><a href="../.gitbook/assets/icons/file-image.svg">file-image.svg</a></td></tr></tbody></table>
 
 </details>
 
@@ -440,17 +250,16 @@ Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèl
 
 MoE généraliste de grande taille pour des tâches de complexes.
 
-<a href="https://huggingface.co/openai/gpt-oss-120b" class="button secondary">Model card</a>
-<a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+<a href="https://huggingface.co/openai/gpt-oss-120b" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 117B |
-| **Nombre de paramètres actifs** | 5.1B |
-| **Type** | `text-generation` |
-| **Licence** | Apache 2.0 |
-| **Aliases** | `openai/gpt-oss-120b`, `openweight-large` |
-| **Fenêtre de contexte** | 131072 |
+|                                 |                                           |
+| ------------------------------- | ----------------------------------------- |
+| **Nombre de paramètres**        | 117B                                      |
+| **Nombre de paramètres actifs** | 5.1B                                      |
+| **Type**                        | `text-generation`                         |
+| **Licence**                     | Apache 2.0                                |
+| **Aliases**                     | `openai/gpt-oss-120b`, `openweight-large` |
+| **Fenêtre de contexte**         | 131072                                    |
 
 {% hint style="success" icon="lightbulb" %}
 Les tokens de raisonnement consomment le budget `max_tokens` : prévoyez une marge confortable même pour des réponses courtes (> 1024 tokens).
@@ -458,41 +267,12 @@ Les tokens de raisonnement consomment le budget `max_tokens` : prévoyez une mar
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Chat</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/chat-completions.md">chat-completions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Reasoning</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/reasoning.md">reasoning.md</a></td>
-      <td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Function calling</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/function-calling.md">function-calling.md</a></td>
-      <td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
-Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish_reason: "tool_calls" arrive dans un chunk distinct qui ne contient plus de tool_calls.
+Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
 {% endhint %}
 
 </details>
@@ -500,49 +280,26 @@ Sans le streaming, modèle renvoie un tool call avec un content vide. En streami
 <details>
 
 <summary>whisper-large-v3</summary>
-<a href="https://huggingface.co/openai/whisper-large-v3" class="button secondary">Model card</a>
-<a href="https://transcripts.numerique.gouv.fr/" class="button primary">Essayer dans Transcripts</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 1.55B |
-| **Type** | `automatic-speech-recognition` |
-| **Licence** | Apache 2.0 |
-| **Aliases** | `openai/whisper-large-v3`, `openweight-audio` |
-| **Fenêtre de contexte** | Fichier audio jusqu'à 20 MB |
+<a href="https://huggingface.co/openai/whisper-large-v3" class="button secondary">Model card</a> <a href="https://transcripts.numerique.gouv.fr/" class="button primary">Essayer dans Transcripts</a>
+
+|                          |                                               |
+| ------------------------ | --------------------------------------------- |
+| **Nombre de paramètres** | 1.55B                                         |
+| **Type**                 | `automatic-speech-recognition`                |
+| **Licence**              | Apache 2.0                                    |
+| **Aliases**              | `openai/whisper-large-v3`, `openweight-audio` |
+| **Fenêtre de contexte**  | Fichier audio jusqu'à 20 MB                   |
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Transcription</strong></td>
-      <td>/v1/audio/transcriptions</td>
-      <td><a href="../guides/audio-transcriptions.md">audio-transcriptions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/microphone.svg">microphone.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Diarization</strong></td>
-      <td>/v1/audio/transcriptions</td>
-      <td><a href="../guides/audio-transcriptions.md">audio-transcriptions.md</a></td>
-      <td><a href="../.gitbook/assets/icons/comments.svg">comments.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Transcription</strong></td><td>/v1/audio/transcriptions</td><td><a href="../guides/audio-transcriptions.md">audio-transcriptions.md</a></td><td><a href="../.gitbook/assets/icons/microphone.svg">microphone.svg</a></td></tr><tr><td><strong>Diarization</strong></td><td>/v1/audio/transcriptions</td><td><a href="../guides/audio-transcriptions.md">audio-transcriptions.md</a></td><td><a href="../.gitbook/assets/icons/comments.svg">comments.svg</a></td></tr></tbody></table>
 
 </details>
 
 <details>
 
-<summary>qwen3-vl-embedding-8b <img src="https://img.shields.io/badge/modèle_en_expérimentation-green" alt="modèle en expérimentation" style="float: right;"></summary>
+<summary>qwen3-vl-embedding-8b <img src="https://img.shields.io/badge/mod%C3%A8le_en_exp%C3%A9rimentation-green" alt="modèle en expérimentation"></summary>
 
 Embeddings multimodaux (texte, images, captures d’écran, vidéos).
 
@@ -552,16 +309,16 @@ Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er octobre 202
 
 <a href="https://huggingface.co/Qwen/Qwen3-VL-Embedding-8B" class="button secondary">Model card</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 8B |
-| **Type** | `text-embeddings-inference` |
-| **Licence** | Apache 2.0 |
-| **Aliases** | `Qwen/Qwen3-VL-Embedding-8B`|
-| **Fenêtre de contexte** | 32768 |
-| **Dimension maximale des vecteurs** | 4096* |
+|                                     |                              |
+| ----------------------------------- | ---------------------------- |
+| **Nombre de paramètres**            | 8B                           |
+| **Type**                            | `text-embeddings-inference`  |
+| **Licence**                         | Apache 2.0                   |
+| **Aliases**                         | `Qwen/Qwen3-VL-Embedding-8B` |
+| **Fenêtre de contexte**             | 32768                        |
+| **Dimension maximale des vecteurs** | 4096\*                       |
 
-*La dimension des vecteurs n'est pas modifiable avec ce modèle.
+\*La dimension des vecteurs n'est pas modifiable avec ce modèle.
 
 {% hint style="warning" %}
 Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'embeddings : ils ne sont pas comparables.
@@ -569,73 +326,35 @@ Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Text vectorisation</strong></td>
-      <td>/v1/embeddings</td>
-      <td><a href="../guides/embeddings.md">embeddings.md</a></td>
-      <td><a href="../.gitbook/assets/icons/arrow-up-1-9.svg">arrow-up-1-9.svg</a></td>
-    </tr>
-  </tbody>
-</table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Text vectorisation</strong></td><td>/v1/embeddings</td><td><a href="../guides/embeddings.md">embeddings.md</a></td><td><a href="../.gitbook/assets/icons/arrow-up-1-9.svg">arrow-up-1-9.svg</a></td></tr></tbody></table>
 
 </details>
 
 <details>
 
 <summary>qwen3-coder-30b-a3b-instruct</summary>
-<a href="https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct" class="button secondary">Model card</a>
-<a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
-| | |
-| --- | --- |
-| **Nombre de paramètres** | 30.5B |
-| **Nombre de paramètres actifs** | 3.3B |
-| **Type** | `text-generation` |
-| **Licence** | Apache 2.0 |
-| **Aliases** | `Qwen/Qwen3-Coder-30B-A3B-Instruct`, `openweight-code` |
-| **Fenêtre de contexte** | 262144 |
+<a href="https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+
+|                                 |                                                        |
+| ------------------------------- | ------------------------------------------------------ |
+| **Nombre de paramètres**        | 30.5B                                                  |
+| **Nombre de paramètres actifs** | 3.3B                                                   |
+| **Type**                        | `text-generation`                                      |
+| **Licence**                     | Apache 2.0                                             |
+| **Aliases**                     | `Qwen/Qwen3-Coder-30B-A3B-Instruct`, `openweight-code` |
+| **Fenêtre de contexte**         | 262144                                                 |
 
 MoE orienté code / agentic coding (function calling).
 
 ### Capacités
 
-<table data-view="cards">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th data-hidden data-card-target data-type="content-ref"></th>
-      <th data-hidden data-card-cover data-type="files"></th>
-    </tr>
-    <tr>
-      <td><strong>Code</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/ide.md">ide.md</a></td>
-      <td><a href="../.gitbook/assets/icons/terminal.svg">terminal.svg</a></td>
-    </tr>
-    <tr>
-      <td><strong>Function calling</strong></td>
-      <td>/v1/chat/completions</td>
-      <td><a href="../guides/function-calling.md">function-calling.md</a></td>
-      <td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td>
-    </tr>
-  </thead>
-  <tbody>
-
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
-Sans le streaming, modèle renvoie un tool call avec un content non vide. En streaming, quand le tool call est valide, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish_reason: "tool_calls" arrive dans un chunk distinct qui ne contient plus de tool_calls.
+Sans le streaming, modèle renvoie un tool call avec un content non vide. En streaming, quand le tool call est valide, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
 {% endhint %}
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Code</strong></td><td>/v1/chat/completions</td><td><a href="../guides/ide.md">ide.md</a></td><td><a href="../.gitbook/assets/icons/terminal.svg">terminal.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 </details>

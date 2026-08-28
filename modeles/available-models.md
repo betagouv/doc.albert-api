@@ -75,16 +75,16 @@ Ce modèle extra-européen peut présenter certaines formes de censure des répo
 Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de ces limitations afin de déterminer si elles sont compatibles avec une intégration pérenne dans Albert API. Vos retours sur ce sujet seront particulièrement précieux.
 {% endhint %}
 
-<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+<a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
 |                                 |                                      |
-| ------------------------------- | ------------------------------------ |
+| ------------------------------- |--------------------------------------|
 | **Nombre de paramètres**        | 284B                                 |
 | **Nombre de paramètres actifs** | 13B                                  |
 | **Licence**                     | MIT                                  |
 | **Type**                        | `text-generation`                    |
 | **Aliases**                     | `deepseek-ai/DeepSeek-V4-Flash-0731` |
-| **Fenêtre de contexte**         | 393216                               |
+| **Fenêtre de contexte**         | 131072                               |
 | **Température recommandée**     | 1.0                                  |
 
 ### Capacités

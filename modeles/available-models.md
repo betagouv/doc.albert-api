@@ -84,7 +84,7 @@ Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de 
 | **Licence**                     | MIT                                  |
 | **Type**                        | `text-generation`                    |
 | **Aliases**                     | `deepseek-ai/DeepSeek-V4-Flash-0731` |
-| **Fenêtre de contexte**         | 393216                               |
+| **Fenêtre de contexte**         | 131072                               |
 | **Température recommandée**     | 1.0                                  |
 
 ### Capacités

@@ -89,4 +89,4 @@ process.stdout.write("\n");
 
 * **Timeouts** : les streams longs exigent des timeouts côté client adaptés au contexte réseau.
 * **Reconnexion** : en cas de coupure, la requête doit être relancée ; il n’y a pas de reprise automatique standard sur un identifiant de stream.
-* **Erreurs mid-stream** : traiter les erreurs HTTP comme sur les appels non streamés ; voir [Codes d'erreur](../ressources/errors.md).
+* **Erreurs mid-stream** : traiter les erreurs HTTP comme sur les appels non streamés ; voir [Codes d'erreur](/broken/pages/N8WOLrEHNfTNle3o0aut).

@@ -78,13 +78,13 @@ Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de 
 <a href="https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
 |                                 |                                      |
-| ------------------------------- |--------------------------------------|
+| ------------------------------- | ------------------------------------ |
 | **Nombre de paramètres**        | 284B                                 |
 | **Nombre de paramètres actifs** | 13B                                  |
 | **Licence**                     | MIT                                  |
 | **Type**                        | `text-generation`                    |
 | **Aliases**                     | `deepseek-ai/DeepSeek-V4-Flash-0731` |
-| **Fenêtre de contexte**         | 131072                               |
+| **Fenêtre de contexte**         | <p>131072</p><p>131072</p>           |
 | **Température recommandée**     | 1.0                                  |
 
 ### Capacités
@@ -96,7 +96,78 @@ Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de 
 
 Le paramètre `tool_choice` doit être explicitement défini à `auto` dans la requête pour que les appels d'outils fonctionnent avec ce modèle. Sans cela, le modèle n'émet pas de `tool_calls`, même si des `tools` sont fournis.
 
+Le paramètre `tool_choice` doit être explicitement défini à `auto` dans la requête pour que les appels d'outils fonctionnent avec ce modèle. Sans cela, le modèle n'émet pas de `tool_calls`, même si des `tools` sont fournis.\
+\
 Sans le streaming, modèle renvoie un tool call avec un content non vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
+{% endhint %}
+
+</details>
+
+<details>
+
+<summary>gemma-4-31b-it <img src="https://img.shields.io/badge/mod%C3%A8le_en_exp%C3%A9rimentation-green" alt="modèle en expérimentation"></summary>
+
+\[Description]
+
+{% hint style="warning" %}
+Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 2026. Candidat au remplacement du modèle `openweight-medium` à l'issue de cette période. A l'issue de cette phase d'expérimentation nous évaluerons a l'aide de vos retours si le modèle est viable pour une intégration pérenne dans Albert API.
+{% endhint %}
+
+<a href="https://huggingface.co/google/gemma-4-31B-it" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+
+|                                 |                         |
+| ------------------------------- | ----------------------- |
+| **Nombre de paramètres**        |                         |
+| **Nombre de paramètres actifs** |                         |
+| **Licence**                     |                         |
+| **Type**                        | `image-text-to-text`    |
+| **Aliases**                     | `google/gemma-4-31B-it` |
+| **Fenêtre de contexte**         | 262144                  |
+| **Température recommandée**     |                         |
+
+### Capacités
+
+\[A vérifier]
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/ide.md">ide.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr></tbody></table>
+
+{% hint style="info" icon="screwdriver-wrench" %}
+**Comportement du function calling**
+
+\[A compléter]
+{% endhint %}
+
+</details>
+
+<details>
+
+<summary>gpt-oss-120b</summary>
+
+MoE généraliste de grande taille pour des tâches de complexes.
+
+<a href="https://huggingface.co/openai/gpt-oss-120b" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
+
+|                                 |                                           |
+| ------------------------------- | ----------------------------------------- |
+| **Nombre de paramètres**        | 117B                                      |
+| **Nombre de paramètres actifs** | 5.1B                                      |
+| **Type**                        | `text-generation`                         |
+| **Licence**                     | Apache 2.0                                |
+| **Aliases**                     | `openai/gpt-oss-120b`, `openweight-large` |
+| **Fenêtre de contexte**         | 131072                                    |
+
+{% hint style="success" icon="lightbulb" %}
+Les tokens de raisonnement consomment le budget `max_tokens` : prévoyez une marge confortable même pour des réponses courtes (> 1024 tokens).
+{% endhint %}
+
+### Capacités
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
+
+{% hint style="info" icon="screwdriver-wrench" %}
+**Comportement du function calling**
+
+Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
 {% endhint %}
 
 </details>
@@ -138,40 +209,12 @@ Modèle multimodal généraliste de petite taille, idéal pour des tâches simpl
 |                             |                                                              |
 | --------------------------- | ------------------------------------------------------------ |
 | **Nombre de paramètres**    | 8.9B                                                         |
-| **Type**                    | `text-generation`                                            |
+| **Type**                    | `image-text-to-text`                                         |
 | **Licence**                 | Apache 2.0                                                   |
 | **Aliases**                 | `mistralai/Ministral-3-8B-Instruct-2512`, `openweight-small` |
 | **Format d'entrées**        | `text`, `image`                                              |
 | **Fenêtre de contexte**     | 262144                                                       |
 | **Température recommandée** | 0.1                                                          |
-
-### Capacités
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
-
-{% hint style="info" icon="screwdriver-wrench" %}
-**Comportement du function calling**
-
-Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
-{% endhint %}
-
-</details>
-
-<details>
-
-<summary>mistral-small-3-2-24b-instruct-2506</summary>
-
-<a href="https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
-
-|                             |                                                                      |
-| --------------------------- | -------------------------------------------------------------------- |
-| **Nombre de paramètres**    | 24B                                                                  |
-| **Type**                    | `text-generation`                                                    |
-| **Licence**                 | Apache 2.0                                                           |
-| **Aliases**                 | `mistralai/Mistral-Small-3.2-24B-Instruct-2506`, `openweight-medium` |
-| **Format d'entrées**        | `text`, `image`                                                      |
-| **Fenêtre de contexte**     | 131072                                                               |
-| **Température recommandée** | 0.15                                                                 |
 
 ### Capacités
 
@@ -200,7 +243,7 @@ Vous pouvez utiliser le modèle `gpt-oss-120b` comme alternative à ce modèle.
 |                          |                       |
 | ------------------------ | --------------------- |
 | **Nombre de paramètres** | 123B                  |
-| **Type**                 | `text-generation`     |
+| **Type**                 | `image-text-to-text`  |
 | **Licence**              | `propriétaire`        |
 | **Aliases**              | `mistral-medium-2508` |
 | **Format d'entrées**     | `text`, `image`       |
@@ -248,87 +291,29 @@ Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèl
 
 <details>
 
-<summary>gpt-oss-120b</summary>
+<summary>mistral-small-3-2-24b-instruct-2506</summary>
 
-MoE généraliste de grande taille pour des tâches de complexes.
+<a href="https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
-<a href="https://huggingface.co/openai/gpt-oss-120b" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
-
-|                                 |                                           |
-| ------------------------------- | ----------------------------------------- |
-| **Nombre de paramètres**        | 117B                                      |
-| **Nombre de paramètres actifs** | 5.1B                                      |
-| **Type**                        | `text-generation`                         |
-| **Licence**                     | Apache 2.0                                |
-| **Aliases**                     | `openai/gpt-oss-120b`, `openweight-large` |
-| **Fenêtre de contexte**         | 131072                                    |
-
-{% hint style="success" icon="lightbulb" %}
-Les tokens de raisonnement consomment le budget `max_tokens` : prévoyez une marge confortable même pour des réponses courtes (> 1024 tokens).
-{% endhint %}
+|                             |                                                                      |
+| --------------------------- | -------------------------------------------------------------------- |
+| **Nombre de paramètres**    | 24B                                                                  |
+| **Type**                    | `image-text-to-text`                                                 |
+| **Licence**                 | Apache 2.0                                                           |
+| **Aliases**                 | `mistralai/Mistral-Small-3.2-24B-Instruct-2506`, `openweight-medium` |
+| **Format d'entrées**        | `text`, `image`                                                      |
+| **Fenêtre de contexte**     | 131072                                                               |
+| **Température recommandée** | 0.15                                                                 |
 
 ### Capacités
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
 Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
 {% endhint %}
-
-</details>
-
-<details>
-
-<summary>whisper-large-v3</summary>
-
-<a href="https://huggingface.co/openai/whisper-large-v3" class="button secondary">Model card</a> <a href="https://transcripts.numerique.gouv.fr/" class="button primary">Essayer dans Transcripts</a>
-
-|                          |                                               |
-| ------------------------ | --------------------------------------------- |
-| **Nombre de paramètres** | 1.55B                                         |
-| **Type**                 | `automatic-speech-recognition`                |
-| **Licence**              | Apache 2.0                                    |
-| **Aliases**              | `openai/whisper-large-v3`, `openweight-audio` |
-| **Fenêtre de contexte**  | Fichier audio jusqu'à 20 MB                   |
-
-### Capacités
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Transcription</strong></td><td>/v1/audio/transcriptions</td><td><a href="../guides/audio-transcriptions.md">audio-transcriptions.md</a></td><td><a href="../.gitbook/assets/icons/microphone.svg">microphone.svg</a></td></tr><tr><td><strong>Diarization</strong></td><td>/v1/audio/transcriptions</td><td><a href="../guides/audio-transcriptions.md">audio-transcriptions.md</a></td><td><a href="../.gitbook/assets/icons/comments.svg">comments.svg</a></td></tr></tbody></table>
-
-</details>
-
-<details>
-
-<summary>qwen3-vl-embedding-8b <img src="https://img.shields.io/badge/mod%C3%A8le_en_exp%C3%A9rimentation-green" alt="modèle en expérimentation"></summary>
-
-Embeddings multimodaux (texte, images, captures d’écran, vidéos).
-
-{% hint style="warning" %}
-Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er octobre 2026. A l'issue de cette phase d'expérimentation nous évaluarons a l'aide de vos retours si le modèle est viable pour une intégration pérenne dans Albert API.
-{% endhint %}
-
-<a href="https://huggingface.co/Qwen/Qwen3-VL-Embedding-8B" class="button secondary">Model card</a>
-
-|                                     |                              |
-| ----------------------------------- | ---------------------------- |
-| **Nombre de paramètres**            | 8B                           |
-| **Type**                            | `text-embeddings-inference`  |
-| **Licence**                         | Apache 2.0                   |
-| **Aliases**                         | `Qwen/Qwen3-VL-Embedding-8B` |
-| **Fenêtre de contexte**             | 32768                        |
-| **Dimension maximale des vecteurs** | 4096\*                       |
-
-\*La dimension des vecteurs n'est pas modifiable avec ce modèle.
-
-{% hint style="warning" %}
-Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'embeddings : ils ne sont pas comparables.
-{% endhint %}
-
-### Capacités
-
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Text vectorisation</strong></td><td>/v1/embeddings</td><td><a href="../guides/embeddings.md">embeddings.md</a></td><td><a href="../.gitbook/assets/icons/arrow-up-1-9.svg">arrow-up-1-9.svg</a></td></tr></tbody></table>
 
 </details>
 
@@ -360,3 +345,60 @@ Sans le streaming, modèle renvoie un tool call avec un content non vide. En str
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Code</strong></td><td>/v1/chat/completions</td><td><a href="../guides/ide.md">ide.md</a></td><td><a href="../.gitbook/assets/icons/terminal.svg">terminal.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 </details>
+
+<details>
+
+<summary>qwen3-vl-embedding-8b <img src="https://img.shields.io/badge/mod%C3%A8le_en_exp%C3%A9rimentation-green" alt="modèle en expérimentation"></summary>
+
+Embeddings multimodaux (texte, images, captures d’écran, vidéos).
+
+{% hint style="warning" %}
+Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er octobre 2026. A l'issue de cette phase d'expérimentation nous évaluerons a l'aide de vos retours si le modèle est viable pour une intégration pérenne dans Albert API.
+{% endhint %}
+
+<a href="https://huggingface.co/Qwen/Qwen3-VL-Embedding-8B" class="button secondary">Model card</a>
+
+|                                     |                              |
+| ----------------------------------- | ---------------------------- |
+| **Nombre de paramètres**            | 8B                           |
+| **Type**                            | `text-embeddings-inference`  |
+| **Licence**                         | Apache 2.0                   |
+| **Aliases**                         | `Qwen/Qwen3-VL-Embedding-8B` |
+| **Fenêtre de contexte**             | 32768                        |
+| **Dimension maximale des vecteurs** | 4096\*                       |
+
+\*La dimension des vecteurs n'est pas modifiable avec ce modèle.
+
+{% hint style="warning" %}
+Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'embeddings : ils ne sont pas comparables.
+{% endhint %}
+
+### Capacités
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Text vectorisation</strong></td><td>/v1/embeddings</td><td><a href="../guides/embeddings.md">embeddings.md</a></td><td><a href="../.gitbook/assets/icons/arrow-up-1-9.svg">arrow-up-1-9.svg</a></td></tr></tbody></table>
+
+</details>
+
+<details>
+
+<summary>whisper-large-v3</summary>
+
+<a href="https://huggingface.co/openai/whisper-large-v3" class="button secondary">Model card</a> <a href="https://transcripts.numerique.gouv.fr/" class="button primary">Essayer dans Transcripts</a>
+
+|                          |                                               |
+| ------------------------ | --------------------------------------------- |
+| **Nombre de paramètres** | 1.55B                                         |
+| **Type**                 | `automatic-speech-recognition`                |
+| **Licence**              | Apache 2.0                                    |
+| **Aliases**              | `openai/whisper-large-v3`, `openweight-audio` |
+| **Fenêtre de contexte**  | Fichier audio jusqu'à 20 MB                   |
+
+### Capacités
+
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Transcription</strong></td><td>/v1/audio/transcriptions</td><td><a href="../guides/audio-transcriptions.md">audio-transcriptions.md</a></td><td><a href="../.gitbook/assets/icons/microphone.svg">microphone.svg</a></td></tr><tr><td><strong>Diarization</strong></td><td>/v1/audio/transcriptions</td><td><a href="../guides/audio-transcriptions.md">audio-transcriptions.md</a></td><td><a href="../.gitbook/assets/icons/comments.svg">comments.svg</a></td></tr></tbody></table>
+
+</details>
+
+## Calendrier des migrations
+
+<table><thead><tr><th>Modèle</th><th width="290.83984375">Supprimé le</th><th>Remplacer par</th></tr></thead><tbody><tr><td><a href="available-models.md#qwen3-coder-30b-a3b-instruct"><code>qwen3-coder-30b-a3b-instruct</code></a></td><td>1er octobre 2026</td><td><a href="available-models.md#deepseek-v4-flash"><code>deepseek-v4-flash</code></a></td></tr><tr><td><a href="available-models.md#mistral-small-3-2-24b-instruct-2506"><code>mistral-small-3-2-24b-instruct-2506</code></a></td><td>1er décembre 2026</td><td><a href="available-models.md#gemma-4-31b-it"><code>gemma-4-31b-it</code></a></td></tr></tbody></table>

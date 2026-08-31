@@ -2,11 +2,8 @@
 
 ## Prise en main
 
-* [Introduction](README.md)
-* [Authentification](prise-en-main/authentication.md)
-* [Création de compte & accès](prise-en-main/creation-compte.md)
+* [Qu'est-ce qu'Albert API ?](README.md)
 * [Démarrage rapide](prise-en-main/quickstart.md)
-* [URL de base & versioning](prise-en-main/base-url.md)
 
 ## API REFERENCE
 
@@ -24,6 +21,7 @@
     ```
 
 ## Modèles
+
 * [Modèles disponibles](modeles/available-models.md)
 * [Types de modèles](modeles/model-types.md)
 
@@ -48,7 +46,6 @@
 
 ## Ressources
 
-* [Codes d'erreur](ressources/errors.md)
-* [Changelog](ressources/changelog.md)
-* [FAQ](ressources/faq.md)
+* [Foire aux questions (FAQ)](ressources/faq.md)
 * [Support](ressources/support.md)
+* [Changelog](ressources/changelog.md)

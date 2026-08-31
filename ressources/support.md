@@ -1,16 +1,20 @@
+---
+icon: messages-question
+---
+
 # Support
 
-## Documentation technique
+Nous mettons à votre disposition différents canaux pour partager vos expériences, nous signaler vos problèmes ou encore apporter une contribution au projet.
 
-* Ce site (GitBook) — parcours guidés et la [liste des endpoints GitBook](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint)
-* Fichier **`openapi.json`** — comportement exact des schémas et énumérations pour votre environnement.
-* Statut en production : [Statut de l’API](https://ia.numerique.gouv.fr/outils-ia/albert-api/statuts-de-lapi/)
+<table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><h4>Tchap</h4></td><td>Rejoignez la communauté Albert API.</td><td><a href="../.gitbook/assets/tchap.svg">tchap.svg</a></td><td><a href="https://tchap.gouv.fr/#/room/#albert:agent.dinum.tchap.gouv.fr">https://tchap.gouv.fr/#/room/#albert:agent.dinum.tchap.gouv.fr</a></td></tr><tr><td align="center"><h4>Email</h4></td><td>Ecrivez-nous !</td><td><a href="../.gitbook/assets/at.svg">at.svg</a></td><td><a href="mailto:albert.api@numerique.gouv.fr">mailto:albert.api@numerique.gouv.fr</a></td></tr><tr><td align="center"><h4>YouCanBookMe</h4></td><td>Prenez rendez-vous pour nous rencontrer. </td><td><a href="../.gitbook/assets/calendar-days.svg">calendar-days.svg</a></td><td><a href="https://albertapi.youcanbookme.com/">https://albertapi.youcanbookme.com/</a></td></tr><tr><td align="center"><h4>Github</h4></td><td>Contribuez à Albert API.</td><td><a href="../.gitbook/assets/github.svg">github.svg</a></td><td><a href="https://github.com/etalab-ia/OpenGateLLM">https://github.com/etalab-ia/OpenGateLLM</a></td></tr></tbody></table>
+
+## Ressources techniques
+
+<table data-card-size="large" data-view="cards"><thead><tr><th align="center"></th><th></th><th data-hidden data-card-cover data-type="image">Cover image</th><th data-hidden data-card-target data-type="content-ref"></th></tr></thead><tbody><tr><td align="center"><h4>API reference</h4></td><td>L'API reference documente le comportement de chaque endpoint.</td><td><a href="../.gitbook/assets/book-open.svg">book-open.svg</a></td><td><a href="../api-reference/liste-des-endpoint/">liste-des-endpoint</a></td></tr><tr><td align="center"><h4>Statuts</h4></td><td>Suivez le statut l'API en live. </td><td><a href="../.gitbook/assets/heart-pulse.svg">heart-pulse.svg</a></td><td><a href="https://albert.status.etalab.gouv.fr/">https://albert.status.etalab.gouv.fr/</a></td></tr></tbody></table>
 
 ## Signaler un problème
 
-{% hint style="warning" %}
-⚠️ À vérifier — Canal unique de support développeur (ticketting interne, issue tracker GitHub `betagouv/doc.albert-api` ou dépôt applicatif amont) : utilisez la procédure définie par votre organisation ou le programme **beta.gouv** dont dépend votre accès à Albert API.
-{% endhint %}
+Merci de nous signalez tout problème que vous rencontrez sur Tchap ou sur Github dans la section issue. <br>
 
 **Bonnes pratiques pour un signalement utile :**
 
@@ -20,7 +24,7 @@
 * modèle et endpoint concernés ;
 * reproductibilité minimale (curl anonymisé).
 
-## Ressources liées
 
-* Obtenir ou gérer des clés : [Clés API](../compte-and-usage/api-keys.md).
-* Comprendre les erreurs : [Codes d'erreur](errors.md).
+
+
+

@@ -1,4 +1,8 @@
-# Introduction
+---
+icon: stars
+---
+
+# Qu'est-ce qu'Albert API ?
 
 Albert API permet aux applications et agents d’appeler des modèles de **génération de texte**, d’**embeddings**, de **classification** (rerank), de **reconnaissance vocale**, d’**OCR** et des services de **recherche** sur des corpus indexés, via des routes et des schémas calqués sur l’**API OpenAI** là où c’est pertinent.
 
@@ -13,7 +17,7 @@ Cette documentation vise les **développeurs et développeuses** qui intègrent 
 
 ## Prochaines étapes
 
-1. [Authentification](prise-en-main/authentication.md) — en-tête Bearer et obtention d’un jeton.
+1. [Authentification](/broken/pages/kAnuH9jbzC0DENsy17Pl) — en-tête Bearer et obtention d’un jeton.
 2. [Démarrage rapide](prise-en-main/quickstart.md) — premier appel `POST /v1/chat/completions`.
 3. [Guides](guides/chat-completions.md) — paramètres avancés, streaming, outils et RAG.
 
@@ -41,6 +45,12 @@ Albert API bénéficie d’un environnement cloud souverain (certification **Sec
 * Albert API n’envoie aucune de vos données sur Internet.
 
 [Sécurité & hébergement](https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-s%C3%A9curis%C3%A9e/)
+
+## Compatibilité OpenAI
+
+Albert API est **compatible OpenAI** sur les endpoints courants : en conservant votre code basé sur le SDK ou sur des appels HTTP OpenAI, vous changez en principe uniquement la **base URL** (ici `https://albert.api.etalab.gouv.fr/v1`) et la **clé** (jeton Albert).
+
+Pour aller plus loin : [Chat completions](guides/chat-completions.md), [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).
 
 ## Statut en production
 

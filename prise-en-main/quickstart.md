@@ -1,96 +1,49 @@
+---
+icon: rocket
+---
+
 # Démarrage rapide
 
-Objectif : obtenir une réponse du modèle via **`POST /v1/chat/completions`** en moins de cinq minutes.
+Pour envoyer des requêtes à Albert API vous devez posséder créer une clef d'API depuis l'interface [Playground](https://albert.playground.etalab.gouv.fr/) d'Albert API.&#x20;
 
-Si vous n’avez pas encore d’accès, demandez une clé Albert API ici :
+{% hint style="info" %}
+Une clef d'API est un identifiant de connexion (_Bearer token_) permettant de vous authentifier lors de vos appels API. Elle commence par `sk-eyJhbG...`.
+{% endhint %}
 
-[Demander un accès](http://ia.numerique.gouv.fr/contactez-nous/acces-albert-api/)
+{% stepper %}
+{% step %}
+### Se connecter au playground
 
-Pour le workflow complet (validation admin, email, Playground, création de clés) : [Créer un compte & accès](creation-compte.md).
+Rendez vous sur [https://albert.playground.etalab.gouv.fr](https://albert.playground.etalab.gouv.fr/) et connectez vous avec Proconnect ([en savoir plus](https://www.proconnect.gouv.fr/)). \
+\
+Si vous êtes redirigez sur une page vous indiquant que votre accès est refusé, merci de consulter [la section de la FAQ dédiée](../ressources/faq.md#pourquoi-mon-compte-nest-pas-autorise).
+{% endstep %}
 
-## Étape 1 — Obtenir un jeton
+{% step %}
+### Créer une clef d'API
 
-La méthode principale pour obtenir une clé est de la **générer dans le Playground** (interface web). Une alternative consiste à créer une clé via l’API (`POST /v1/me/keys`, voir [Clés API](../compte-and-usage/api-keys.md)).
+Une fois connectez à l'interface Playground, rendez-vous sur la page [_API Keys_](https://albert.playground.etalab.gouv.fr/keys). Sur cette page créer vous une clef en lui attribuant un nom. Vous pouvez configurer la durée d'expiration de votre clef jusqu'à un an.&#x20;
 
-### 1) Ouvrir la page « API keys » du Playground
+<figure><img src="../.gitbook/assets/Screenshot 2026-08-19 at 11.16.03.png" alt=""><figcaption></figcaption></figure>
 
-Allez sur : [Créer / gérer vos clés API (Playground)](https://albert.playground.etalab.gouv.fr/keys)
+{% hint style="info" %}
+Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas l'afficher** ensuite.
+{% endhint %}
+{% endstep %}
 
-![Créer une clé — formulaire vide](../.gitbook/assets/key-create-empty.png)
+{% step %}
+### Appeler un modèle
 
-### 2) Renseigner le nom et, si besoin, la date d’expiration
+Pour cette première requête nous allons appelez le modèle `openweight-small`. Ouvrez un terminal et exécutez le code ci-dessous.&#x20;
 
-* **Name** : obligatoire (nom lisible pour vous retrouver dans la liste).
-* **Expires at** : optionnel (date de fin de validité).
-
-![Créer une clé — nom et expiration](../.gitbook/assets/key-create-filled.png)
-
-### 3) Copier et stocker la clé en lieu sûr
-
-Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas la réafficher** ensuite.
-
-![Clé créée — copie unique](../.gitbook/assets/key-created-once.png)
-
-### 4) Utiliser la clé dans votre code ou un outil compatible OpenAI
-
-Exportez-la dans votre environnement, par exemple :
-
-```bash
-export ALBERT_API_KEY="votre_jeton"
-```
-
-Puis utilisez-la comme `api_key` / jeton Bearer dans un client OpenAI ou tout outil compatible (voir section **Compatibilité OpenAI** ci-dessous).
-
-## Étape 2 — Choisir un modèle
-
-Listez les modèles disponibles :
+{% hint style="info" %}
+Remplacez la valeur `$ALBERT_API_KEY` par la valeur de votre clef API.&#x20;
+{% endhint %}
 
 {% tabs %}
-{% tab title="curl" %}
+{% tab title="Bash" icon="square-terminal" %}
 ```bash
-curl -sS "https://albert.api.etalab.gouv.fr/v1/models" \
-  -H "Authorization: Bearer $ALBERT_API_KEY"
-```
-{% endtab %}
-
-{% tab title="Python" %}
-```python
-import os
-from openai import OpenAI
-
-client = OpenAI(
-    base_url="https://albert.api.etalab.gouv.fr/v1",
-    api_key=os.environ["ALBERT_API_KEY"],
-)
-
-models = client.models.list().data
-print([m.id for m in models])
-```
-{% endtab %}
-
-{% tab title="JavaScript" %}
-```javascript
-import OpenAI from "openai";
-
-const client = new OpenAI({
-  baseURL: "https://albert.api.etalab.gouv.fr/v1",
-  apiKey: process.env.ALBERT_API_KEY,
-});
-
-const models = await client.models.list();
-console.log(models.data.map((m) => m.id));
-```
-{% endtab %}
-{% endtabs %}
-
-Choisissez un modèle dont le champ `type` est **`text-generation`** (voir [Types de modèles](../modeles/model-types.md)). Notez son `id` (par ex. `Meta-Llama-3.1-8B-Instruct` — l’offre exacte dépend de la plateforme).
-
-## Étape 3 — Envoyer une complétion de chat
-
-{% tabs %}
-{% tab title="curl" %}
-```bash
-curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
+curl -x POST "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -100,10 +53,11 @@ curl -sS "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
       {"role": "user", "content": "Explique ce qu’est une API compatible OpenAI en deux phrases."}
     ]
   }'
+
 ```
 {% endtab %}
 
-{% tab title="Python" %}
+{% tab title="Python" icon="python" %}
 ```python
 import os
 from openai import OpenAI
@@ -124,7 +78,7 @@ print(r.choices[0].message.content)
 ```
 {% endtab %}
 
-{% tab title="JavaScript" %}
+{% tab title="JavaScript" icon="js" %}
 ```javascript
 import OpenAI from "openai";
 
@@ -145,9 +99,13 @@ console.log(r.choices[0].message.content);
 ```
 {% endtab %}
 {% endtabs %}
+{% endstep %}
 
-## Compatibilité OpenAI
+{% step %}
+### Explorer les fonctionnalités et les modèles disponibles
 
-Albert API est **compatible OpenAI** sur les endpoints courants : en conservant votre code basé sur le SDK ou sur des appels HTTP OpenAI, vous changez en principe uniquement la **base URL** (ici `https://albert.api.etalab.gouv.fr/v1`) et la **clé** (jeton Albert).
-
-Pour aller plus loin : [Chat completions](../guides/chat-completions.md), [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).
+* [Consulter les endpoints disponibles](https://app.gitbook.com/s/3Kt6ArO8RlWHs4cxZZIu/api-reference)
+* [Consulter les modèles disponibles](../modeles/available-models.md)&#x20;
+* [Consulter nos guides thématiques](https://app.gitbook.com/s/3Kt6ArO8RlWHs4cxZZIu/guides)
+{% endstep %}
+{% endstepper %}

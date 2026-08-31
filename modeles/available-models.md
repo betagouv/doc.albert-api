@@ -107,7 +107,7 @@ Sans le streaming, modèle renvoie un tool call avec un content non vide. En str
 
 <summary>gemma-4-31b-it <img src="https://img.shields.io/badge/mod%C3%A8le_en_exp%C3%A9rimentation-green" alt="modèle en expérimentation"></summary>
 
-\[Description]
+Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'images.&#x20;
 
 {% hint style="warning" %}
 Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 2026. Candidat au remplacement du modèle `openweight-medium` à l'issue de cette période. A l'issue de cette phase d'expérimentation nous évaluerons a l'aide de vos retours si le modèle est viable pour une intégration pérenne dans Albert API.
@@ -117,13 +117,13 @@ Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 202
 
 |                                 |                         |
 | ------------------------------- | ----------------------- |
-| **Nombre de paramètres**        |                         |
-| **Nombre de paramètres actifs** |                         |
-| **Licence**                     |                         |
+| **Nombre de paramètres**        | 30.7B                   |
+| **Nombre de paramètres actifs** | 30.7B                   |
+| **Licence**                     | Apache 2.0              |
 | **Type**                        | `image-text-to-text`    |
 | **Aliases**                     | `google/gemma-4-31B-it` |
 | **Fenêtre de contexte**         | 262144                  |
-| **Température recommandée**     |                         |
+| **Température recommandée**     | 1.0                     |
 
 ### Capacités
 
@@ -292,6 +292,8 @@ Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèl
 <details>
 
 <summary>mistral-small-3-2-24b-instruct-2506</summary>
+
+Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'images.&#x20;
 
 <a href="https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 

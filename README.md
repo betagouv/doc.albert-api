@@ -23,7 +23,7 @@ Cette documentation vise les **développeurs et développeuses** qui intègrent 
 
 ## Obtenir un accès
 
-Si vous êtes agent de la fonction publique d’État, l’accès à Albert API est ouvert via une demande en ligne : vous recevrez un mail avec vos identifiants et la documentation dans les 24 heures.
+Si vous êtes agent de la fonction publique d’État, l’accès à Albert API se fait automatiquement via ProConnect. Si vous rencontrez des problèmes de connexion, veuillez consulter notre [FAQ](https://guides.ia.numerique.gouv.fr/albert-api/ressources/faq#pourquoi-mon-compte-nest-pas-autorise)
 
 [Demander un accès](http://ia.numerique.gouv.fr/contactez-nous/acces-albert-api/)
 

@@ -94,8 +94,6 @@ Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de 
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
-Le paramètre `tool_choice` doit être explicitement défini à `auto` dans la requête pour que les appels d'outils fonctionnent avec ce modèle. Sans cela, le modèle n'émet pas de `tool_calls`, même si des `tools` sont fournis.
-
 Le paramètre `tool_choice` doit être explicitement défini à `auto` dans la requête pour que les appels d'outils fonctionnent avec ce modèle. Sans cela, le modèle n'émet pas de `tool_calls`, même si des `tools` sont fournis.\
 \
 Sans le streaming, modèle renvoie un tool call avec un content non vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.

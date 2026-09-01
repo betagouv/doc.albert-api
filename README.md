@@ -25,8 +25,6 @@ Cette documentation vise les **développeurs et développeuses** qui intègrent 
 
 Si vous êtes agent de la fonction publique d’État, l’accès à Albert API se fait automatiquement via ProConnect. Si vous rencontrez des problèmes de connexion, veuillez consulter notre [FAQ](https://guides.ia.numerique.gouv.fr/albert-api/ressources/faq#pourquoi-mon-compte-nest-pas-autorise)
 
-[Demander un accès](http://ia.numerique.gouv.fr/contactez-nous/acces-albert-api/)
-
 ## Tarifs & quotas (vision par modèle)
 
 La page “Tarifs et limites” liste, pour des familles de modèles, des quotas d’usage en mode **expérimentation** et **production** (RPM/RPD/TPM/TPD).

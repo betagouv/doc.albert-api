@@ -19,7 +19,7 @@ La **version d'Albert API** exposée sur `https://albert.api.etalab.gouv.fr/open
 
 <mark style="color:red;">**Date de déploiement : 31 août 2026**</mark>
 
-**🔐 Connexion au Playground via ProConnect**
+#### **🔐 Connexion au Playground via ProConnect**
 
 Dans un souci d'améliorer la sécurité d'Albert API, la connexion au Playground se fait désormais via ProConnect, le SSO de l'Etat.\
 \
@@ -47,7 +47,7 @@ Nous attendons vos retours sur ce nouveau modèle. Vous retrouvez toutes les sp�
 
 La version 0.5.0 d'Albert API introduit une phase d'expérimentation de nouveaux modèles ainsi que la suppression définitive de plusieurs fonctionnalités dépréciées depuis la version 0.4.1.
 
-#### Phase de test de nouveaux modèles
+#### 🎁 Phase de test de nouveaux modèles
 
 À compter du **25 juillet 2026**, nous lançons une phase de test de trois nouveaux modèles. Cette expérimentation se poursuivra jusqu'au **1er octobre 2026**, date à laquelle nous déciderons, en fonction de vos retours et de nos évaluations, de pérenniser tout ou partie de ces modèles.
 
@@ -73,7 +73,7 @@ Ce modèle d'embeddings multimodal, accessible via l'endpoint `/v1/embeddings`, 
 
 Une documentation détaillée sera publiée le **25 juillet**.
 
-### Suppression de fonctionnalités dépréciées
+#### &#x20;🗑️ Suppression de fonctionnalités dépréciées
 
 Comme annoncé lors de la sortie de la version **0.4.1**, plusieurs fonctionnalités dépréciées seront définitivement supprimées avec la version **0.5.0**.
 
@@ -90,7 +90,7 @@ Nous vous invitons à vérifier les changements ci-dessous et à mettre à jour 
 * L'argument `prompt` de l'endpoint `POST /v1/search` est remplacé par `query` et l'argument `collections` par `collections`
 * L'argument `collections` de l'endpoint `POST /v1/search` est remplacé supprimé par `collection_ids`.
 
-### Fonctionnalité dépréciées
+#### 📦 Fonctionnalité dépréciées
 
 * Le tool `search` de l'endpoint `POST /v1/chat/completions` est déprécié. La fonctionnalité est maintenue pour le moment mais ne fera plus l'objet d'améliorations, elle sera supprimée lors de la version 1.0.0 (Q4 2026). Nous souhaitons privilégier l'usage de la combinaison de l'usage de `/v1/search` et `/v1/chat/completion` pour un RAG maitrisé.
 

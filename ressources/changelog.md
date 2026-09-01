@@ -15,6 +15,32 @@ La **version d'Albert API** exposée sur `https://albert.api.etalab.gouv.fr/open
 
 <details>
 
+<summary><strong>0.6.0 (beta)</strong></summary>
+
+<mark style="color:red;">**Date de déploiement : 31 août 2026**</mark>
+
+**🔐 Connexion au Playground via ProConnect**
+
+Dans un souci d'améliorer la sécurité d'Albert API, la connexion au Playground se fait désormais via ProConnect, le SSO de l'Etat.\
+\
+Vos comptes existants et vos clés d'API sont conservés : aucune action de migration n'est nécessaire.\
+\
+⚠️ Connectez-vous avec l'adresse professionnelle exacte associée à votre compte actuel (celle de votre email de confirmation). Une autre adresse créera un nouveau compte, vide, sans vos clés. **Si votre email Albert API ne correspond pas à votre adresse ProConnect, merci de nous contacter pour faire le matching (albert.api@numerique.gouv.fr).**\
+\
+Si l'accès vous est refusé, rendez-vous sur notre [FAQ](faq.md#pourquoi-mon-compte-nest-pas-autorise) pour connaître la démarche à suivre.
+
+#### 🎁 Phase de test pour Gemma 4
+
+Un nouveau modèle vient s'ajouter au catalogue des modèles : `gemma-4-31-b-it`. Ce modèle est candidat au remplacement du modèle `openweight-medium` durant du phase de test allant jusqu'au 1er décembre 2026.
+
+Nous attendons vos retours sur ce nouveau modèle. Vous retrouvez toutes les spécifications techniques de ce modèle dans notre [documentation](../modeles/available-models.md#gemma-4-31b-it).
+
+**Retrouvez le calendrier des migrations de modèle dans notre documentation** [**ici**](../modeles/available-models.md#calendrier-des-migrations)**.**
+
+</details>
+
+<details>
+
 <summary><strong>0.5.0 (beta)</strong></summary>
 
 <mark style="color:red;">**Date de déploiement : 27 juillet 2026**</mark>

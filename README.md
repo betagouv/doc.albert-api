@@ -39,7 +39,7 @@ La page “Tarifs et limites” liste, pour des familles de modèles, des quotas
 
 Albert API bénéficie d’un environnement cloud souverain (certification **SecNumCloud** via Outscale) et a des engagements de traitement des données :
 
-* Albert API ne conserve aucune trace des conversations envoyées aux modèles.
+* Albert API ne conserve aucune trace des conversations envoyées aux modèles (voir [la page dédiée](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md))
 * Albert API n’envoie aucune de vos données sur Internet.
 
 [Sécurité & hébergement](https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-s%C3%A9curis%C3%A9e/)

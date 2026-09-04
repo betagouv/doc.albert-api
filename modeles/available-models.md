@@ -125,14 +125,18 @@ Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 202
 
 ### Capacités
 
-\[A vérifier]
-
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="image">Cover image</th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/ide.md">ide.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr></tbody></table>
 
 {% hint style="info" icon="screwdriver-wrench" %}
 **Comportement du function calling**
 
-\[A compléter]
+Sans le streaming, le modèle renvoie un tool call avec un content vide. En streaming, les arguments sont fragmentés sur plusieurs chunks SSE, et le finish\_reason: "tool\_calls" arrive dans un chunk distinct qui ne contient plus de tool\_calls.
+{% endhint %}
+
+{% hint style="info" icon="brain" %}
+**Comportement du reasoning**
+
+Gemma 4 est un modèle pouvant _raisonner_ (`Thinking`). Pour l'activer, il faut fournir cet argument dans le body du payload : `"chat_template_kwargs": {"enable_thinking": true}`.  
 {% endhint %}
 
 </details>

@@ -46,6 +46,7 @@
 
 ## Ressources
 
+* [Absence de rétention des données métier sur le chemin d'inférence](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md)
 * [Foire aux questions (FAQ)](ressources/faq.md)
 * [Support](ressources/support.md)
 * [Changelog](ressources/changelog.md)

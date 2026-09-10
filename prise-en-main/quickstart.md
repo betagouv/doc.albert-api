@@ -27,7 +27,9 @@ Une fois connectez à l'interface Playground, rendez-vous sur la page [_API Keys
 <figure><img src="../.gitbook/assets/Screenshot 2026-08-19 at 11.16.03.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
-Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas l'afficher** ensuite.
+Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas l'afficher** ensuite.\
+\
+Pour en savoir plus sur les clefs d'API, consultez la documentation dédiée [ici](../compte-and-usage/api-keys.md).
 {% endhint %}
 {% endstep %}
 

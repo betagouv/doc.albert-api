@@ -1,6 +1,44 @@
-# Clés API
+---
+icon: key
+---
 
-Les clés d’API Albert sont gérées sous **`/v1/me/keys`**. Elles servent de **jetons Bearer** pour toutes les routes protégées.
+# Clefs API
+
+Albert API utilise un système de clef pour authentifier vos requêtes. Ces clefs sont des **Bearer** tokens.
+
+### Création d'une clef
+
+Vous pouvez créer des clefs d'API de 2 manières, par API ou sur le Playground.
+
+{% tabs %}
+{% tab title="Playground" icon="globe-pointer" %}
+Connectez-vous sur le [playground](https://albert.playground.gouv.fr/), puis rendez-vous dans la page _API Keys_.
+{% endtab %}
+
+{% tab title="API" icon="square-terminal" %}
+Vous pouvez créer une clef d'API en appelant le endpout POST `/v1/keys`.<br>
+
+```
+curl -x 
+```
+{% endtab %}
+{% endtabs %}
+
+
+
+
+
+#### Expiration des clefs
+
+**Toutes les clefs API ont une date d'expiration de maximum 1 an à compter de la date de création.**&#x20;
+
+Il est impossible d'obtenir une clef sans expiration.
+
+
+
+
+
+
 
 ## Format des jetons
 

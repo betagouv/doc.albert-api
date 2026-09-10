@@ -1,3 +1,7 @@
+---
+icon: album-collection
+---
+
 # Modèles disponibles
 
 Albert API offre l’accès à une large gamme de modèles fondation open source d’IA générative. Nous mettons à jour régulièrement les modèles disponibles pour vous permettre d’utiliser les modèles qui font l’état de l’art.
@@ -105,7 +109,7 @@ Sans le streaming, modèle renvoie un tool call avec un content non vide. En str
 
 <summary>gemma-4-31b-it <img src="https://img.shields.io/badge/mod%C3%A8le_en_exp%C3%A9rimentation-green" alt="modèle en expérimentation"></summary>
 
-Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'images.&#x20;
+Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'images.
 
 {% hint style="warning" %}
 Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 2026. Candidat au remplacement du modèle `openweight-medium` à l'issue de cette période. A l'issue de cette phase d'expérimentation nous évaluerons a l'aide de vos retours si le modèle est viable pour une intégration pérenne dans Albert API.
@@ -136,7 +140,7 @@ Sans le streaming, le modèle renvoie un tool call avec un content vide. En stre
 {% hint style="info" icon="brain" %}
 **Comportement du reasoning**
 
-Gemma 4 est un modèle pouvant _raisonner_ (`Thinking`). Pour l'activer, il faut fournir cet argument dans le body du payload : `"chat_template_kwargs": {"enable_thinking": true}`.  
+Gemma 4 est un modèle pouvant _raisonner_ (`Thinking`). Pour l'activer, il faut fournir cet argument dans le body du payload : `"chat_template_kwargs": {"enable_thinking": true}`.
 {% endhint %}
 
 </details>
@@ -295,7 +299,7 @@ Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèl
 
 <summary>mistral-small-3-2-24b-instruct-2506</summary>
 
-Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'images.&#x20;
+Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'images.
 
 <a href="https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2506" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 

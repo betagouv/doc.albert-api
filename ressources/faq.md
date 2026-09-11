@@ -97,3 +97,10 @@ Lorsque le modèle moteur est saturé, c'est-à-dire qu'il reçoit trop de requ�
 Cette situation est temporaire. Pour prévenir ce problème en production nous vous recommandons de mettre en place une balance automatique de vos requête (fallback) vers un autre modèle. Pour vous aidez, Albert API met à disposition un endpoint `GET /health/models` pour surveiller l'état de chaque modèle (voir [API reference - Health](/broken/pages/3ce35942a3fcb3d9b1ca55463769ecf741eb9a23#get-health-models)).
 
 </details>
+
+<details>
+
+<summary><strong>Est-ce que je peux avoir une clef d'API sans expiration ?</strong></summary>
+
+Non, il est impossible d'obtenir une clef d'API sans expiration pour des raisons de sécurité. Toutes les clefs d'API ont une date d'expiration de maximum 1 an à compter de la date de création. Vous pouvez configurer une clef avec une date d'expiration inférieure à 1 an lors de la création.
+</details>

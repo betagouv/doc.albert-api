@@ -4,127 +4,103 @@ icon: key
 
 # Clefs API
 
-Albert API utilise un système de clef pour authentifier vos requêtes. Ces clefs sont des **Bearer** tokens.
+Albert API utilise un système de clef pour authentifier vos requêtes. Ces clefs sont des **Bearer** tokens, une chaine de caractères alphanumérique unique et secrète commencant par `sk-`. **Ces clefs d'API doivent être stockées en lieu sécurisé et ne doivent jamais être divulguées.**
 
 ### Création d'une clef
 
 Vous pouvez créer des clefs d'API de 2 manières, par API ou sur le Playground.
 
-{% tabs %}
+{% tabs %}  
 {% tab title="Playground" icon="globe-pointer" %}
-Connectez-vous sur le [playground](https://albert.playground.gouv.fr/), puis rendez-vous dans la page _API Keys_.
+Connectez-vous sur le [playground](https://albert.playground.gouv.fr/), rendez-vous dans la page _API Keys_ et cliquez sur le bouton _Create key_.
+
+**Attention, la clef est affichée intégralement une seule fois à la création.** Vous devez la copier dans un endroit sécurisé.
+
+<figure><img src="../.gitbook/assets/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
+
 {% endtab %}
 
 {% tab title="API" icon="square-terminal" %}
-Vous pouvez créer une clef d'API en appelant le endpout POST `/v1/keys`.<br>
+Vous pouvez créer une clef d'API en appelant le endpout POST `/v1/keys`. **Attention, vous devez disposer d'une clef API existante pour créer une nouvelle clef.** Cette méthode de création est utilisée pour renouveler des clefs de manière automatique. Si vous ne disposez pas d'une clef API existante, vous pouvez en créer une sur le Playground.
+
+Remplacez `$ALBERT_API_KEY` par une clef non expirée dans la commande ci-dessous.
 
 ```
-curl -x 
+curl -X POST "https://albert.api.etalab.gouv.fr/v1/keys" \
+  -H "Authorization: Bearer $ALBERT_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"name": "my-new-key", "expires": null}'
 ```
+
+Pour en savoir plus sur les endpoints `/v1/keys`, consultez l'API Reference [ici](https://guides.ia.numerique.gouv.fr/albert-api/api-reference/liste-des-endpoint/keys).
 {% endtab %}
 {% endtabs %}
 
+### Expiration des clefs
 
-
-
-
-#### Expiration des clefs
-
-**Toutes les clefs API ont une date d'expiration de maximum 1 an à compter de la date de création.**&#x20;
-
-Il est impossible d'obtenir une clef sans expiration.
-
-
-
-
-
-
-
-## Format des jetons
-
-Les secrets d’accès sont souvent préfixés par **`sk-`** et peuvent correspondre à un **JWT** encodé (contenant typiquement des identifiants utilisateur et de clé). Traitez la chaîne complète comme **opaque** : ne la parsez pas côté client pour la logique métier.
-
-## Créer une clé — `POST /v1/me/keys`
-
-Corps JSON **`CreateKey`** :
-
-* **`name`** (requis) — libellé pour retrouver la clé dans les listes ;
-* **`expires`** — horodatage Unix **en secondes** après lequel la clé n’est plus valide, ou `null` pour absence d’expiration explicite.
-
-Réponse **`CreateKeyResponse`** :
-
-* **`id`** — identifiant entier de la clé ;
-* **`token`** — secret **affiché intégralement une seule fois** à la création (selon configuration / environnement).
-
-{% hint style="danger" %}
-Le champ **`token`** n’est pas récupérable après coup par l’API documentée : enregistrez-le dans un coffre-fort de secrets (`ALBERT_API_KEY`, gestionnaire d’identifiants, vault). Toute perte implique la révocation et la création d’une nouvelle clé.
-{% endhint %}
-
-{% hint style="warning" %}
-⚠️ Comportement observé en test (runner) : `POST /v1/me/keys` peut renvoyer **uniquement** `id` (sans `token`). Dans ce cas, la méthode recommandée pour récupérer une nouvelle clé utilisable est de la générer via le **Playground** (qui affiche la clé une seule fois), puis de la stocker en lieu sûr.
-{% endhint %}
+**Toutes les clefs API ont une date d'expiration de maximum 1 an à compter de la date de création.** Vous pouvez configurer une clef avec une date d'expiration inférieure à 1 an lors de la création. Il est en revanche impossible d'obtenir une clef sans expiration pour des raisons de sécurité.
 
 **Exemple de requête :**
 
-{% tabs %}
-{% tab title="curl" %}
-```bash
-curl -sS "https://albert.api.etalab.gouv.fr/v1/me/keys" \
-  -H "Authorization: Bearer $ALBERT_EXISTANT" \
-  -H "Content-Type: application/json" \
-  -d '{"name": "ci-github", "expires": null}'
-```
+### Consulter ses clefs
+
+{% tabs %}  
+{% tab title="Playground" icon="globe-pointer" %}
+Vous pouvez consulter vos clefs sur la page _API Keys_ du [Playground](https://albert.playground.gouv.fr/).
+
+<figure><img src="../.gitbook/assets/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
+
 {% endtab %}
 
-{% tab title="Python" %}
-```python
-import os
-import requests
+{% tab title="API" icon="square-terminal" %}
+Vous pouvez consulter vos clefs en appelant le endpoint GET `/v1/keys`.
 
-resp = requests.post(
-    "https://albert.api.etalab.gouv.fr/v1/me/keys",
-    headers={
-        "Authorization": f"Bearer {os.environ['ALBERT_EXISTANT']}",
-        "Content-Type": "application/json",
-    },
-    json={"name": "ci-github", "expires": None},
-)
-resp.raise_for_status()
-print(resp.json())
+Remplacez `$ALBERT_API_KEY` par une clef non expirée dans la commande ci-dessous.
+
 ```
-{% endtab %}
-
-{% tab title="JavaScript" %}
-```javascript
-const resp = await fetch("https://albert.api.etalab.gouv.fr/v1/me/keys", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${process.env.ALBERT_EXISTANT}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ name: "ci-github", expires: null }),
-});
-
-if (!resp.ok) throw new Error(await resp.text());
-console.log(await resp.json());
+curl -X GET "https://albert.api.etalab.gouv.fr/v1/keys" \
+  -H "Authorization: Bearer $ALBERT_API_KEY"
 ```
+
+Vous pouvez également récupérer le détail d'une clef en appelant le endpoint GET `/v1/keys/{key}`.
+
+```
+curl -X GET "https://albert.api.etalab.gouv.fr/v1/keys/{key}" \
+  -H "Authorization: Bearer $ALBERT_API_KEY"
+```
+
+Remplacez `{key}` par l'identifiant de la clef que vous souhaitez récupérer.
+
+Pour en savoir plus sur les endpoints `/v1/keys`, consultez l'API Reference [ici](https://guides.ia.numerique.gouv.fr/albert-api/api-reference/liste-des-endpoint/keys).
 {% endtab %}
 {% endtabs %}
 
-## Lister les clés — `GET /v1/me/keys`
+## Révoquer une clef
 
-Retourne une liste paginée (`offset`, `limit`, `order_by`, `order_direction`) d’objets **`Key`** (`id`, `name`, `token`, `expires`, `created`, …). Le champ `token` est présent dans le schéma public — **traitez toute valeur affichée comme sensible** et ne la journalisez pas côté client public.
+{% tabs %}  
+{% tab title="Playground" icon="globe-pointer" %}
+Vous pouvez révoquer une clef sur la page _API Keys_ du [Playground](https://albert.playground.gouv.fr/) en cliquant sur le bouton _Delete_ de la clef que vous souhaitez révoquer.
 
-{% hint style="warning" %}
-⚠️ À vérifier — Politique réelle de masquage du secret sur les réponses `GET` en production (affichage complet vs préfixe) : valider sur votre compte avant d’afficher la liste à des utilisateurs finaux.
-{% endhint %}
+<figure><img src="../.gitbook/assets/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
 
-## Détail — `GET /v1/me/keys/{key}`
+**Attention, cette action est irréversible.** Une fois une clef révoquée, elle ne peut plus être utilisée.
 
-Consultation d’une entrée précise ; `key` est l’**identifiant entier** de la clé.
+{% tab title="API" icon="square-terminal" %}
+Vous pouvez révoquer une clef en appelant le endpoint DELETE `/v1/keys/{key}`.
 
-## Révoquer — `DELETE /v1/me/keys/{key}`
+```
+curl -X DELETE "https://albert.api.etalab.gouv.fr/v1/keys/{key}" \
+  -H "Authorization: Bearer $ALBERT_API_KEY"
+```
 
-Supprime la clé identifiée par son **`id`**. Réponse **`204`** sans corps en cas de succès.
+Remplacez `{key}` par l'identifiant de la clef que vous souhaitez révoquer et `$ALBERT_API_KEY` par une clef non expirée dans la commande ci-dessous.
 
-Pour le profil utilisateur (budget, limites) : [Quotas & limites](quotas.md).
+**Attention, cette action est irréversible.** Une fois une clef révoquée, elle ne peut plus être utilisée.
+
+Pour en savoir plus sur les endpoints `/v1/keys`, consultez l'API Reference [ici](https://guides.ia.numerique.gouv.fr/albert-api/api-reference/liste-des-endpoint/keys).
+{% endtab %}
+{% endtabs %}
+
+### Limites de consommation
+
+Toutes vos clefs d'API partagent les mêmes limites de consommation. En effet, ces limites sont appliquées au niveau de votre utilisateur. Pour en savoir plus sur les limites de consommation, consultez la section [Quotas & limites](quotas.md).

@@ -24,7 +24,7 @@ Si vous êtes redirigez sur une page vous indiquant que votre accès est refusé
 
 Une fois connectez à l'interface Playground, rendez-vous sur la page [_API Keys_](https://albert.playground.etalab.gouv.fr/keys). Sur cette page créer vous une clef en lui attribuant un nom. Vous pouvez configurer la durée d'expiration de votre clef jusqu'à un an.&#x20;
 
-<figure><img src="../.gitbook/assets/Screenshot 2026-08-19 at 11.16.03.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
 
 {% hint style="info" %}
 Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas l'afficher** ensuite.\

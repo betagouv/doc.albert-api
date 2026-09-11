@@ -11,7 +11,7 @@ icon: comment-question
 
 Lors de votre connexion au [playground](https://albert.playground.etalab.gouv.fr/) d'Albert API via ProConnect, vous arrivez sur la page suivante vous indiquant que votre accès n'est pas autorisé.
 
-<figure><img src="../.gitbook/assets/Screenshot 2026-08-18 at 12.03.30.png" alt="" width="375"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/playground-access-denied.png" alt="" width="375"><figcaption></figcaption></figure>
 
 {% hint style="info" icon="circle-info" %}
 Si vous souhaitez vous connecter avec un autre compte **cliquez sur&#x20;**_**Logout pour réinitialiser la connexion**._&#x20;

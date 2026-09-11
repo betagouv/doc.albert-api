@@ -14,8 +14,8 @@ Une clef d'API est un identifiant de connexion (_Bearer token_) permettant de vo
 {% step %}
 ### Se connecter au playground
 
-Rendez vous sur [https://albert.playground.etalab.gouv.fr](https://albert.playground.etalab.gouv.fr/) et connectez vous avec Proconnect ([en savoir plus](https://www.proconnect.gouv.fr/)).\
-\
+Rendez vous sur [https://albert.playground.etalab.gouv.fr](https://albert.playground.etalab.gouv.fr/) et connectez vous avec Proconnect ([en savoir plus](https://www.proconnect.gouv.fr/)).
+
 Si vous êtes redirigez sur une page vous indiquant que votre accès est refusé, merci de consulter [la section de la FAQ dédiée](../ressources/faq.md#pourquoi-mon-compte-nest-pas-autorise).
 {% endstep %}
 
@@ -25,8 +25,8 @@ Si vous êtes redirigez sur une page vous indiquant que votre accès est refusé
 Une fois connectez à l'interface Playground, rendez-vous sur la page [_API Keys_](https://albert.playground.etalab.gouv.fr/keys). Sur cette page créer vous une clef en lui attribuant un nom. Vous pouvez configurer la durée d'expiration de votre clef jusqu'à un an.
 
 {% hint style="info" %}
-Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas l'afficher** ensuite.\
-\
+Après création, la clé est affichée **une seule fois**. Copiez-la immédiatement et conservez-la dans un gestionnaire de secrets (ou variable d’environnement), car **vous ne pourrez pas l'afficher** ensuite.
+
 Pour en savoir plus sur les clefs d'API, consultez la documentation dédiée [ici](../compte-and-usage/api-keys.md).
 {% endhint %}
 {% endstep %}

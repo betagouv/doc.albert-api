@@ -10,14 +10,13 @@ Albert API utilise un système de clef pour authentifier vos requêtes. Ces clef
 
 Vous pouvez créer des clefs d'API de 2 manières, par API ou sur le Playground.
 
-{% tabs %}  
+{% tabs %}
 {% tab title="Playground" icon="globe-pointer" %}
 Connectez-vous sur le [playground](https://albert.playground.gouv.fr/), rendez-vous dans la page _API Keys_ et cliquez sur le bouton _Create key_.
 
+<figure><img src="../.gitbook/assets/screenshots/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
+
 **Attention, la clef est affichée intégralement une seule fois à la création.** Vous devez la copier dans un endroit sécurisé.
-
-<figure><img src="../.gitbook/assets/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
-
 {% endtab %}
 
 {% tab title="API" icon="square-terminal" %}
@@ -44,12 +43,9 @@ Pour en savoir plus sur les endpoints `/v1/keys`, consultez l'API Reference [ici
 
 ### Consulter ses clefs
 
-{% tabs %}  
+{% tabs %}
 {% tab title="Playground" icon="globe-pointer" %}
 Vous pouvez consulter vos clefs sur la page _API Keys_ du [Playground](https://albert.playground.gouv.fr/).
-
-<figure><img src="../.gitbook/assets/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
-
 {% endtab %}
 
 {% tab title="API" icon="square-terminal" %}
@@ -77,13 +73,14 @@ Pour en savoir plus sur les endpoints `/v1/keys`, consultez l'API Reference [ici
 
 ## Révoquer une clef
 
-{% tabs %}  
+{% tabs %}
 {% tab title="Playground" icon="globe-pointer" %}
-Vous pouvez révoquer une clef sur la page _API Keys_ du [Playground](https://albert.playground.gouv.fr/) en cliquant sur le bouton _Delete_ de la clef que vous souhaitez révoquer.
+Vous pouvez révoquer une clef sur la page _API Keys_ du [Playground](https://albert.playground.gouv.fr/) en cliquant sur le bouton _Delete_ de la clef que vous souhaitez révoquer.<br>
 
-<figure><img src="../.gitbook/assets/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/screenshots/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
 
 **Attention, cette action est irréversible.** Une fois une clef révoquée, elle ne peut plus être utilisée.
+{% endtab %}
 
 {% tab title="API" icon="square-terminal" %}
 Vous pouvez révoquer une clef en appelant le endpoint DELETE `/v1/keys/{key}`.

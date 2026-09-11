@@ -11,13 +11,11 @@ icon: comment-question
 
 Lors de votre connexion au [playground](https://albert.playground.etalab.gouv.fr/) d'Albert API via ProConnect, vous arrivez sur la page suivante vous indiquant que votre accès n'est pas autorisé.
 
-<figure><img src="../.gitbook/assets/playground-access-denied.png" alt="" width="375"><figcaption></figcaption></figure>
-
 {% hint style="info" icon="circle-info" %}
-Si vous souhaitez vous connecter avec un autre compte **cliquez sur&#x20;**_**Logout pour réinitialiser la connexion**._&#x20;
+Si vous souhaitez vous connecter avec un autre compte **cliquez sur&#x20;**_**Logout pour réinitialiser la connexion**._
 {% endhint %}
 
-**4 cas de figures vous permettent d'accéder à Albert API :** <br>
+**4 cas de figures vous permettent d'accéder à Albert API :**<br>
 
 1. **🇫🇷 Je suis une administration de l'État ou un organisme sous sa tutelle**\
    \
@@ -39,19 +37,16 @@ Si vous souhaitez vous connecter avec un autre compte **cliquez sur&#x20;**_**Lo
    \
    Par principe, les administrations territoriales ne sont pas éligible à l'accès à Albert API. En effet, seules les administrations de l'État ou les organismes sous sa tutelle peuvent y prétendre.\
    \
-   Toutefois, certaines administrations territoriales disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API. \
+   Toutefois, certaines administrations territoriales disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.\
    \
    Si malgré l'utilisation de votre adresse professionnelle votre compte est toujours bloqué, il convient alors de réaliser une demande d'accès aux produits et services mis à disposition par la DINUM pour autoriser votre administration. Pour cela vous rendez-vous sur le [DataPass](https://datapass.api.gouv.fr/formulaires/produits_dinum/demande/nouveau) dédié.\
    \
    Veillez à fournir toutes les informations qui vous sembleraient utiles à porter à notre connaissance pour déterminer votre lien avec l'État.
-
-
-
 4. **🤝 Je suis association chargée d'une mission de service publique**\
    \
    Par principe, les associations ne sont pas éligible à l'accès à Albert API. En effet, seules les administrations de l'État ou les organismes sous sa tutelle peuvent y prétendre.\
    \
-   Toutefois, certaines associations chargée d'une mission de service publique disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API. \
+   Toutefois, certaines associations chargée d'une mission de service publique disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.\
    \
    Si malgré l'utilisation de votre adresse professionnelle votre compte est toujours bloqué, il convient alors de réaliser une demande d'accès aux produits et services mis à disposition par la DINUM pour autoriser votre administration. Pour cela vous rendez-vous sur le [DataPass](https://datapass.api.gouv.fr/formulaires/produits_dinum/demande/nouveau) dédié.\
    \
@@ -71,9 +66,9 @@ Malheureusement vous n'êtes pas éligible à Albert API. Si vous pensez qu'il s
 
 <summary><strong>Comment savoir si je relève d'une administration de l'État ou d'un organisme placé sous sa tutelle ?</strong></summary>
 
-La DINUM met à disposition ses services, dont fait partie Albert API, aux administrations de l’État et aux organismes placés sous sa tutelle. \
+La DINUM met à disposition ses services, dont fait partie Albert API, aux administrations de l’État et aux organismes placés sous sa tutelle.\
 \
-Pour ce deuxième cas, la tutelle de l'État n'a pas l'obligation d'être exclusive. En effet, une co-tutelle suffit pour être éligible à Albert API. Cela concerne par exemple certaines administrations territoriales ou associations chargées d'une mission d'intérêt général.  \
+Pour ce deuxième cas, la tutelle de l'État n'a pas l'obligation d'être exclusive. En effet, une co-tutelle suffit pour être éligible à Albert API. Cela concerne par exemple certaines administrations territoriales ou associations chargées d'une mission d'intérêt général.\
 \
 Ce lien avec l'État est déterminé dans les documents qui définissent vos activités (loi, décret, arrêté, convention constitutive, statuts, etc.). **En cas de difficultés rapprochez vous de votre service juridique.**
 
@@ -95,13 +90,10 @@ Nous n'activons volontairement pas CORS sur cette API. L'API est destinée à ê
 
 <details>
 
-<summary><strong>Pourquoi l'API renvoi une erreur 503  « Model is too busy » ?</strong></summary>
+<summary><strong>Pourquoi l'API renvoi une erreur 503 « Model is too busy » ?</strong></summary>
 
 Lorsque le modèle moteur est saturé, c'est-à-dire qu'il reçoit trop de requête, les endpoints concernés peuvent répondre une erreur **503** **« Model is too busy »**.\
 \
 Cette situation est temporaire. Pour prévenir ce problème en production nous vous recommandons de mettre en place une balance automatique de vos requête (fallback) vers un autre modèle. Pour vous aidez, Albert API met à disposition un endpoint `GET /health/models` pour surveiller l'état de chaque modèle (voir [API reference - Health](/broken/pages/3ce35942a3fcb3d9b1ca55463769ecf741eb9a23#get-health-models)).
 
-
-
 </details>
-

@@ -109,7 +109,8 @@ Sous Windows avec Git Bash, ajoutez `"shell": "C:\\Program Files\\Git\\bin\\bash
 ```
 
 **Pour fonctionner avec Albert API Pi doit utiliser un proxy afin que l'ensemble des tools call fonctionnent.** \
-Pour faire fonction Pi, nous préconisons l'utilisation de **llm-proxy**, un proxy local développé par Jérôme Bousquié (Université Toulouse Capitole) et Olivier Booklage (académie de Bordeaux), sous Licence Ouverte 2.0 (Etalab), maintenu par ses auteurs et non par la DINUM. Llm-proxy remet les appels d'outils au format attendu par l'agent, absorbe les limites de débit (il patiente au lieu de renvoyer une erreur) et réessaie en cas d'indisponibilité passagère d'AlbertAPI. C'est lui qui détient votre clé Albert : Pi n'en a pas besoin, d'où `"apiKey": "none"`.
+Par exemple, des membres de la communauté ont développé **llm-proxy**. Il s'agit d'un proxy local mis au point par Jérôme Bousquié (Université Toulouse Capitole) et Olivier Booklage (académie de Bordeaux), sous Licence Ouverte 2.0 (Etalab). Llm-proxy remet les tools calls au format attendu par l'agent, absorbe les limites de débit (il patiente au lieu de renvoyer une erreur) et réessaie en cas d'indisponibilité passagère d'AlbertAPI. \
+Llm-proxy stocke votre clé Albert : Pi n'en a pas besoin, d'où `"apiKey": "none"` dans cette configuration.
 
 * Dépôt et documentation : [https://codeberg.org/jbousquie/llm-proxy](https://codeberg.org/jbousquie/llm-proxy)
 * Guide dédié à Pi : [https://codeberg.org/jbousquie/llm-proxy/src/branch/master/docs/clients/pi.md](https://codeberg.org/jbousquie/llm-proxy/src/branch/master/docs/clients/pi.md)
@@ -122,6 +123,10 @@ STREAM_ENABLED=false
 ```
 
 Lancez `llm-proxy` (il écoute sur `http://127.0.0.1:8080`) et laissez-le tourner pendant toute votre session Pi. `STREAM_ENABLED=false` correspond à la configuration que nous avons testée.
+
+{% hint style="warning" %}
+Llm-proxy est maintenu par ses auteurs et non par la DINUM.&#x20;
+{% endhint %}
 
 ## Cline (terminal)
 

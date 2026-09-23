@@ -12,7 +12,7 @@ Vous pouvez créer des clefs d'API de 2 manières, par API ou sur le Playground.
 
 {% tabs %}
 {% tab title="Playground" icon="globe-pointer" %}
-Connectez-vous sur le [playground](https://albert.playground.gouv.fr/), rendez-vous dans la page _API Keys_ et cliquez sur le bouton _Create key_.
+Connectez-vous sur le [playground](https://albert.playground.etalab.gouv.fr/), rendez-vous dans la page _API Keys_ et cliquez sur le bouton _Create key_.
 
 <figure><img src="../.gitbook/assets/screenshots/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
 
@@ -45,7 +45,7 @@ Pour en savoir plus sur les endpoints `/v1/keys`, consultez l'API Reference [ici
 
 {% tabs %}
 {% tab title="Playground" icon="globe-pointer" %}
-Vous pouvez consulter vos clefs sur la page _API Keys_ du [Playground](https://albert.playground.gouv.fr/).
+Vous pouvez consulter vos clefs sur la page _API Keys_ du [Playground](https://albert.playground.etalab.gouv.fr/).
 {% endtab %}
 
 {% tab title="API" icon="square-terminal" %}
@@ -75,7 +75,7 @@ Pour en savoir plus sur les endpoints `/v1/keys`, consultez l'API Reference [ici
 
 {% tabs %}
 {% tab title="Playground" icon="globe-pointer" %}
-Vous pouvez révoquer une clef sur la page _API Keys_ du [Playground](https://albert.playground.gouv.fr/) en cliquant sur le bouton _Delete_ de la clef que vous souhaitez révoquer.<br>
+Vous pouvez révoquer une clef sur la page _API Keys_ du [Playground](https://albert.playground.etalab.gouv.fr/) en cliquant sur le bouton _Delete_ de la clef que vous souhaitez révoquer.<br>
 
 <figure><img src="../.gitbook/assets/screenshots/playground-api-keys.png" alt=""><figcaption></figcaption></figure>
 

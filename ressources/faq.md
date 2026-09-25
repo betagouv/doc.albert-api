@@ -104,3 +104,15 @@ Cette situation est temporaire. Pour prévenir ce problème en production nous v
 
 Non, il est impossible d'obtenir une clef d'API sans expiration pour des raisons de sécurité. Toutes les clefs d'API ont une date d'expiration de maximum 1 an à compter de la date de création. Vous pouvez configurer une clef avec une date d'expiration inférieure à 1 an lors de la création.
 </details>
+
+<details>
+<summary><strong>Pourquoi le playground m'affiche une erreur "removeChild" ?</strong></summary>
+
+Si vous rencontrez l'erreur si dessous en vous connectant au playground d'Albert API, cette erreur est due à un bug dans le code JavaScript de votre navigateur.
+<figure><img src="../.gitbook/assets/screenshots/playground-removechild-error.png" alt=""><figcaption></figcaption></figure>
+
+Elle se produit lorsque le navigateur cherche à traduire la page web.
+Pour corriger cette erreur, vous devez désactiver les extensions de traduction qui sont actives dans votre navigateur.
+
+Si cela ne suffit pas, vous pouvez contacter le support en vous rendant sur la page [Support](support.md).
+</details>

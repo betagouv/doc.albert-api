@@ -15,18 +15,55 @@ La **version d'Albert API** exposée sur `https://albert.api.etalab.gouv.fr/open
 
 <details>
 
+<summary><strong>0.8.0 (beta)</strong></summary>
+
+<mark style="color:red;">**Date de déploiement : 21 septembre 2026**</mark>
+
+
+#### 📝 Refonte de la page "Usage" du Playground
+
+La page "Usage" du Playground a été entièrement revue pour offrir une vue plus claire et détaillée de votre consommation d'API, clé par clé. Vous pouvez maintenant visualiser plus facilement vos quotas, les consommations par modèle ou par clé, ainsi qu'historiser votre activité. Cette mise à jour vise à simplifier le suivi de votre usage et à améliorer la compréhension de la facturation.
+
+
+#### 📊 Prise en compte des "completions tokens" dans le calcul TPM/TPD
+
+Le calcul des limites TPM ("tokens par minute") et TPD ("tokens par jour") intègre désormais non seulement les tokens "prompt", mais également les tokens générés en réponse ("completions"). Cette évolution permet un contrôle des quotas plus cohérent avec la consommation réelle de ressources pour l’ensemble des appels. Nous vous invitons à prendre en compte cette modification dans votre suivi et vos intégrations : vos quotas pourront atteindre leur limite plus rapidement si vos générations sont volumineuses.
+
+
+</details>
+
+<details>
+
+<summary><strong>0.7.0 (beta)</strong></summary>
+
+<mark style="color:red;">**Date de déploiement : 9 septembre 2026**</mark>
+
+La version 0.7.0 d'Albert API homogénéise plusieurs contrats d'API côté compte, usage et clés. Les anciens chemins restent disponibles sous forme d'alias dépréciés lorsque cela est indiqué.
+
+Nous vous invitons à vérifier les changements ci-dessous et à mettre à jour vos intégrations si vous êtes concernés.
+
+#### 📦 Renommage d'endpoints
+
+* L'endpoint `/v1/me/info` est renommé en `/v1/me`. Un alias déprécié est conservé sur l'ancien chemin.
+* L'endpoint `/v1/me/keys` est renommé en `/v1/keys`. Un alias déprécié est conservé sur l'ancien chemin.
+* L'endpoint `GET /v1/me/usage` est déplacé vers `GET /v1/usage`. Un alias déprécié est conservé sur l'ancien chemin.
+
+</details>
+
+<details>
+
 <summary><strong>0.6.0 (beta)</strong></summary>
 
 <mark style="color:red;">**Date de déploiement : 31 août 2026**</mark>
 
 #### **🔐 Connexion au Playground via ProConnect**
 
-Dans un souci d'améliorer la sécurité d'Albert API, la connexion au Playground se fait désormais via ProConnect, le SSO de l'Etat.\
-\
-Vos comptes existants et vos clés d'API sont conservés : aucune action de migration n'est nécessaire.\
-\
-⚠️ Connectez-vous avec l'adresse professionnelle exacte associée à votre compte actuel (celle de votre email de confirmation). Une autre adresse créera un nouveau compte, vide, sans vos clés. **Si votre email Albert API ne correspond pas à votre adresse ProConnect, merci de nous contacter pour faire le matching (albert.api@numerique.gouv.fr).**\
-\
+Dans un souci d'améliorer la sécurité d'Albert API, la connexion au Playground se fait désormais via ProConnect, le SSO de l'Etat.
+
+Vos comptes existants et vos clés d'API sont conservés : aucune action de migration n'est nécessaire.
+
+⚠️ Connectez-vous avec l'adresse professionnelle exacte associée à votre compte actuel (celle de votre email de confirmation). Une autre adresse créera un nouveau compte, vide, sans vos clés. **Si votre email Albert API ne correspond pas à votre adresse ProConnect, merci de nous contacter pour faire le matching (albert.api@numerique.gouv.fr).**
+
 Si l'accès vous est refusé, rendez-vous sur notre [FAQ](faq.md#pourquoi-mon-compte-nest-pas-autorise) pour connaître la démarche à suivre.
 
 #### 🎁 Phase de test pour Gemma 4
@@ -73,7 +110,7 @@ Ce modèle d'embeddings multimodal, accessible via l'endpoint `/v1/embeddings`, 
 
 Une documentation détaillée sera publiée le **25 juillet**.
 
-#### &#x20;🗑️ Suppression de fonctionnalités dépréciées
+#### 🗑️ Suppression de fonctionnalités dépréciées
 
 Comme annoncé lors de la sortie de la version **0.4.1**, plusieurs fonctionnalités dépréciées seront définitivement supprimées avec la version **0.5.0**.
 

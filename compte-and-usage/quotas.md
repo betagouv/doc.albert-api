@@ -26,7 +26,7 @@ Les tokens sont comptabilisés uniquements sur des endpoints suivants : `/v1/cha
 
 * `/v1/chat/completions` 
 
-    Les tokens sont comptabilisés **uniquement sur les messages** de la requête, pas les tokens générés par le modèle.
+    **Les tokens sont comptabilisés sur tous les messages de la requête ainsi que sur tous les tokens générés par le modèle (content et reasoning)**.
     
     Voici un exemple de requête qui est comptabilisée comme 37 tokens:
     ```json

@@ -30,7 +30,11 @@ curl -s https://albert.api.etalab.gouv.fr/v1/models \
 
 Pour du code agentique, choisissez un modèle qui prend en charge les appels d'outils (voir [Function calling & outils](https://guides.ia.numerique.gouv.fr/albert-api/guides/function-calling)) et dispose d'une fenêtre de contexte large. Les exemples ci-dessous utilisent `deepseek-v4-flash-0731` (131 072 tokens de contexte au 16 septembre 2026).
 
-## OpenCode (terminal)
+## OpenCode v1 (terminal)
+
+{% hint style="info" %}
+OpenCode a lancé [OpenCode v2](https://opencode.ai/v2/docs) en Septembre 2026. L'installation ci-dessous fonctionne avec [OpenCode V1](https://opencode.ai/docs).
+{% endhint %}
 
 * Site officiel et installation : [https://opencode.ai/](https://opencode.ai/)
 * Documentation de configuration : [https://opencode.ai/docs/config/](https://opencode.ai/docs/config/)

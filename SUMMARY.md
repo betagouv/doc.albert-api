@@ -36,7 +36,7 @@
 * [OCR - Reconnaissance Optique de Caractères](guides/ocr.md "OCR")
 * [RAG - Génération Augmentée par Récupération](guides/rag.md "RAG")
 * [Reranking](guides/reranking.md)
-* [Connecter un agent de code à Albert API](guides/ide.md)
+* [Coder avec Albert API](guides/code.md)
 
 ## Compte & usage
 

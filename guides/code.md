@@ -1,4 +1,7 @@
-# Connecter un agent de code à Albert API
+---
+icon: "terminal"
+---
+# Coder avec Albert API
 
 Albert API expose une API compatible OpenAI. Vous pouvez donc configurer la plupart des agents de code (en terminal et dans votre éditeur) pour qu'ils utilisent les modèles souverains de l'État hébergés sur AlbertAPI
 

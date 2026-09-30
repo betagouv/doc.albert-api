@@ -1,24 +1,15 @@
+---
+icon: "gauge-simple-max"
+---
+# Quotas et limites
+
 Chaque compte dispose de limites de consommation. Ces limites sont configurées par l'administration de la plateforme. Elles sont de 2 types : limites par token et limites par requête. Vous pouvez consulter les limites par token et par requête pour chaque modèle en cliquant [ici](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/).
 
 ## Limites par token
 
 Dans Albert API, les limites par tokens sont exprimées en **tokens par minute (TPM) et par jour (TPD)**. Vous pouvez consulter les limites par token pour chaque modèle en cliquant [ici](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/).
 
-### Qu'est ce qu'un token ?
 
-Un token est une unité de mesure de la consommation des LLM. Un token correspond à un mot ou une partie de mot. 
-
-Exemple : 
-* "Albert" → 1 token
-* "centraliser" → 2 tokens ("centr" et "aliser")
-
-{% hint style="info" %}
-La ponctuation est comptabilisée comme un token !
-{% endhint %}
-
-Le *tokenizer*, c'est-à-dire l'algorithme permettant de transformer le texte en tokens, est généralement celui du modèle utilisé. Sur Albert API, pour que toutes les requêtes soient comptabilisées dans les mêmes conditions, nous utilisons un tokenizer opensource, *[Tiktoken o200k_base](https://github.com/openai/tiktoken)*.
-
-Vous pouvez tester le tokenizer sur des textes sur [ce simulateur](https://tiktokenizer.vercel.app/?model=o200k_base).
 
 ### Comment sont comptabilisés les tokens ?
 

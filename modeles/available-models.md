@@ -32,6 +32,13 @@ Model d'embeddings de référence pour la vectorisation de texte.
 | **Dimension maximale des vecteurs** | 1024                                   |
 | **Maximum de texte par batch**      | 64                                     |
 
+**Limites d'usage :**
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | 1000 | 128 000 | 1 280 000 |
+| Production | 100 | 5000 | 246 000 | Illimité |
+
 ### Capacités
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Text vectorisation</strong></td><td>/v1/embeddings</td><td><a href="../guides/embeddings.md">embeddings.md</a></td><td><a href="../.gitbook/assets/icons/arrow-up-1-9.svg">arrow-up-1-9.svg</a></td></tr></tbody></table>

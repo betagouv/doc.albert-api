@@ -41,8 +41,8 @@
 ## Compte & usage
 
 * [Clefs API](compte-and-usage/api-keys.md)
-* [Quotas & limites](compte-and-usage/quotas.md)
-* [Usage & facturation](compte-and-usage/usage.md)
+* [Quotas et limites](compte-and-usage/quotas.md)
+* [Usage et facturation](compte-and-usage/usage.md)
 
 ## Ressources
 

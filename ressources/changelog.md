@@ -15,6 +15,42 @@ La **version d'Albert API** exposée sur `https://albert.api.etalab.gouv.fr/open
 
 <details>
 
+<summary><strong>0.9.0 (beta)</strong></summary>
+
+<mark style="color:red;">**Date de déploiement : 19 octobre 2026**</mark>
+
+#### 🔑 Simplification de la gestion des clés
+
+Vous pouvez filtrer les clés dans le playground selon leur statut : active, expirée ou révoquée. Les noms des clés n'ont plus l'obligation d'être uniques. Vous pouvez maintenant renommer vos clés directement depuis le playground.
+
+#### 🔧 Fin du built-in tool `search` dans `/v1/chat/completions`
+
+L’outil `search` sur `POST /v1/chat/completions` (`tools: [{"type": "search", ...}]` et `search_results`) est supprimé. Déprécié depuis la version 0.5.0, nous souhaitons revoir en profondeur le RAG sur Albert API durant les prochaines versions.
+
+Si vous utilisiez l'outil `search` dans vos requêtes, vous devez le remplacer par la combinaison de l'usage de `/v1/search` et `/v1/chat/completion` pour un RAG maîtrisé.
+
+#### ⏱️ Rate limiting
+
+Dorénavant, vous trouverez dans les headers des réponses à vos modèles l'état des limites de votre compte. Vous pouvez ainsi implémenter facilement des systèmes de fallback en cas de dépassement de limite. Chaque réponse inclut désormais également l’en-tête `X-Request-ID` pour identifier la requête.
+
+Les compteurs RPM / RPD / TPM / TPD du routeur ne sont débités qu’après un appel provider réussi. Ils ne sont pas débités sur un `429` ni sur un échec d’inférence.
+
+Si vous coupez le stream du chat en cours de génération, les tokens déjà livrés sont dorénavant comptabilisés dans votre quota.
+
+##### 💣 Compatibilité Pi / OpenCodeV2 et multi-tools
+
+Les schémas chat, embeddings et OCR ne documentent plus certains champs. Les clés non déclarées sont toujours relayées au provider, sans valeur par défaut côté gateway.
+
+Cela vise à résoudre les problèmes de compatibilité sur Pi et OpenCodeV2 qui rendaient nécessaire d'utiliser un proxy intermédiaire comme [LLM Proxy](https://codeberg.org/jbousquie/llm-proxy). De même, cela corrige un problème remonté avec le SDK OpenAI qui ne passait pas `parallel_tool_calls=true` quand plusieurs tools étaient définis dans la requête.
+
+#### ❗️ Simplification des types de modèles
+
+Le type de routeur `image-text-to-text` est déprécié, remplacé par `text-generation`. Cela ne conduit à aucun changement fonctionnel.
+
+</details>
+
+<details>
+
 <summary><strong>0.8.0 (beta)</strong></summary>
 
 <mark style="color:red;">**Date de déploiement : 21 septembre 2026**</mark>
@@ -28,7 +64,6 @@ La page "Usage" du Playground a été entièrement revue pour offrir une vue plu
 #### 📊 Prise en compte des "completions tokens" dans le calcul TPM/TPD
 
 Le calcul des limites TPM ("tokens par minute") et TPD ("tokens par jour") intègre désormais non seulement les tokens "prompt", mais également les tokens générés en réponse ("completions"). Cette évolution permet un contrôle des quotas plus cohérent avec la consommation réelle de ressources pour l’ensemble des appels. Nous vous invitons à prendre en compte cette modification dans votre suivi et vos intégrations : vos quotas pourront atteindre leur limite plus rapidement si vos générations sont volumineuses.
-
 
 </details>
 

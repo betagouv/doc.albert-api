@@ -3,81 +3,88 @@ icon: "gauge-simple-max"
 ---
 # Quotas et limites
 
-Chaque compte dispose de limites de consommation. Ces limites sont configurées par l'administration de la plateforme. Elles sont de 2 types : limites par token et limites par requête. Vous pouvez consulter les limites par token et par requête pour chaque modèle en cliquant [ici](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/).
+Chaque compte dispose de limites de consommation. Ces limites sont configurées par la DINUM. Elles sont de 2 types : limites par token et limites par requête. Vous pouvez consulter les limites par token et par requête pour chaque modèle sur la documentation des modèles disponibles [ici](../modeles/available-models.md).
 
 ## Limites par token
 
-Dans Albert API, les limites par tokens sont exprimées en **tokens par minute (TPM) et par jour (TPD)**. Vous pouvez consulter les limites par token pour chaque modèle en cliquant [ici](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/).
+Dans Albert API, les limites par tokens sont exprimées en **tokens par minute (TPM) et par jour (TPD)**.
 
-
+{% hint style="info" icon="lightbulb" %}
+Si vous vous demandez ce qu'est un token ou comment le texte est découpé en tokens, consultez notre FAQ *[Qu'est ce qu'un token ?](../ressources/faq.md#quest-ce-quun-token)*.
+{% endhint %}
 
 ### Comment sont comptabilisés les tokens ?
 
 Les tokens sont comptabilisés uniquements sur des endpoints suivants : `/v1/chat/completions`, `/v1/embeddings` et `/v1/rerank`. Ils sont comptabilisés différement selon les endpoints.
 
-* `/v1/chat/completions` 
+{% tabs %}
+{% tab title="/v1/chat/completions" %}
 
-    **Les tokens sont comptabilisés sur tous les messages de la requête ainsi que sur tous les tokens générés par le modèle (content et reasoning)**.
-    
-    Voici un exemple de requête qui est comptabilisée comme 37 tokens:
-    ```json
-    {
-        "model": "openweight-large",
-        "messages": [
-            {
-                "role": "system",
-                "content": "Tu es un assistant de chat qui répond à des questions." → 12 tokens
-            },
-            {
-                "role": "user",
-                "content": "Bonjour, comment allez-vous ?" → 6 tokens
-            }
-            {
-                "role": "assistant",
-                "content": "Je vais bien, merci pour votre question." → 9 tokens
-            }
-            {
-                "role": "user",
-                "content": "Quel est votre nom ?" → 5 tokens
-            }
-            {
-                "role": "assistant",
-                "content": "Je m'appelle Albert." → 5 token
-            }
-        ]
-    }
-    ```
+**Les tokens sont comptabilisés sur tous les messages de la requête ainsi que sur tous les tokens générés par le modèle (content et reasoning)**.
 
-* `/v1/embeddings`
+Voici un exemple de requête qui est comptabilisée comme 37 tokens:
+```json
+{
+    "model": "openweight-large",
+    "messages": [
+        {
+            "role": "system",
+            "content": "Tu es un assistant de chat qui répond à des questions." → 12 tokens
+        },
+        {
+            "role": "user",
+            "content": "Bonjour, comment allez-vous ?" → 6 tokens
+        }
+        {
+            "role": "assistant",
+            "content": "Je vais bien, merci pour votre question." → 9 tokens
+        }
+        {
+            "role": "user",
+            "content": "Quel est votre nom ?" → 5 tokens
+        }
+        {
+            "role": "assistant",
+            "content": "Je m'appelle Albert." → 5 token
+        }
+    ]
+}
+```
+{% endtab %}
+{% tab title="/v1/embeddings" %}
 
-    Les tokens sont comptabilisés **uniquement sur les inputs** de la requête.
+Les tokens sont comptabilisés **uniquement sur les inputs** de la requête.
 
-    Voici un exemple de requête qui est comptabilisée comme 23 tokens:
-    ```json
-    {
-        "model": "openweight-embeddings-large",
-        "input": [
-            "Albert API est un outil de IA open source.", → 10 tokens
-            "Il est développé par la communauté de l'IA open source." → 13 tokens
-        ]
-    }
-    ```
+Voici un exemple de requête qui est comptabilisée comme 23 tokens:
+```json
+{
+    "model": "openweight-embeddings-large",
+    "input": [
+        "Albert API est un outil de IA open source.", → 10 tokens
+        "Il est développé par la communauté de l'IA open source." → 13 tokens
+    ]
+}
+```
 
-* `/v1/rerank`
+{% endtab %}
+{% tab title="/v1/rerank" %}
 
-    Les tokens sont comptabilisés **uniquement sur le query et les documents** de la requête.
+Les tokens sont comptabilisés **uniquement sur le query et les documents** de la requête.
 
-    Voici un exemple de requête qui est comptabilisée comme 33 tokens:
-    ```json
-    {
-        "model": "openweight-rerank-large",
-        "query": "Albert API est un outil de IA open source.", → 10 tokens
-        "documents": [
-            "Albert API est un outil de IA open source.", → 10 tokens
-            "Il est développé par la communauté de l'IA open source." → 13 tokens
-        ]
-    }
-    ```
+Voici un exemple de requête qui est comptabilisée comme 33 tokens:
+```json
+{
+    "model": "openweight-rerank-large",
+    "query": "Albert API est un outil de IA open source.", → 10 tokens
+    "documents": [
+        "Albert API est un outil de IA open source.", → 10 tokens
+        "Il est développé par la communauté de l'IA open source." → 13 tokens
+    ]
+}
+```
+{% endtab %}
+{% endtabs %}
+
 
 ## Limites par requête
 
@@ -118,26 +125,8 @@ En complément de vos limites propres au compte (champ `limits` dans `GET /v1/me
 
 [Tarifs et limites](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/)
 
-| Famille de modèles (ex.) | Accès | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- | --- |
-| `openai/gpt-oss-120b` (chat) | expérimentation | 10 | 1000 | 128 000 | 1 280 000 |
-| `openai/gpt-oss-120b` (chat) | production | 50 | 5000 | 246 000 | Illimité |
-| `mistralai/Mistral-Small-*` / `Ministral-*` (chat) | expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| `mistralai/Mistral-Small-*` / `Ministral-*` (chat) | production | 100 | 50 000 | 246 000 | illimité |
-| `Qwen/Qwen3-Coder-*` (code) | expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| `Qwen/Qwen3-Coder-*` (code) | production | 100 | 50 000 | 246 000 | illimité |
-| `deepseek-ai/DeepSeek-V4-Flash` (code) | expérimentation | 50 | illimité | 246 000 | illimité |
-| `deepseek-ai/DeepSeek-V4-Flash` (code) | production | 50 | illimité | 246 000 | illimité |
-| `openai/whisper-large-v3` (audio) | expérimentation | 50 | 1000 | illimité | illimité |
-| `openai/whisper-large-v3` (audio) | production | 100 | 5000 | illimité | illimité |
-| `BAAI/bge-m3` (embeddings) | expérimentation | 500 | 50 000 | illimité | illimité |
-| `BAAI/bge-m3` (embeddings) | production | 2000 | 200 000 | illimité | illimité |
-| `Qwen/Qwen3-VL-*` (embeddings) | expérimentation | 50 | 1000 | illimité | illimité |
-| `Qwen/Qwen3-VL-*` (embeddings) | production | 100 | 50 000 | illimité | illimité |
-| `BAAI/bge-reranker-v2-m3` (rerank) | expérimentation | 500 | 50 000 | illimité | illimité |
-| `BAAI/bge-reranker-v2-m3` (rerank) | production | 2000 | 200 000 | illimité | illimité |
-| `lightonocr-2-1b` (ocr) | expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| `lightonocr-2-1b` (ocr) | production | 100 | 50 000 | 246 000 | illimité |
+
+
 
 {% hint style="warning" %}
 ⚠️ À vérifier — la page “tarifs” peut évoluer. Les compteurs `Limit` dans `GET /v1/me/info` restent la source de vérité opérationnelle.

@@ -32,12 +32,12 @@ Model d'embeddings de référence pour la vectorisation de texte.
 | **Dimension maximale des vecteurs** | 1024                                   |
 | **Maximum de texte par batch**      | 64                                     |
 
-**Limites d'usage :**
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
-| Expérimentation | 50 | 1000 | 128 000 | 1 280 000 |
-| Production | 100 | 5000 | 246 000 | Illimité |
+| Expérimentation | 500 | 50 000 | illimité | illimité |
+| Production | 2000 | 200 000 | illimité | illimité |
 
 ### Capacités
 
@@ -65,6 +65,13 @@ Modèle de reranking multilingue basé sur `bge-m3`. Il est le modèle de réfé
 {% hint style="success" icon="lightbulb" %}
 La limite architecturale est de 8192 tokens, toutefois le modèle a été finetuné pour être utilisé avec des textes de longueur maximale de 1024 tokens. Nous recommandons de ne pas dépasser cette longueur lors de la construction des chunks pour le reranking.
 {% endhint %}
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 500 | 50 000 | illimité | illimité |
+| Production | 2000 | 200 000 | illimité | illimité |
 
 ### Capacités
 
@@ -98,6 +105,13 @@ Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de 
 | **Fenêtre de contexte**         | <p>131072</p><p>131072</p>           |
 | **Température recommandée**     | 1.0                                  |
 
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | illimité | 246 000 | illimité |
+| Production | 50 | illimité | 246 000 | illimité |
+
 ### Capacités
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Code</strong></td><td>/v1/chat/completions</td><td><a href="../guides/code.md">code.md</a></td><td><a href="../.gitbook/assets/icons/terminal.svg">terminal.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
@@ -129,10 +143,17 @@ Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 202
 | **Nombre de paramètres**        | 30.7B                   |
 | **Nombre de paramètres actifs** | 30.7B                   |
 | **Licence**                     | Apache 2.0              |
-| **Type**                        | `image-text-to-text`    |
+| **Type**                        | `text-generation`    |
 | **Aliases**                     | `google/gemma-4-31B-it` |
 | **Fenêtre de contexte**         | 262144                  |
 | **Température recommandée**     | 1.0                     |
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
+| Production | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -173,6 +194,13 @@ MoE généraliste de grande taille pour des tâches de complexes.
 Les tokens de raisonnement consomment le budget `max_tokens` : prévoyez une marge confortable même pour des réponses courtes (> 1024 tokens).
 {% endhint %}
 
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 10 | 1000 | 128 000 | 1 280 000 |
+| Production | 50 | 5000 | 246 000 | illimité |
+
 ### Capacités
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Function calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
@@ -197,13 +225,20 @@ Modèle multimodal spécialisé pour l'OCR. Il est le modèle de référence pou
 | ------------------------ | -------------------------------------------- |
 | **Nombre de paramètres** | 1B                                           |
 | **Licence**              | Apache 2.0                                   |
-| **Type**                 | `image-text-to-text`                         |
+| **Type**                 | `text-generation`                         |
 | **Aliases**              | `lighton/LightOn-OCR-2-1B`, `openweight-ocr` |
 | **Fenêtre de contexte**  | 16384                                        |
 
 {% hint style="success" icon="lightbulb" %}
 Nous observons certaines latences lorsque certains patterns de pixels sont présents dans l'image (un QR code par exemple). Si vous observez des latences élevées, essayez de supprimer ces patterns avant d'envoyer l'image au modèle.
 {% endhint %}
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
+| Production | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -222,12 +257,19 @@ Modèle multimodal généraliste de petite taille, idéal pour des tâches simpl
 |                             |                                                              |
 | --------------------------- | ------------------------------------------------------------ |
 | **Nombre de paramètres**    | 8.9B                                                         |
-| **Type**                    | `image-text-to-text`                                         |
+| **Type**                    | `text-generation`                                         |
 | **Licence**                 | Apache 2.0                                                   |
 | **Aliases**                 | `mistralai/Ministral-3-8B-Instruct-2512`, `openweight-small` |
 | **Format d'entrées**        | `text`, `image`                                              |
 | **Fenêtre de contexte**     | 262144                                                       |
 | **Température recommandée** | 0.1                                                          |
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
+| Production | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -245,22 +287,22 @@ Sans le streaming, modèle renvoie un tool call avec un content vide. En streami
 
 <summary>mistral-medium-2508 <img src="https://img.shields.io/badge/mod%C3%A8le_partenaire-red" alt="modèle partenaire"></summary>
 
-{% hint style="warning" %}
-Ce modèle accessible uniquement aux ministères partenaires qui en font la demande. Pour en savoir plus, consultez la page [Tarifs et limites](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/) de notre site.
-
-Vous pouvez utiliser le modèle `gpt-oss-120b` comme alternative à ce modèle.
-{% endhint %}
-
 <a href="https://docs.mistral.ai/models/model-cards/mistral-medium-3-1-25-08" class="button secondary">Model card</a>
 
 |                          |                       |
 | ------------------------ | --------------------- |
 | **Nombre de paramètres** | 123B                  |
-| **Type**                 | `image-text-to-text`  |
+| **Type**                 | `text-generation`  |
 | **Licence**              | `propriétaire`        |
 | **Aliases**              | `mistral-medium-2508` |
 | **Format d'entrées**     | `text`, `image`       |
 | **Fenêtre de contexte**  | 131072                |
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+{% hint style="warning" %}
+Ce modèle accessible uniquement aux ministères partenaires qui en font la demande. Vous pouvez utiliser le modèle `gpt-oss-120b` comme alternative à ce modèle.
+{% endhint %}
 
 ### Capacités
 
@@ -280,12 +322,6 @@ Sans le streaming, modèle renvoie un tool call avec un content vide. En streami
 
 Modèle d'OCR compatible avec la pile Document AI de Mistral (`/v1/ocr`) permettant d’extraire du texte et des images entremêlés.
 
-{% hint style="warning" %}
-Ce modèle accessible uniquement aux ministères partenaires qui en font la demande. Pour en savoir plus, consultez la page [Tarifs et limites](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/) de notre site.
-
-Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèle.
-{% endhint %}
-
 <a href="https://mistral.ai/news/mistral-ocr-3/" class="button secondary">Model card</a> <a href="https://albert.playground.etalab.gouv.fr" class="button primary">Essayer dans Playground</a>
 
 |                          |                    |
@@ -295,6 +331,12 @@ Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèl
 | **Licence**              | `propriétaire`     |
 | **Aliases**              | `mistral-ocr-2512` |
 | **Fenêtre de contexte**  | 16384              |
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+{% hint style="warning" %}
+Ce modèle accessible uniquement aux ministères partenaires qui en font la demande. Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèle.
+{% endhint %}
 
 ### Capacités
 
@@ -313,12 +355,19 @@ Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'imag
 |                             |                                                                      |
 | --------------------------- | -------------------------------------------------------------------- |
 | **Nombre de paramètres**    | 24B                                                                  |
-| **Type**                    | `image-text-to-text`                                                 |
+| **Type**                    | `text-generation`                                                 |
 | **Licence**                 | Apache 2.0                                                           |
 | **Aliases**                 | `mistralai/Mistral-Small-3.2-24B-Instruct-2506`, `openweight-medium` |
 | **Format d'entrées**        | `text`, `image`                                                      |
 | **Fenêtre de contexte**     | 131072                                                               |
 | **Température recommandée** | 0.15                                                                 |
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
+| Production | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -348,6 +397,13 @@ Sans le streaming, modèle renvoie un tool call avec un content vide. En streami
 | **Fenêtre de contexte**         | 262144                                                 |
 
 MoE orienté code / agentic coding (function calling).
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
+| Production | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -388,6 +444,13 @@ Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er octobre 202
 Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'embeddings : ils ne sont pas comparables.
 {% endhint %}
 
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | 1000 | illimité | illimité |
+| Production | 100 | 50 000 | illimité | illimité |
+
 ### Capacités
 
 <table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Text vectorisation</strong></td><td>/v1/embeddings</td><td><a href="../guides/embeddings.md">embeddings.md</a></td><td><a href="../.gitbook/assets/icons/arrow-up-1-9.svg">arrow-up-1-9.svg</a></td></tr></tbody></table>
@@ -407,6 +470,13 @@ Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'
 | **Licence**              | Apache 2.0                                    |
 | **Aliases**              | `openai/whisper-large-v3`, `openweight-audio` |
 | **Fenêtre de contexte**  | Fichier audio jusqu'à 20 MB                   |
+
+**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+
+| Tier | RPM | RPD | TPM | TPD |
+| --- | --- | --- | --- | --- |
+| Expérimentation | 50 | 1000 | illimité | illimité |
+| Production | 100 | 5000 | illimité | illimité |
 
 ### Capacités
 

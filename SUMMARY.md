@@ -37,6 +37,7 @@
 * [RAG - Génération Augmentée par Récupération](guides/rag.md "RAG")
 * [Reranking](guides/reranking.md)
 * [Coder avec Albert API](guides/code.md)
+* [Entreprises : se connecter à Albert API](guides/entreprises-se-connecter-a-albert-api.md)
 
 ## Compte & usage
 

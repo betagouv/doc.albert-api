@@ -3,6 +3,7 @@ description: >-
   Cette page s'adresse aux entreprises qui proposent une solution logicielle à
   des administrations de l'État et qui souhaitent s'appuyer sur Albert API pour
   les fonctionnalités d'IA générative.
+icon: plug
 ---
 
 # Entreprises : se connecter à Albert API

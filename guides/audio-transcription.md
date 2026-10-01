@@ -1,3 +1,6 @@
+---
+icon: "microphone"
+---
 # Transcription audio
 
 L’endpoint **`POST /v1/audio/transcriptions`** transcrit un fichier audio via un modèle de type **`automatic-speech-recognition`** ([en savoir plus sur les types de modèles](../modeles/model-types.md)).

@@ -32,12 +32,12 @@ Model d'embeddings de référence pour la vectorisation de texte.
 | **Dimension maximale des vecteurs** | 1024                                   |
 | **Maximum de texte par batch**      | 64                                     |
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 500 | 50 000 | illimité | illimité |
-| Production | 2000 | 200 000 | illimité | illimité |
+| Production limitée | 2000 | 200 000 | illimité | illimité |
 
 ### Capacités
 
@@ -66,12 +66,12 @@ Modèle de reranking multilingue basé sur `bge-m3`. Il est le modèle de réfé
 La limite architecturale est de 8192 tokens, toutefois le modèle a été finetuné pour être utilisé avec des textes de longueur maximale de 1024 tokens. Nous recommandons de ne pas dépasser cette longueur lors de la construction des chunks pour le reranking.
 {% endhint %}
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 500 | 50 000 | illimité | illimité |
-| Production | 2000 | 200 000 | illimité | illimité |
+| Production limitée | 2000 | 200 000 | illimité | illimité |
 
 ### Capacités
 
@@ -105,12 +105,12 @@ Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de 
 | **Fenêtre de contexte**         | <p>131072</p><p>131072</p>           |
 | **Température recommandée**     | 1.0                                  |
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 50 | illimité | 246 000 | illimité |
-| Production | 50 | illimité | 246 000 | illimité |
+| Production limitée | 50 | illimité | 246 000 | illimité |
 
 ### Capacités
 
@@ -148,12 +148,12 @@ Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 202
 | **Fenêtre de contexte**         | 262144                  |
 | **Température recommandée**     | 1.0                     |
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production | 100 | 50 000 | 246 000 | illimité |
+| Production limitée | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -194,12 +194,12 @@ MoE généraliste de grande taille pour des tâches de complexes.
 Les tokens de raisonnement consomment le budget `max_tokens` : prévoyez une marge confortable même pour des réponses courtes (> 1024 tokens).
 {% endhint %}
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 10 | 1000 | 128 000 | 1 280 000 |
-| Production | 50 | 5000 | 246 000 | illimité |
+| Production limitée | 50 | 5000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -233,12 +233,12 @@ Modèle multimodal spécialisé pour l'OCR. Il est le modèle de référence pou
 Nous observons certaines latences lorsque certains patterns de pixels sont présents dans l'image (un QR code par exemple). Si vous observez des latences élevées, essayez de supprimer ces patterns avant d'envoyer l'image au modèle.
 {% endhint %}
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production | 100 | 50 000 | 246 000 | illimité |
+| Production limitée | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -264,12 +264,12 @@ Modèle multimodal généraliste de petite taille, idéal pour des tâches simpl
 | **Fenêtre de contexte**     | 262144                                                       |
 | **Température recommandée** | 0.1                                                          |
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production | 100 | 50 000 | 246 000 | illimité |
+| Production limitée | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -298,7 +298,7 @@ Sans le streaming, modèle renvoie un tool call avec un content vide. En streami
 | **Format d'entrées**     | `text`, `image`       |
 | **Fenêtre de contexte**  | 131072                |
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 {% hint style="warning" %}
 Ce modèle accessible uniquement aux ministères partenaires qui en font la demande. Vous pouvez utiliser le modèle `gpt-oss-120b` comme alternative à ce modèle.
@@ -332,7 +332,7 @@ Modèle d'OCR compatible avec la pile Document AI de Mistral (`/v1/ocr`) permett
 | **Aliases**              | `mistral-ocr-2512` |
 | **Fenêtre de contexte**  | 16384              |
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 {% hint style="warning" %}
 Ce modèle accessible uniquement aux ministères partenaires qui en font la demande. Vous pouvez utiliser le modèle `lightonocr-2-1b` comme alternative à ce modèle.
@@ -362,12 +362,12 @@ Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'imag
 | **Fenêtre de contexte**     | 131072                                                               |
 | **Température recommandée** | 0.15                                                                 |
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production | 100 | 50 000 | 246 000 | illimité |
+| Production limitée | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -398,12 +398,12 @@ Sans le streaming, modèle renvoie un tool call avec un content vide. En streami
 
 MoE orienté code / agentic coding (function calling).
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production | 100 | 50 000 | 246 000 | illimité |
+| Production limitée | 100 | 50 000 | 246 000 | illimité |
 
 ### Capacités
 
@@ -444,12 +444,12 @@ Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er octobre 202
 Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'embeddings : ils ne sont pas comparables.
 {% endhint %}
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 50 | 1000 | illimité | illimité |
-| Production | 100 | 50 000 | illimité | illimité |
+| Production limitée | 100 | 50 000 | illimité | illimité |
 
 ### Capacités
 
@@ -471,12 +471,12 @@ Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'
 | **Aliases**              | `openai/whisper-large-v3`, `openweight-audio` |
 | **Fenêtre de contexte**  | Fichier audio jusqu'à 20 MB                   |
 
-**Limites d'usage :** ([en savoir plus](../compte-and-usage/quotas.md))
+**Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
 | Tier | RPM | RPD | TPM | TPD |
 | --- | --- | --- | --- | --- |
 | Expérimentation | 50 | 1000 | illimité | illimité |
-| Production | 100 | 5000 | illimité | illimité |
+| Production limitée | 100 | 5000 | illimité | illimité |
 
 ### Capacités
 

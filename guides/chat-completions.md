@@ -1,3 +1,6 @@
+---
+icon: "message"
+---
 # Chat completions
 
 L’endpoint **`POST /v1/chat/completions`** est le point d’entrée principal pour la génération de texte. Le corps de requête et la réponse s’inspirent du modèle **OpenAI Chat Completions** : `messages`, paramètres de décodage, `response_format`, streaming et outils (`tools` / `tool_calls`).

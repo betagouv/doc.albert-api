@@ -86,7 +86,7 @@ La limite architecturale est de 8192 tokens, toutefois le modèle a été finetu
 MoE spécialisé pour les tâches de code.
 
 {% hint style="warning" %}
-Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er octobre 2026. Candidat au remplacement du modèle `openweight-code` à l'issue de cette période.
+Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 31 octobre 2026. Candidat au remplacement du modèle `openweight-code` à l'issue de cette période.
 
 Ce modèle extra-européen peut présenter certaines formes de censure des réponses. Nous recommandons de l'utiliser uniquement pour les cas d'usage de génération de code et non comme un modèle conversationnel généraliste.
 
@@ -285,18 +285,20 @@ Sans le streaming, modèle renvoie un tool call avec un content vide. En streami
 
 <details>
 
-<summary>mistral-medium-2508 <img src="https://img.shields.io/badge/mod%C3%A8le_partenaire-red" alt="modèle partenaire"></summary>
+<summary>mistral-medium-3-5 <img src="https://img.shields.io/badge/mod%C3%A8le_partenaire-red" alt="modèle partenaire"></summary>
 
-<a href="https://docs.mistral.ai/models/model-cards/mistral-medium-3-1-25-08" class="button secondary">Model card</a>
+Modèle dense multimodal pour l'instruction, le raisonnement, le code et l'analyse d'images. L'identifiant `mistral-medium-2508` reste accepté comme alias.
 
-|                          |                       |
-| ------------------------ | --------------------- |
-| **Nombre de paramètres** | 123B                  |
-| **Type**                 | `text-generation`  |
-| **Licence**              | `propriétaire`        |
-| **Aliases**              | `mistral-medium-2508` |
-| **Format d'entrées**     | `text`, `image`       |
-| **Fenêtre de contexte**  | 131072                |
+<a href="https://huggingface.co/mistralai/Mistral-Medium-3.5-128B" class="button secondary">Model card</a>
+
+|                          |                                                                                     |
+| ------------------------ | ----------------------------------------------------------------------------------- |
+| **Nombre de paramètres** | 128B                                                                                |
+| **Type**                 | `image-text-to-text`                                                                |
+| **Licence**              | Modified MIT                                                                        |
+| **Aliases**              | `mistral-medium-2508`, `mistralai/Mistral-Medium-3.5-128`, `mistral-medium-latest` |
+| **Format d'entrées**     | `text`, `image`                                                                     |
+| **Fenêtre de contexte**  | 262144                                                                              |
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
@@ -306,13 +308,7 @@ Ce modèle accessible uniquement aux ministères partenaires qui en font la dema
 
 ### Capacités
 
-<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr><tr><td><strong>Tool calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
-
-{% hint style="info" icon="screwdriver-wrench" %}
-**Comportement du function calling**
-
-Sans le streaming, modèle renvoie un tool call avec un content vide. En streaming, quand le tool call est valide, le tool call arrive en un seul chunk qui porte aussi la finish\_reason.
-{% endhint %}
+<table data-view="cards"><thead><tr><th></th><th></th><th data-hidden data-card-target data-type="content-ref"></th><th data-hidden data-card-cover data-type="files"></th></tr></thead><tbody><tr><td><strong>Chat</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/message.svg">message.svg</a></td></tr><tr><td><strong>Analyse d'image</strong></td><td>/v1/chat/completions</td><td><a href="../guides/chat-completions.md">chat-completions.md</a></td><td><a href="../.gitbook/assets/icons/eye.svg">eye.svg</a></td></tr><tr><td><strong>Reasoning</strong></td><td>/v1/chat/completions</td><td><a href="../guides/reasoning.md">reasoning.md</a></td><td><a href="../.gitbook/assets/icons/brain.svg">brain.svg</a></td></tr><tr><td><strong>Tool calling</strong></td><td>/v1/chat/completions</td><td><a href="../guides/function-calling.md">function-calling.md</a></td><td><a href="../.gitbook/assets/icons/screwdriver-wrench.svg">screwdriver-wrench.svg</a></td></tr></tbody></table>
 
 </details>
 
@@ -486,4 +482,4 @@ Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'
 
 ## Calendrier des migrations
 
-<table><thead><tr><th>Modèle</th><th width="290.83984375">Supprimé le</th><th>Remplacer par</th></tr></thead><tbody><tr><td><a href="available-models.md#qwen3-coder-30b-a3b-instruct"><code>qwen3-coder-30b-a3b-instruct</code></a></td><td>1er octobre 2026</td><td><a href="available-models.md#deepseek-v4-flash"><code>deepseek-v4-flash</code></a></td></tr><tr><td><a href="available-models.md#mistral-small-3-2-24b-instruct-2506"><code>mistral-small-3-2-24b-instruct-2506</code></a></td><td>1er décembre 2026</td><td><a href="available-models.md#gemma-4-31b-it"><code>gemma-4-31b-it</code></a></td></tr></tbody></table>
+<table><thead><tr><th>Modèle</th><th width="290.83984375">Supprimé le</th><th>Remplacer par</th></tr></thead><tbody><tr><td><a href="available-models.md#qwen3-coder-30b-a3b-instruct"><code>qwen3-coder-30b-a3b-instruct</code></a></td><td>31 octobre 2026</td><td><a href="available-models.md#deepseek-v4-flash"><code>deepseek-v4-flash</code></a></td></tr><tr><td><a href="available-models.md#mistral-small-3-2-24b-instruct-2506"><code>mistral-small-3-2-24b-instruct-2506</code></a></td><td>1er décembre 2026</td><td><a href="available-models.md#gemma-4-31b-it"><code>gemma-4-31b-it</code></a></td></tr></tbody></table>

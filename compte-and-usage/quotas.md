@@ -29,7 +29,7 @@ Si vos quotas d'expérimentation s'avèrent insuffisants et que vous souhaitez u
 * Nous contacter à l'adresse : albert.api@numerique.gouv.fr
 * Nous appliquerons ensuite les quotas de « Production limitée » sur le compte indiqué
 
-### Partenaire
+### Production (Partenaire)
 
 En décembre 2025, la DINUM a publié à destination des autres ministères une note visant au cofinancement des infrastructures d'Albert API.
 

@@ -58,7 +58,7 @@ Pour suivre le statut opérationnel de l’API (quand publié), voir :
 
 ## Données de santé
 
-[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permettent pas de déduire des informations sur la santé d'une personne.
+[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permet de déduire des informations sur la santé d'une personne.
 
 En conséquence, **Albert API est compatible avec le traitement de données de santé, et ne nécessite pas de certification HDS**.
 

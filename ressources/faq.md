@@ -145,7 +145,7 @@ Vous pouvez tester le tokenizer sur des textes sur [ce simulateur](https://tikto
 
 <summary><strong>Est-ce que je peux utiliser Albert API avec des données de santé ?</strong></summary>
 
-[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permettent pas de déduire des informations sur la santé d'une personne.
+[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permet de déduire des informations sur la santé d'une personne.
 
 \
 En conséquence, Albert API est compatible avec le traitement de données de santé, et ne nécessite pas de certification HDS.

@@ -55,3 +55,11 @@ Pour aller plus loin : [Chat completions](guides/chat-completions.md), [page de 
 Pour suivre le statut opérationnel de l’API (quand publié), voir :
 
 [Statut en production](https://ia.numerique.gouv.fr/outils-ia/albert-api/statuts-de-lapi/)
+
+## Données de santé
+
+[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permettent pas de déduire des informations sur la santé d'une personne.
+
+En conséquence, **Albert API est compatible avec le traitement de données de santé, et ne nécessite pas de certification HDS**.
+
+Toutefois, en tant qu'utilisateur d'Albert API, vous pouvez être dans l'obligation d'être hébergé chez un hébergeur certifié HDS et/ou de certifier votre produit, notamment si vous conservez des données de santé à caractère personnel pour le compte de tiers.

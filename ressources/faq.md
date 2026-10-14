@@ -17,40 +17,40 @@ Si vous souhaitez vous connecter avec un autre compte **cliquez sur&#x20;**_**Lo
 
 **4 cas de figures vous permettent d'accéder à Albert API :**<br>
 
-1. **🇫🇷 Je suis une administration de l'État ou un organisme sous sa tutelle**
-   
-   Par principe, la condition d'accès à Albert API est d'appartenir une administration de l'État ou un organisme sous sa tutelle ([en savoir plus](faq.md#comment-savoir-si-je-suis-eligible-a-lacces-a-albert-api)).
-   
-   Si vous êtes dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.
-   
-   Si malgré l'utilisation de votre adresse professionnelle votre compte est toujours bloqué, il convient alors de réaliser une demande d'accès aux produits et services mis à disposition par la DINUM pour autoriser votre administration. Pour cela vous rendez-vous sur le [DataPass](https://datapass.api.gouv.fr/formulaires/produits_dinum/demande/nouveau) dédié.
-   
-   Veillez à fournir toutes les informations qui vous sembleraient utiles à porter à notre connaissance pour déterminer votre lien avec l'État.<br>
-2. **🏢 Je suis une entreprise privée souhaitant intégrer Albert API**
-   
-   Vous êtes une entreprise privée et vous souhaitez proposer Albert API comme API d'inférence de votre service pour vos clients administration publiques.
-   
-   ⚠️ Pour être éligible, vos clients doivent être des administrations de l'État ou des organismes sous sa tutelle ([en savoir plus](faq.md#comment-savoir-si-je-suis-eligible-a-lacces-a-albert-api)).
-   
-   Dans ce cas, nous vous mettons à disposez un accès "bac à sable" limité afin que vous puissiez intégrer au mieux Albert API dans votre service. Pour en faire la demande, merci de nous écrire à l'adresse suivante [albert.api@numerique.gouv.fr](mailto:albert.api@numerique.gouv.fr?subject=Demande%20entreprise%20d%27acc%C3%A8s%20%C3%A0%20Albert%20API).<br>
-3. **👤 Je suis une administration territoriale relevant d'une co-tutelle de l'État**
-   
-   Par principe, les administrations territoriales ne sont pas éligible à l'accès à Albert API. En effet, seules les administrations de l'État ou les organismes sous sa tutelle peuvent y prétendre.
-   
-   Toutefois, certaines administrations territoriales disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.
-   
-   Si malgré l'utilisation de votre adresse professionnelle votre compte est toujours bloqué, il convient alors de réaliser une demande d'accès aux produits et services mis à disposition par la DINUM pour autoriser votre administration. Pour cela vous rendez-vous sur le [DataPass](https://datapass.api.gouv.fr/formulaires/produits_dinum/demande/nouveau) dédié.
-   
-   Veillez à fournir toutes les informations qui vous sembleraient utiles à porter à notre connaissance pour déterminer votre lien avec l'État.
-4. **🤝 Je suis association chargée d'une mission de service publique**
-   
-   Par principe, les associations ne sont pas éligible à l'accès à Albert API. En effet, seules les administrations de l'État ou les organismes sous sa tutelle peuvent y prétendre.
-   
-   Toutefois, certaines associations chargée d'une mission de service publique disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.
-   
-   Si malgré l'utilisation de votre adresse professionnelle votre compte est toujours bloqué, il convient alors de réaliser une demande d'accès aux produits et services mis à disposition par la DINUM pour autoriser votre administration. Pour cela vous rendez-vous sur le [DataPass](https://datapass.api.gouv.fr/formulaires/produits_dinum/demande/nouveau) dédié.
-   
-   Veillez à fournir toutes les informations qui vous sembleraient utiles à porter à notre connaissance pour déterminer votre lien avec l'État.
+1.  **🇫🇷 Je suis une administration de l'État ou un organisme sous sa tutelle**
+
+    Par principe, la condition d'accès à Albert API est d'appartenir une administration de l'État ou un organisme sous sa tutelle ([en savoir plus](faq.md#comment-savoir-si-je-suis-eligible-a-lacces-a-albert-api)).
+
+    Si vous êtes dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.
+
+    Si malgré l'utilisation de votre adresse professionnelle votre compte est toujours bloqué, il convient alors de réaliser une demande d'accès aux produits et services mis à disposition par la DINUM pour autoriser votre administration. Pour cela vous rendez-vous sur le [DataPass](https://datapass.api.gouv.fr/formulaires/produits_dinum/demande/nouveau) dédié.
+
+    Veillez à fournir toutes les informations qui vous sembleraient utiles à porter à notre connaissance pour déterminer votre lien avec l'État.<br>
+2.  **🏢 Je suis une entreprise privée souhaitant intégrer Albert API**
+
+    Vous êtes une entreprise privée et vous souhaitez proposer Albert API comme API d'inférence de votre service pour vos clients administration publiques.
+
+    ⚠️ Pour être éligible, vos clients doivent être des administrations de l'État ou des organismes sous sa tutelle ([en savoir plus](faq.md#comment-savoir-si-je-suis-eligible-a-lacces-a-albert-api)).
+
+    Dans ce cas, nous vous mettons à disposez un accès "bac à sable" limité afin que vous puissiez intégrer au mieux Albert API dans votre service. Pour en faire la demande, merci de nous écrire à l'adresse suivante [albert.api@numerique.gouv.fr](mailto:albert.api@numerique.gouv.fr?subject=Demande%20entreprise%20d%27acc%C3%A8s%20%C3%A0%20Albert%20API).<br>
+3.  **👤 Je suis une administration territoriale relevant d'une co-tutelle de l'État**
+
+    Par principe, les administrations territoriales ne sont pas éligible à l'accès à Albert API. En effet, seules les administrations de l'État ou les organismes sous sa tutelle peuvent y prétendre.
+
+    Toutefois, certaines administrations territoriales disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.
+
+    Si malgré l'utilisation de votre adresse professionnelle votre compte est toujours bloqué, il convient alors de réaliser une demande d'accès aux produits et services mis à disposition par la DINUM pour autoriser votre administration. Pour cela vous rendez-vous sur le [DataPass](https://datapass.api.gouv.fr/formulaires/produits_dinum/demande/nouveau) dédié.
+
+    Veillez à fournir toutes les informations qui vous sembleraient utiles à porter à notre connaissance pour déterminer votre lien avec l'État.
+4.  **🤝 Je suis association chargée d'une mission de service publique**
+
+    Par principe, les associations ne sont pas éligible à l'accès à Albert API. En effet, seules les administrations de l'État ou les organismes sous sa tutelle peuvent y prétendre.
+
+    Toutefois, certaines associations chargée d'une mission de service publique disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.
+
+    Si malgré l'utilisation de votre adresse professionnelle votre compte est toujours bloqué, il convient alors de réaliser une demande d'accès aux produits et services mis à disposition par la DINUM pour autoriser votre administration. Pour cela vous rendez-vous sur le [DataPass](https://datapass.api.gouv.fr/formulaires/produits_dinum/demande/nouveau) dédié.
+
+    Veillez à fournir toutes les informations qui vous sembleraient utiles à porter à notre connaissance pour déterminer votre lien avec l'État.
 
 {% hint style="info" icon="lightbulb" %}
 Nous vous recommandons d'utiliser une adresse mail de service pour gérer vos accès en production d'Albert API.
@@ -103,25 +103,31 @@ Cette situation est temporaire. Pour prévenir ce problème en production nous v
 <summary><strong>Est-ce que je peux avoir une clef d'API sans expiration ?</strong></summary>
 
 Non, il est impossible d'obtenir une clef d'API sans expiration pour des raisons de sécurité. Toutes les clefs d'API ont une date d'expiration de maximum 1 an à compter de la date de création. Vous pouvez configurer une clef avec une date d'expiration inférieure à 1 an lors de la création.
+
 </details>
 
 <details>
+
 <summary><strong>Pourquoi le playground m'affiche une erreur "removeChild" ?</strong></summary>
 
 Si vous rencontrez l'erreur si dessous en vous connectant au playground d'Albert API, cette erreur est due à un bug dans le code JavaScript de votre navigateur.
+
 <figure><img src="../.gitbook/assets/screenshots/playground-removechild-error.png" alt=""><figcaption></figcaption></figure>
 
-Elle se produit lorsque le navigateur cherche à traduire la page web.
-Pour corriger cette erreur, vous devez désactiver les extensions de traduction qui sont actives dans votre navigateur.
+Elle se produit lorsque le navigateur cherche à traduire la page web. Pour corriger cette erreur, vous devez désactiver les extensions de traduction qui sont actives dans votre navigateur.
 
 Si cela ne suffit pas, vous pouvez contacter le support en vous rendant sur la page [Support](support.md).
+
 </details>
 
 <details>
-<summary><strong>Qu'est ce qu'un token ?</strong></summary>
-Un token est une unité de mesure de la consommation des LLM. Un token correspond à un mot ou une partie de mot. 
 
-Exemple : 
+<summary><strong>Qu'est ce qu'un token ?</strong></summary>
+
+Un token est une unité de mesure de la consommation des LLM. Un token correspond à un mot ou une partie de mot.
+
+Exemple :
+
 * "Albert" → 1 token
 * "centraliser" → 2 tokens ("centr" et "aliser")
 
@@ -129,8 +135,22 @@ Exemple :
 La ponctuation est comptabilisée comme un token !
 {% endhint %}
 
-Le *tokenizer*, c'est-à-dire l'algorithme permettant de transformer le texte en tokens, est généralement celui du modèle utilisé. Sur Albert API, pour que toutes les requêtes soient comptabilisées dans les mêmes conditions, nous utilisons un tokenizer opensource, *[Tiktoken o200k_base](https://github.com/openai/tiktoken)*.
+Le _tokenizer_, c'est-à-dire l'algorithme permettant de transformer le texte en tokens, est généralement celui du modèle utilisé. Sur Albert API, pour que toutes les requêtes soient comptabilisées dans les mêmes conditions, nous utilisons un tokenizer opensource, [_Tiktoken o200k\_base_](https://github.com/openai/tiktoken).
 
 Vous pouvez tester le tokenizer sur des textes sur [ce simulateur](https://tiktokenizer.vercel.app/?model=o200k_base).
+
+</details>
+
+<details>
+
+<summary><strong>Est-ce que je peux utiliser Albert API avec des données de santé ?</strong></summary>
+
+[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permettent pas de déduire des informations sur la santé d'une personne.
+
+\
+En conséquence, Albert API est compatible avec le traitement de données de santé, et ne nécessite pas de certification HDS.
+
+\
+Toutefois, en tant qu'utilisateur d'Albert API, vous pouvez être dans l'obligation d'être hébergé chez un hébergeur certifié HDS et/ou de certifier votre produit, notamment si vous conservez des données de santé à caractère personnel pour le compte de tiers.
 
 </details>

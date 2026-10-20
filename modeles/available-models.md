@@ -14,6 +14,10 @@ Les recommandations d'usage ci-dessous proviennent de l'expérience des utilisat
 
 Vos retours nous sont précieux pour améliorer les modèles et les recommandations d'usage. N'hésitez pas à nous les partager sur notre canal Tchap ou par mail (voir la page [Contact](https://ia.numerique.gouv.fr/outils-ia/albert-api/albert-api-contact/)).
 
+{% hint style="danger" %}
+Les modèles en expérimentation sont en cours de test. Ils ne sont pas optimisés, et leurs limites ne sont pas définitives. Ainsi, leur performance peut être dégradée, et rien ne préjuge de leur pérennisation dans Albert API.
+{% endhint %}
+
 <details>
 
 <summary>bge-m3</summary>
@@ -34,9 +38,9 @@ Model d'embeddings de référence pour la vectorisation de texte.
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 500 | 50 000 | illimité | illimité |
+| Tier               | RPM  | RPD     | TPM      | TPD      |
+| ------------------ | ---- | ------- | -------- | -------- |
+| Expérimentation    | 500  | 50 000  | illimité | illimité |
 | Production limitée | 2000 | 200 000 | illimité | illimité |
 
 ### Capacités
@@ -68,9 +72,9 @@ La limite architecturale est de 8192 tokens, toutefois le modèle a été finetu
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 500 | 50 000 | illimité | illimité |
+| Tier               | RPM  | RPD     | TPM      | TPD      |
+| ------------------ | ---- | ------- | -------- | -------- |
+| Expérimentation    | 500  | 50 000  | illimité | illimité |
 | Production limitée | 2000 | 200 000 | illimité | illimité |
 
 ### Capacités
@@ -107,10 +111,10 @@ Cette phase d'expérimentation a notamment pour objectif d'évaluer l'impact de 
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 50 | illimité | 246 000 | illimité |
-| Production limitée | 50 | illimité | 246 000 | illimité |
+| Tier               | RPM | RPD      | TPM     | TPD      |
+| ------------------ | --- | -------- | ------- | -------- |
+| Expérimentation    | 50  | illimité | 246 000 | illimité |
+| Production limitée | 50  | illimité | 246 000 | illimité |
 
 ### Capacités
 
@@ -143,17 +147,17 @@ Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 202
 | **Nombre de paramètres**        | 30.7B                   |
 | **Nombre de paramètres actifs** | 30.7B                   |
 | **Licence**                     | Apache 2.0              |
-| **Type**                        | `text-generation`    |
+| **Type**                        | `text-generation`       |
 | **Aliases**                     | `google/gemma-4-31B-it` |
 | **Fenêtre de contexte**         | 262144                  |
 | **Température recommandée**     | 1.0                     |
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production limitée | 100 | 50 000 | 246 000 | illimité |
+| Tier               | RPM | RPD    | TPM     | TPD       |
+| ------------------ | --- | ------ | ------- | --------- |
+| Expérimentation    | 50  | 1000   | 128 000 | 2 460 000 |
+| Production limitée | 100 | 50 000 | 246 000 | illimité  |
 
 ### Capacités
 
@@ -196,10 +200,10 @@ Les tokens de raisonnement consomment le budget `max_tokens` : prévoyez une mar
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 10 | 1000 | 128 000 | 1 280 000 |
-| Production limitée | 50 | 5000 | 246 000 | illimité |
+| Tier               | RPM | RPD  | TPM     | TPD       |
+| ------------------ | --- | ---- | ------- | --------- |
+| Expérimentation    | 10  | 1000 | 128 000 | 1 280 000 |
+| Production limitée | 50  | 5000 | 246 000 | illimité  |
 
 ### Capacités
 
@@ -225,7 +229,7 @@ Modèle multimodal spécialisé pour l'OCR. Il est le modèle de référence pou
 | ------------------------ | -------------------------------------------- |
 | **Nombre de paramètres** | 1B                                           |
 | **Licence**              | Apache 2.0                                   |
-| **Type**                 | `text-generation`                         |
+| **Type**                 | `text-generation`                            |
 | **Aliases**              | `lighton/LightOn-OCR-2-1B`, `openweight-ocr` |
 | **Fenêtre de contexte**  | 16384                                        |
 
@@ -235,10 +239,10 @@ Nous observons certaines latences lorsque certains patterns de pixels sont prés
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production limitée | 100 | 50 000 | 246 000 | illimité |
+| Tier               | RPM | RPD    | TPM     | TPD       |
+| ------------------ | --- | ------ | ------- | --------- |
+| Expérimentation    | 50  | 1000   | 128 000 | 2 460 000 |
+| Production limitée | 100 | 50 000 | 246 000 | illimité  |
 
 ### Capacités
 
@@ -257,7 +261,7 @@ Modèle multimodal généraliste de petite taille, idéal pour des tâches simpl
 |                             |                                                              |
 | --------------------------- | ------------------------------------------------------------ |
 | **Nombre de paramètres**    | 8.9B                                                         |
-| **Type**                    | `text-generation`                                         |
+| **Type**                    | `text-generation`                                            |
 | **Licence**                 | Apache 2.0                                                   |
 | **Aliases**                 | `mistralai/Ministral-3-8B-Instruct-2512`, `openweight-small` |
 | **Format d'entrées**        | `text`, `image`                                              |
@@ -266,10 +270,10 @@ Modèle multimodal généraliste de petite taille, idéal pour des tâches simpl
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production limitée | 100 | 50 000 | 246 000 | illimité |
+| Tier               | RPM | RPD    | TPM     | TPD       |
+| ------------------ | --- | ------ | ------- | --------- |
+| Expérimentation    | 50  | 1000   | 128 000 | 2 460 000 |
+| Production limitée | 100 | 50 000 | 246 000 | illimité  |
 
 ### Capacités
 
@@ -291,14 +295,14 @@ Modèle dense multimodal pour l'instruction, le raisonnement, le code et l'analy
 
 <a href="https://huggingface.co/mistralai/Mistral-Medium-3.5-128B" class="button secondary">Model card</a>
 
-|                          |                                                                                     |
-| ------------------------ | ----------------------------------------------------------------------------------- |
-| **Nombre de paramètres** | 128B                                                                                |
-| **Type**                 | `image-text-to-text`                                                                |
-| **Licence**              | Modified MIT                                                                        |
+|                          |                                                                                    |
+| ------------------------ | ---------------------------------------------------------------------------------- |
+| **Nombre de paramètres** | 128B                                                                               |
+| **Type**                 | `image-text-to-text`                                                               |
+| **Licence**              | Modified MIT                                                                       |
 | **Aliases**              | `mistral-medium-2508`, `mistralai/Mistral-Medium-3.5-128`, `mistral-medium-latest` |
-| **Format d'entrées**     | `text`, `image`                                                                     |
-| **Fenêtre de contexte**  | 262144                                                                              |
+| **Format d'entrées**     | `text`, `image`                                                                    |
+| **Fenêtre de contexte**  | 262144                                                                             |
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
@@ -351,7 +355,7 @@ Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'imag
 |                             |                                                                      |
 | --------------------------- | -------------------------------------------------------------------- |
 | **Nombre de paramètres**    | 24B                                                                  |
-| **Type**                    | `text-generation`                                                 |
+| **Type**                    | `text-generation`                                                    |
 | **Licence**                 | Apache 2.0                                                           |
 | **Aliases**                 | `mistralai/Mistral-Small-3.2-24B-Instruct-2506`, `openweight-medium` |
 | **Format d'entrées**        | `text`, `image`                                                      |
@@ -360,10 +364,10 @@ Modèle de chat pour des tâches d'une complexité modérée et d'analyse d'imag
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production limitée | 100 | 50 000 | 246 000 | illimité |
+| Tier               | RPM | RPD    | TPM     | TPD       |
+| ------------------ | --- | ------ | ------- | --------- |
+| Expérimentation    | 50  | 1000   | 128 000 | 2 460 000 |
+| Production limitée | 100 | 50 000 | 246 000 | illimité  |
 
 ### Capacités
 
@@ -396,10 +400,10 @@ MoE orienté code / agentic coding (function calling).
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 50 | 1000 | 128 000 | 2 460 000 |
-| Production limitée | 100 | 50 000 | 246 000 | illimité |
+| Tier               | RPM | RPD    | TPM     | TPD       |
+| ------------------ | --- | ------ | ------- | --------- |
+| Expérimentation    | 50  | 1000   | 128 000 | 2 460 000 |
+| Production limitée | 100 | 50 000 | 246 000 | illimité  |
 
 ### Capacités
 
@@ -442,9 +446,9 @@ Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 50 | 1000 | illimité | illimité |
+| Tier               | RPM | RPD    | TPM      | TPD      |
+| ------------------ | --- | ------ | -------- | -------- |
+| Expérimentation    | 50  | 1000   | illimité | illimité |
 | Production limitée | 100 | 50 000 | illimité | illimité |
 
 ### Capacités
@@ -469,9 +473,9 @@ Ne mélangez pas les vecteurs générés par ce modèle avec un autre modèle d'
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))
 
-| Tier | RPM | RPD | TPM | TPD |
-| --- | --- | --- | --- | --- |
-| Expérimentation | 50 | 1000 | illimité | illimité |
+| Tier               | RPM | RPD  | TPM      | TPD      |
+| ------------------ | --- | ---- | -------- | -------- |
+| Expérimentation    | 50  | 1000 | illimité | illimité |
 | Production limitée | 100 | 5000 | illimité | illimité |
 
 ### Capacités

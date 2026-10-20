@@ -1,4 +1,8 @@
-# Récupérer la liste des modèles
+---
+icon: brain
+---
+
+# Modèles (liste)
 
 Ce guide montre comment interroger **`GET /v1/models`** avec le SDK OpenAI (version “compatible OpenAI”) pour récupérer les modèles disponibles, puis filtrer par type (chat, embeddings, OCR, audio, etc.).
 
@@ -132,4 +136,3 @@ console.log(`Max tokens: ${model.max_context_length}`);
 {% endtabs %}
 
 Pour la documentation endpoint, voir la [page “Models”](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/models).
-

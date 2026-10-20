@@ -1,3 +1,7 @@
+---
+icon: podcast
+---
+
 # Streaming
 
 Pour le chat, le streaming s’active avec **`"stream": true`** sur **`POST /v1/chat/completions`**. Le serveur renvoie des **Server-Sent Events** (SSE) : chaque événement contient un fragment JSON (delta) ; le flux se termine par une ligne `data: [DONE]` comme sur l’API OpenAI.

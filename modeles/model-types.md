@@ -1,3 +1,7 @@
+---
+icon: list
+---
+
 # Types de modèles
 
 L’énumération **`ModelType`** décrit le rôle d’un modèle exposé par `GET /v1/models`. Le tableau ci-dessous relie chaque valeur aux **endpoints principaux** qui l’utilisent.

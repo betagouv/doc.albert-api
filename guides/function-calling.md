@@ -1,3 +1,7 @@
+---
+icon: hammer
+---
+
 # Function calling & outils
 
 Albert API permet au modèle de chat de proposer des **appels d’outils** (`tool_calls`) décrits dans le corps de la requête. Le flux est le même que sur l’API OpenAI : le modèle émet une complétion avec des appels ; le client exécute la logique métier ; une réponse au rôle `tool` est renvoyée dans `messages` ; le modèle produit alors une réponse utilisateur finale.

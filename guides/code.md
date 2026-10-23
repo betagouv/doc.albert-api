@@ -12,7 +12,7 @@ Cette page liste les configurations pour les principaux outils actuels.
 Albert API répond sur `POST /v1/chat/completions`. Tout outil capable d'appeler un point d'accès compatible OpenAI, avec une URL de base et une clé configurables, fonctionne.
 
 * URL de base : `https://albert.api.etalab.gouv.fr/v1`
-* Clé : votre clé Albert API, à obtenir sur [https://albert.api.etalab.gouv.fr](https://albert.api.etalab.gouv.fr)&#x20;
+* Clé : votre clé Albert API, à obtenir sur [https://ia.numerique.gouv.fr/outils-ia/albert-api/](https://ia.numerique.gouv.fr/outils-ia/albert-api/), bouton **Utilisez Albert API**
 
 Ne mettez jamais votre clé dans un fichier de configuration versionné. Passez par une variable d'environnement.
 
@@ -107,7 +107,7 @@ Sous Windows avec Git Bash, ajoutez `"shell": "C:\\Program Files\\Git\\bin\\bash
           "input": ["text"],
           "contextWindow": 131072,
           "maxTokens": 32768,
-          "compat": { "thinkingFormat": "reasoning_effort" }
+          "compat": { "thinkingFormat": "openai" }
         }
       ]
     }

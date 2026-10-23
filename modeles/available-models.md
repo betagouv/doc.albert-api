@@ -149,7 +149,7 @@ Ce modèle est en phase d'expérimentation du 31 août 2026 au 1er décembre 202
 | **Licence**                     | Apache 2.0              |
 | **Type**                        | `text-generation`       |
 | **Aliases**                     | `google/gemma-4-31B-it` |
-| **Fenêtre de contexte**         | 262144                  |
+| **Fenêtre de contexte**         | 131072                  |
 | **Température recommandée**     | 1.0                     |
 
 **Limites d'usage** ([en savoir plus](../compte-and-usage/quotas.md))

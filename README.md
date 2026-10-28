@@ -32,7 +32,7 @@ La page “Tarifs et limites” liste, pour des familles de modèles, des quotas
 [Tarifs et limites](https://ia.numerique.gouv.fr/outils-ia/albert-api/tarifs-et-limites/)
 
 {% hint style="warning" %}
-⚠️ Les quotas indiqués sur le site sont une vue “tarifs” : pour connaître vos limites exactes (compte, routeurs, fenêtres), consultez l’objet `limits` dans **`GET /v1/me/info`** et la page [Quotas & limites](compte-and-usage/quotas.md).
+⚠️ Les quotas indiqués sur le site sont une vue “tarifs” : pour connaître vos limites exactes (compte, routeurs, fenêtres) et ce qu’il vous en reste, consultez la page **Limits** du Playground ou l’endpoint **`GET /v1/limits`**, et la page [Quotas & limites](compte-and-usage/quotas.md).
 {% endhint %}
 
 ## Sécurité & hébergement souverain

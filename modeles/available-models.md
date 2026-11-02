@@ -90,7 +90,7 @@ La limite architecturale est de 8192 tokens, toutefois le modèle a été finetu
 MoE spécialisé pour les tâches de code.
 
 {% hint style="warning" %}
-Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 31 octobre 2026. Candidat au remplacement du modèle `openweight-code` à l'issue de cette période.
+Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er décembre 2026. Candidat au remplacement du modèle `openweight-code` à l'issue de cette période.
 
 Ce modèle extra-européen peut présenter certaines formes de censure des réponses. Nous recommandons de l'utiliser uniquement pour les cas d'usage de génération de code et non comme un modèle conversationnel généraliste.
 

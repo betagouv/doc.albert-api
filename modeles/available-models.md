@@ -424,7 +424,7 @@ Sans le streaming, modèle renvoie un tool call avec un content non vide. En str
 Embeddings multimodaux (texte, images, captures d’écran, vidéos).
 
 {% hint style="warning" %}
-Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er octobre 2026. A l'issue de cette phase d'expérimentation nous évaluerons a l'aide de vos retours si le modèle est viable pour une intégration pérenne dans Albert API.
+Ce modèle est en phase d'expérimentation du 26 juillet 2026 au 1er décembre 2026. A l'issue de cette phase d'expérimentation nous évaluerons a l'aide de vos retours si le modèle est viable pour une intégration pérenne dans Albert API.
 {% endhint %}
 
 <a href="https://huggingface.co/Qwen/Qwen3-VL-Embedding-8B" class="button secondary">Model card</a>

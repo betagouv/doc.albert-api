@@ -20,7 +20,7 @@ Chaque entrée peut inclure notamment :
 
 ## `UsageDetail`
 
-* **`prompt_tokens`**, **`completion_tokens`**, **`total_tokens`** — compteurs de jetons ;
+* **`prompt_tokens`**, **`completion_tokens`**, **`total_tokens`** — compteurs de jetons. Les tokens en cache ne sont pas enregistrés à part : `prompt_tokens` les inclut sans les distinguer ;
 * **`cost`** — coût total attribué à l’appel (unité et politique internes à la plateforme) ;
 * **`carbon`** — objet **`CarbonFootprintUsage`** avec :
   * **`kWh`** — `min` / `max` ;

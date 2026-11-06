@@ -60,7 +60,7 @@ Si vous vous demandez ce qu'est un token ou comment le texte est découpé en to
 Les tokens sont comptabilisés sur les endpoints qui appellent des modèles : `/v1/audio/transcriptions`, `/v1/chat/completions`, `/v1/embeddings`, `/v1/ocr`et `/v1/rerank`. Ils sont comptabilisés différement selon les endpoints.
 
 Vous retrouvez un champ `usage` en réponse de chacun de ces endpoints vous indiquants le nombre de tokens consommés par la requête.
-De plus, l'en-tête de la réponse vous donne  
+De plus, les en-têtes de la réponse indiquent l'état de vos limites, voir [Suivre sa consommation en temps réel](#suivre-sa-consommation-en-temps-reel).
 
 {% tabs %}
 {% tab title="/v1/chat/completions" %}
@@ -264,32 +264,105 @@ Voici un exemple de requête avec sa réponse :
 {% endtab %}
 {% endtabs %}
 
+### Décompte du modèle ou d'Albert API
+
+Lorsque le modèle renvoie son propre décompte de tokens (champ `usage` de sa réponse), Albert API reprend ce décompte, calculé avec le tokenizer du modèle. Sinon, Albert API compte les tokens avec son propre tokenizer, voir la FAQ *[Qu'est ce qu'un token ?](../ressources/faq.md#quest-ce-quun-token)*.
+
+### Tokens en cache
+
+Lorsqu'une partie du prompt a déjà été traitée récemment par le modèle (par exemple un long message système identique d'une requête à l'autre), le modèle la sert depuis son cache. Ces tokens sont indiqués dans `usage.prompt_tokens_details.cached_tokens` et sont déjà inclus dans `prompt_tokens`. Si le modèle ne renvoie pas ce champ, `cached_tokens` vaut 0.
+
+Les tokens en cache demandent moins de ressources au modèle : seuls 20 % d'entre eux sont décomptés de vos limites TPM et TPD.
+
+```
+tokens décomptés = prompt_tokens + completion_tokens - 0,8 × cached_tokens (arrondi à l'entier)
+```
+
+Par exemple, une requête de 1 000 tokens de prompt, dont 800 en cache, et 200 tokens générés décompte 1 000 + 200 - 0,8 × 800 = 560 tokens de vos limites. Cette réduction ne s'applique qu'aux limites : `prompt_tokens` et `cost` restent inchangés.
+
 ## Limites par requête
 
 Dans Albert API, les limites par requêtes sont exprimées en **requêtes par minute (RPM) et par jour (RPD)**. 
 Les requêtes sont comptabilisées uniquement sur les endpoints qui appellent un modèle.
 
+## Quand les limites sont-elles décomptées ?
+
+1. **Avant l'appel au modèle** : la requête est refusée (**429**) s'il ne vous reste plus de requête dans votre limite RPM ou RPD, ou s'il vous reste moins de tokens dans votre limite TPM ou TPD que n'en compte le prompt. Le prompt est alors estimé avec le tokenizer d'Albert API, car le modèle n'a pas encore répondu.
+2. **Après une réponse réussie** : la requête compte pour 1 dans vos limites RPM et RPD, et ses tokens sont décomptés de vos limites TPM et TPD.
+
+Une requête refusée ou en échec n'est jamais décomptée. En streaming, la requête est décomptée à la fin du flux ; si vous coupez le flux avant la fin, seuls les tokens déjà reçus sont décomptés.
+
 ## Comment suivre sa consommation ?
 
-### Voir ses limites
+### Voir ses limites et ce qu’il en reste
 
-Deux sources pour connaître les plafonds appliqués à votre compte :
+Deux moyens de consulter vos limites et ce que vous en avez consommé, pour chaque modèle auquel vous avez accès :
 
-* l’endpoint [GET /v1/me/info](https://guides.ia.numerique.gouv.fr/albert-api/api-reference/liste-des-endpoint/me#get-v1-me-info) — limites associées à votre compte ;
-* la page [Modèles disponibles](../modeles/available-models.md) — limites TPM, TPD, RPM et RPD par modèle et par niveau d’accès.
+{% tabs %}
+{% tab title="Playground" icon="globe-pointer" %}
+Connectez-vous sur le [Playground Albert API](https://albert.playground.etalab.gouv.fr) et ouvrez la page **Limits**. Pour chaque modèle, elle affiche la valeur de chaque limite (RPM, RPD, TPM et TPD) et ce que vous en avez consommé dans la fenêtre en cours. La page se met à jour toutes les 30 secondes.
+{% endtab %}
+
+{% tab title="API" icon="square-terminal" %}
+Appelez l’endpoint [GET /v1/limits](https://guides.ia.numerique.gouv.fr/albert-api/api-reference/liste-des-endpoint/limits#get-v1-limits) :
+
+```bash
+curl -X GET "https://albert.api.etalab.gouv.fr/v1/limits" \
+  -H "Authorization: Bearer $API_KEY"
+```
+
+La réponse contient un élément par modèle auquel vous avez accès :
+
+```json
+{
+    "object": "list",
+    "data": [
+        {
+            "object": "model_limits",
+            "router_id": 1,
+            "model": "openweight-large",
+            "limits": [
+                {"type": "tpm", "value": 100000, "remaining": 87500},
+                {"type": "tpd", "value": null, "remaining": 0},
+                {"type": "rpm", "value": 60, "remaining": 58},
+                {"type": "rpd", "value": 1000, "remaining": 942}
+            ]
+        }
+    ]
+}
+```
+
+* `value` : valeur de la limite. `null` signifie qu’il n’y a pas de limite sur ce type ; `remaining` n’a alors pas de sens.
+* `remaining` : ce qu’il reste de la limite dans la fenêtre en cours (minute ou jour).
+{% endtab %}
+{% endtabs %}
+
+Les limites TPM, TPD, RPM et RPD de chaque modèle par niveau d’accès sont aussi listées sur la page [Modèles disponibles](../modeles/available-models.md).
 
 ### Suivre sa consommation en temps réel
 
-À chaque appel vers un modèle, les en-têtes de réponse indiquent l’état de vos quotas (tokens et requêtes) :
+À chaque appel vers un modèle, que la requête réussisse ou soit refusée (429), les en-têtes de la réponse indiquent l’état de vos limites :
 
 ```
-x-ratelimit-limit-request: 10
-x-ratelimit-limit-token: 100
-x-ratelimit-remaining-request: 9
-x-ratelimit-remaining-token: 0
+x-ratelimit-limit-requests: 60
+x-ratelimit-remaining-requests: 59
 x-ratelimit-reset-requests: 49s
-x-ratelimit-reset-token: 0s
+x-ratelimit-limit-tokens: 1000000
+x-ratelimit-remaining-tokens: 12000
+x-ratelimit-reset-tokens: 5h12m30s
 ```
+
+| En-tête                          | Contenu                                                    |
+| -------------------------------- | ---------------------------------------------------------- |
+| `x-ratelimit-limit-requests`     | Valeur de la limite de requêtes (RPM ou RPD)               |
+| `x-ratelimit-remaining-requests` | Requêtes restantes dans la fenêtre                         |
+| `x-ratelimit-reset-requests`     | Temps avant la réinitialisation de la fenêtre, ex. `49s`   |
+| `x-ratelimit-limit-tokens`       | Valeur de la limite de tokens (TPM ou TPD)                 |
+| `x-ratelimit-remaining-tokens`   | Tokens restants dans la fenêtre                            |
+| `x-ratelimit-reset-tokens`       | Temps avant la réinitialisation de la fenêtre, ex. `5h12m30s` |
+
+* **Fenêtre indiquée** : si une limite par minute et une limite par jour sont définies, les en-têtes indiquent celle où il vous reste le moins. Les en-têtes de requêtes et de tokens peuvent donc décrire des fenêtres différentes, comme dans l’exemple ci-dessus (requêtes par minute, tokens par jour).
+* **Pas de limite** : si aucune limite de requêtes (ou de tokens) n’est définie pour le modèle, les en-têtes correspondants sont absents.
 
 Le corps de la réponse contient aussi un champ `usage` avec le détail des tokens consommés par la requête :
 
@@ -334,4 +407,4 @@ Pour le détail des paramètres et du format de réponse : [Usage & facturation]
 
 ### Dépassement de limites
 
-Lorsque le trafic ou les tokens dépassent les plafonds configurés pour votre compte, l’API peut répondre **429 Too Many Requests**. Stratégie recommandée : **backoff exponentiel**, respect éventuel d’un en-tête **`Retry-After`**, et réduction du parallélisme.
+Lorsqu’une de vos limites est atteinte, l’API répond **429 Too Many Requests** et le message d’erreur indique la limite dépassée. Stratégie recommandée : attendre la durée indiquée par `x-ratelimit-reset-requests` ou `x-ratelimit-reset-tokens` avant de réessayer, appliquer un **backoff exponentiel** et réduire le parallélisme.

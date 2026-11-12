@@ -11,34 +11,80 @@ Vous pouvez consulter les limites par token et par requête pour chaque modèle 
 
 ## Niveaux d'accès (tiers)
 
-### Expérimentation
+<details>
 
-L’accès à Albert API est ouvert à tous les agents de la fonction publique d'État des fins d'expérimentation.
-Ces expérimentations sont toutefois soumises à certaines limitations d’usage :
+<summary><strong>🧪 Expérimentation</strong></summary>
+
+### Conditions d'accès
+
+L’accès à Albert API est ouvert à tous les agents de la fonction publique d'État à des fins d'expérimentation. Pour en savoir plus sur les différentes conditions d'éligibilité, consultez notre [FAQ](https://guides.ia.numerique.gouv.fr/albert-api/ressources/faq#pourquoi-mon-compte-nest-pas-autorise).
+
+### Conditions d'utilisation
 
 * Accès aux modèles principaux d’Albert API
-* Quotas d'utilisation bas, pouvant être augmenté selon le besoin (voir détails ci-dessous)
+* Quotas d'utilisation bas, pouvant être augmentés selon le besoin (voir détails ci-dessous)
 * Pas de garantie de disponibilité
 * Accès restreint en période de forte demande
 
-### Production limitée
+</details>
 
-Si vos quotas d'expérimentation s'avèrent insuffisants et que vous souhaitez utiliser Albert API avec des volumes plus importants, deux étapes sont nécessaires :
+<details>
 
-* Remplir le formulaire suivant : [Formulaire production limitée](https://grist.numerique.gouv.fr/o/albert/forms/dteMmqusoagbJ68woTRTZF/11)
-* Nous contacter à l'adresse : albert.api@numerique.gouv.fr
-* Nous appliquerons ensuite les quotas de « Production limitée » sur le compte indiqué
+<summary><strong>🚀 Production limitée</strong></summary>
 
-### Production (Partenaire)
+### Conditions d'accès
 
-En décembre 2025, la DINUM a publié à destination des autres ministères une note visant au cofinancement des infrastructures d'Albert API.
+Si vos quotas d'expérimentation s'avèrent insuffisants, deux étapes sont nécessaires :
 
-Les agents des ministères partenaires bénéficient de conditions d'utilisation d'Albert API pour la production :
+1. Remplir le formulaire suivant : [Formulaire production limitée](https://grist.numerique.gouv.fr/o/albert/forms/dteMmqusoagbJ68woTRTZF/11).
+2. Nous contacter à l'adresse : albert.api@numerique.gouv.fr.
+
+Nous appliquerons ensuite les quotas de « Production limitée » sur le compte indiqué.
+
+### Conditions d'utilisation
+
+Ce niveau permet d'utiliser Albert API avec des volumes plus importants qu'en expérimentation, dans la limite des quotas de production limitée.
+
+</details>
+
+<details>
+
+<summary><strong>🌙 Night Shift</strong></summary>
+
+Ce tiers à pour objectif de permettre des usages de *batch* dans l'attente de la fonctionnalité sur Albert API. Dans ce tiers vous disposez d'accès quasi-illimité aux modèles sous condition de s'engagement à exécuter vos requêtes sur une tranche horaire déterminée.
+
+### Conditions d'accès
+
+* Être déjà en production limitée.
+* Faire partie des ministères partenaires d'Albert API (voir [🤝 Production (Partenaire)]())
+* Avoir des besoins dépassant les quotas standard de la production limitée et nécessitant un traitement asynchrone pendant la nuit.
+
+Pour activer le rôle Night Shift, adressez votre demande à : albert.api@numerique.gouv.fr.
+
+### Conditions d'utilisation
+
+* Soumettre les requêtes exclusivement entre 22 h et 4 h (heure de Paris).
+
+{% hint style="warning" %}
+Ce rôle remplace les quotas de la production limitée ; il convient donc de surveiller votre consommation en journée, car une utilisation excessive pourrait compromettre le bon fonctionnement de l’infrastructure.
+{% endhint %}
+
+</details>
+
+<details>
+
+<summary><strong>🤝 Production (Partenaire)</strong></summary>
+
+### Conditions d'accès
+
+Ce niveau est destiné aux produits des ministères partenaires. En décembre 2025, la DINUM a publié à destination des autres ministères une note visant au cofinancement des infrastructures d'Albert API.
+
+### Conditions d'utilisation
 
 * Accès à l'intégralité des modèles d'Albert API
 * Garantie de disponibilité (SLA)
 * Accompagnement personnalisé
-* Quotas d'utilisation élevé, pouvant être augmenté selon le besoin (voir détails ci-dessous)
+* Quotas d'utilisation élevés, pouvant être augmentés selon le besoin (voir détails ci-dessous)
 
 {% hint style="info" icon="lightbulb" %}
 Pourquoi un cofinancement ?
@@ -46,6 +92,8 @@ Pourquoi un cofinancement ?
 * La mutualisation permet une meilleure efficience de la dépense publique et évite aux ministères d’investir individuellement dans des infrastructures coûteuses et complexes.
 * Albert API est une solution clé en main, sécurisée permettant aux ministères de se concentrer sur leurs missions métiers.
 {% endhint %}
+
+</details>
 
 ## Limites par token
 

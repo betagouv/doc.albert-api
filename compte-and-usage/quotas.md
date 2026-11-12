@@ -29,6 +29,21 @@ Si vos quotas d'expérimentation s'avèrent insuffisants et que vous souhaitez u
 * Nous contacter à l'adresse : albert.api@numerique.gouv.fr
 * Nous appliquerons ensuite les quotas de « Production limitée » sur le compte indiqué
 
+### Night Shift
+
+Lorsque vos besoins dépassent les quotas standard de la production limitée et que vous avez besoin d’un traitement asynchrone pendant la nuit, vous pouvez demander le role Night Shift.
+
+#### Conditions d'accès
+- Être déjà en production limitée.
+- Soumettre les requêtes exclusivement entre 22 h et 4 h (heure de Paris).
+
+#### Attention
+Ce role remplace les quotas de la production limitée ; il convient donc de surveiller votre consommation en journée, car une utilisation excessive pourrait compromettre le bon fonctionnement de l’infrastructure. Night Shift s’adresse aux utilisateurs capables de planifier leurs traitements hors des heures de pointe afin d’optimiser l’usage des ressources partagées.
+
+#### Demande d'activation
+Pour activer le role Night Shift, adressez votre demande à : albert.api@numerique.gouv.fr
+
+
 ### Production (Partenaire)
 
 En décembre 2025, la DINUM a publié à destination des autres ministères une note visant au cofinancement des infrastructures d'Albert API.

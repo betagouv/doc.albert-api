@@ -5,9 +5,9 @@ icon: "gauge-simple-max"
 
 Chaque compte dispose de limites de consommation. Ces limites sont configurées par la DINUM. Elles sont de 2 types : limites par token et limites par requête. 
 
-Les limites comptabilisés uniquement sur les endpoints qui appellent des modèles : `/v1/audio/transcriptions`, `/v1/chat/completions`, `/v1/embeddings`, `/v1/ocr`et `/v1/rerank`. 
+Les limites sont comptabilisées uniquement sur les endpoints qui appellent des modèles : `/v1/audio/transcriptions`, `/v1/chat/completions`, `/v1/embeddings`, `/v1/ocr` et `/v1/rerank`.
 
-Vous pouvez consulter les limites par token et par requête pour chaque modèle sur la documentation des modèles disponibles [ici](../modeles/available-models.md). **Les limites sont définis selon des niveaux d’accès : expérimentation, production limitée ou partenaire.**
+Vous pouvez consulter les limites par token et par requête pour chaque modèle dans la documentation des modèles disponibles [ici](../modeles/available-models.md). **Les limites sont définies selon des niveaux d’accès : expérimentation, production limitée ou partenaire.**
 
 ## Niveaux d'accès (tiers)
 
@@ -51,7 +51,7 @@ Ce niveau permet d'utiliser Albert API avec des volumes plus importants qu'en ex
 
 <summary><strong>🌙 Night Shift</strong></summary>
 
-Ce tiers à pour objectif de permettre des usages de *batch* dans l'attente de la fonctionnalité sur Albert API. Dans ce tiers vous disposez d'accès quasi-illimité aux modèles sous condition de s'engagement à exécuter vos requêtes sur une tranche horaire déterminée.
+Ce tiers a pour objectif de permettre des usages de *batch* dans l'attente de la fonctionnalité sur Albert API. Dans ce tiers, vous disposez d'un accès quasi illimité aux modèles, à condition de vous engager à exécuter vos requêtes sur une tranche horaire déterminée.
 
 ### Conditions d'accès
 
@@ -90,24 +90,24 @@ Ce niveau est destiné aux produits des ministères partenaires. En décembre 20
 Pourquoi un cofinancement ?
 * Les coûts d’hébergement, de calcul (GPU, licences LLM) et de maintenance sont directement liés au nombre d’utilisateurs.
 * La mutualisation permet une meilleure efficience de la dépense publique et évite aux ministères d’investir individuellement dans des infrastructures coûteuses et complexes.
-* Albert API est une solution clé en main, sécurisée permettant aux ministères de se concentrer sur leurs missions métiers.
+* Albert API est une solution clé en main et sécurisée, permettant aux ministères de se concentrer sur leurs missions métiers.
 {% endhint %}
 
 </details>
 
 ## Limites par token
 
-Dans Albert API, les limites par tokens sont exprimées en **tokens par minute (TPM) et par jour (TPD)**.
+Dans Albert API, les limites par token sont exprimées en **tokens par minute (TPM) et par jour (TPD)**.
 
 {% hint style="info" icon="lightbulb" %}
-Si vous vous demandez ce qu'est un token ou comment le texte est découpé en tokens, consultez notre FAQ *[Qu'est ce qu'un token ?](../ressources/faq.md#quest-ce-quun-token)*.
+Si vous vous demandez ce qu'est un token ou comment le texte est découpé en tokens, consultez notre FAQ *[Qu'est-ce qu'un token ?](../ressources/faq.md#quest-ce-quun-token)*.
 {% endhint %}
 
 ### Comment sont comptabilisés les tokens ?
 
-Les tokens sont comptabilisés sur les endpoints qui appellent des modèles : `/v1/audio/transcriptions`, `/v1/chat/completions`, `/v1/embeddings`, `/v1/ocr`et `/v1/rerank`. Ils sont comptabilisés différement selon les endpoints.
+Les tokens sont comptabilisés sur les endpoints qui appellent des modèles : `/v1/audio/transcriptions`, `/v1/chat/completions`, `/v1/embeddings`, `/v1/ocr` et `/v1/rerank`. Ils sont comptabilisés différemment selon les endpoints.
 
-Vous retrouvez un champ `usage` en réponse de chacun de ces endpoints vous indiquants le nombre de tokens consommés par la requête.
+Vous retrouvez un champ `usage` dans la réponse de chacun de ces endpoints, vous indiquant le nombre de tokens consommés par la requête.
 De plus, l'en-tête de la réponse vous donne  
 
 {% tabs %}
@@ -118,7 +118,7 @@ De plus, l'en-tête de la réponse vous donne
 * `prompt_tokens` : tokens de tous les messages de la requête (content, reasoning, etc.)
 * `completion_tokens` : tokens générés par le modèle (content, reasoning, tool calls, etc.)
 
-Voici un exemple de requête avec sa réponse:
+Voici un exemple de requête avec sa réponse :
 
 ```json
 {
@@ -156,7 +156,7 @@ Voici un exemple de requête avec sa réponse:
             "index": 0,
             "message": {
                 "role": "assistant",
-                "content": "Je m'appelle Albert." → 5 token
+                "content": "Je m'appelle Albert." → 5 tokens
             },
             "finish_reason": "stop"
         }
@@ -314,7 +314,7 @@ Voici un exemple de requête avec sa réponse :
 
 ## Limites par requête
 
-Dans Albert API, les limites par requêtes sont exprimées en **requêtes par minute (RPM) et par jour (RPD)**. 
+Dans Albert API, les limites par requête sont exprimées en **requêtes par minute (RPM) et par jour (RPD)**.
 Les requêtes sont comptabilisées uniquement sur les endpoints qui appellent un modèle.
 
 ## Comment suivre sa consommation ?

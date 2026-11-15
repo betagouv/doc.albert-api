@@ -19,7 +19,7 @@ Si vous souhaitez vous connecter avec un autre compte **cliquez sur&#x20;**_**Lo
 
 1.  **🇫🇷 Je suis une administration de l'État ou un organisme sous sa tutelle**
 
-    Par principe, la condition d'accès à Albert API est d'appartenir une administration de l'État ou un organisme sous sa tutelle ([en savoir plus](faq.md#comment-savoir-si-je-suis-eligible-a-lacces-a-albert-api)).
+    La condition d'accès à Albert API est d'appartenir une administration de l'État ou un organisme sous sa tutelle ([en savoir plus](faq.md#comment-savoir-si-je-suis-eligible-a-lacces-a-albert-api)).
 
     Si vous êtes dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.
 
@@ -35,7 +35,7 @@ Si vous souhaitez vous connecter avec un autre compte **cliquez sur&#x20;**_**Lo
     Dans ce cas, nous vous mettons à disposez un accès "bac à sable" limité afin que vous puissiez intégrer au mieux Albert API dans votre service. Pour en faire la demande, merci de nous écrire à l'adresse suivante [albert.api@numerique.gouv.fr](mailto:albert.api@numerique.gouv.fr?subject=Demande%20entreprise%20d%27acc%C3%A8s%20%C3%A0%20Albert%20API).<br>
 3.  **👤 Je suis une administration territoriale relevant d'une co-tutelle de l'État**
 
-    Par principe, les administrations territoriales ne sont pas éligible à l'accès à Albert API. En effet, seules les administrations de l'État ou les organismes sous sa tutelle peuvent y prétendre.
+    Les administrations territoriales ne sont pas éligibles à l'accès à Albert API. En effet, seules les administrations de l'État ou les organismes sous sa tutelle peuvent y prétendre.
 
     Toutefois, certaines administrations territoriales disposent d'une co-tutelle de l'État ([en savoir plus](faq.md#comment-savoir-si-je-releve-dune-administration-de-letat-ou-dun-organisme-sous-sa-tutelle)). Dans ce cas, vous devez impérativement vous connectez avec votre adresse professionnelle. En effet, cette condition est évaluée directement par ProConnect, pas par Albert API.
 

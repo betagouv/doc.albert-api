@@ -77,8 +77,8 @@ Les affirmations de cette note sont vérifiables par l'administration utilisatri
 2. **les éléments du dossier de sécurité** relatifs à l'hébergement et à l'homologation : [https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-securisee/](https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-securisee/). Sont notamment disponibles sur cette page :
    * la [décision d'homologation d'Albert API](https://ia.numerique.gouv.fr/documents/11/20250828_DINUM_INT_AlbertAPI_Decision-Homologation_vDEF-1.pdf) (PDF) ;
    * la [certification SecNumCloud](https://fr.outscale.com/nos-certifications/) de l'hébergeur Outscale ;
-   * la [note sur l'absence de rétention des données métier sur le chemin d'inférence](https://ia.numerique.gouv.fr/documents/33/0-albert-api--absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.pdf) (PDF) ;
-   * les [modalités d'utilisation d'Albert API](https://ia.numerique.gouv.fr/documents/12/MU_albert_api.pdf) (PDF).
+   * la [note sur l'absence de rétention des données métier sur le chemin d'inférence](https://ia.numerique.gouv.fr/documents/33/0-albert-api--absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.pdf);
+   * les [modalités d'utilisation d'Albert API](https://ia.numerique.gouv.fr/documents/12/MU_albert_api.pdf).
 3. **un atelier technique** avec l'équipe Albert API, pour instruire les questions résiduelles d'une analyse d'impact relative à la protection des données.
 
 ***

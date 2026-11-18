@@ -39,7 +39,7 @@ La page “Tarifs et limites” liste, pour des familles de modèles, des quotas
 
 Albert API bénéficie d’un environnement cloud souverain (certification **SecNumCloud** via Outscale) et a des engagements de traitement des données :
 
-* Albert API ne conserve aucune trace des conversations envoyées aux modèles (voir [la page dédiée](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md))
+* Albert API ne conserve aucune trace des conversations envoyées aux modèles (voir [la page dédiée](ressources/security.md))
 * Albert API n’envoie aucune de vos données sur Internet.
 
 [Sécurité & hébergement](https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-s%C3%A9curis%C3%A9e/)
@@ -58,7 +58,7 @@ Pour suivre le statut opérationnel de l’API (quand publié), voir :
 
 ## Données de santé
 
-[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](ressources/absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permet de déduire des informations sur la santé d'une personne.
+[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](ressources/security.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permet de déduire des informations sur la santé d'une personne.
 
 En conséquence, **Albert API est compatible avec le traitement de données de santé, et ne nécessite pas de certification HDS**.
 

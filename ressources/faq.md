@@ -157,6 +157,6 @@ Toutefois, en tant qu'utilisateur d'Albert API, vous pouvez être dans l'obligat
 
 <summary><strong>Albert API est-il accessible depuis le RIE ?</strong></summary>
 
-Actuellement Albert API est uniquement accessible depuis internet (https://albert.api.etalab.gouv.fr). Nous travaillons à rendre l'API accessible également depuis le Réseau interministériel de l'État (RIE) prochainement. Suivez le [changelog](changelog.md) pour vous tenir informé. 
+Actuellement Albert API est uniquement accessible depuis [internet](https://albert.api.etalab.gouv.fr). Nous travaillons à rendre l'API accessible également depuis le Réseau interministériel de l'État (RIE) prochainement. Suivez le [changelog](changelog.md) pour vous tenir informé. 
 
 </details>

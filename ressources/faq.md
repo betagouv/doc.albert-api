@@ -145,12 +145,18 @@ Vous pouvez tester le tokenizer sur des textes sur [ce simulateur](https://tikto
 
 <summary><strong>Est-ce que je peux utiliser Albert API avec des données de santé ?</strong></summary>
 
-[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permet de déduire des informations sur la santé d'une personne.
+[Aucune donnée de santé à caractère personnelle n'est conservée par Albert API](security.md) : aucun contenu de requête, aucune conversation, aucun entrainement, les données de traces ne permet de déduire des informations sur la santé d'une personne.
 
-\
 En conséquence, Albert API est compatible avec le traitement de données de santé, et ne nécessite pas de certification HDS.
 
-\
 Toutefois, en tant qu'utilisateur d'Albert API, vous pouvez être dans l'obligation d'être hébergé chez un hébergeur certifié HDS et/ou de certifier votre produit, notamment si vous conservez des données de santé à caractère personnel pour le compte de tiers.
+
+</details>
+
+<details>
+
+<summary><strong>Albert API est-il accessible depuis le RIE ?</strong></summary>
+
+Actuellement Albert API est uniquement accessible depuis internet (https://albert.api.etalab.gouv.fr). Nous travaillons à rendre l'API accessible également depuis le Réseau interministériel de l'État (RIE) prochainement. Suivez le [changelog](changelog.md) pour vous tenir informé. 
 
 </details>

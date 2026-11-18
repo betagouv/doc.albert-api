@@ -1,15 +1,15 @@
 ---
 description: >-
   L'inférence Albert API est une offre "zero data retention" : elle ne stocke
-  aucune donnée métier.
+  aucune donnée métier. Les modèles ne sont pas réentraînés sur vos données.
 icon: shield-keyhole
 ---
 
-# Absence de rétention des données métier sur le chemin d'inférence
+# Sécurité des données
 
-_Mise à jour : 2/9/2026_
+_Mise à jour : 18/11/2026_
 
-### 1. Objet et périmètre
+## Objet et périmètre
 
 Albert API est le point d'accès interministériel mutualisé à des modèles d'intelligence artificielle, opéré par la DINUM sur infrastructures Outscale (SecNumCloud, tenant DINUM) et Nubo (DGFIP).
 
@@ -21,7 +21,7 @@ D'autre part, des **fonctions de RAG** (collections, dépôt de documents, _chun
 
 **Le périmètre de la présente note est exclusivement l'inférence.**
 
-### 2. Définition retenue
+## Définition retenue
 
 Est qualifié de **donnée métier** tout contenu transmis par l'administration utilisatrice ou produit pour elle : texte des requêtes (_prompts_), texte des réponses générées (_complétions_), textes soumis à vectorisation, fichiers transmis en entrée.
 
@@ -29,7 +29,7 @@ Est qualifié de **donnée métier** tout contenu transmis par l'administration 
 
 La donnée métier n'existe qu'en mémoire des processus qui la traitent, pour la seule durée de traitement de la requête. Elle n'est ni journalisée, ni mise en cache persistant, ni indexée, ni tracée, ni exportée vers un tiers.
 
-### 3. Ce qui est effectivement conservé : des métadonnées, sans contenu
+## Ce qui est effectivement conservé : des métadonnées, sans contenu
 
 La non-rétention porte sur le contenu, non sur l'existence des appels. Le service conserve un jeu restreint de métadonnées, nécessaires à l'application des quotas, au dimensionnement de la capacité et au suivi de l'exploitation. La liste ci-dessous est exhaustive.
 
@@ -44,13 +44,15 @@ La non-rétention porte sur le contenu, non sur l'existence des appels. Le servi
 
 Aucune de ces métadonnées ne permet, seule ou par recoupement, de reconstituer le contenu d'une requête ou d'une réponse.
 
-### 4. Administration
+## Administration
 
 **Accès des administrateurs.** L'exploitation s'effectue via un accès administrateur nominatif et tracé, transitant par un bastion et un tunnel chiffré, depuis des postes d'administration dédiés dits _Securix_, durcis par la cellule cybersécurité de la DINUM en collaboration avec l'ANSSI. Ces postes sont indispensables pour accéder aux infrastructures de production et d'administration sur Nubo et Outscale : aucun accès n'est possible depuis un poste bureautique ordinaire. Cet accès porte sur les machines et les composants d'exploitation ; il n'ouvre sur aucun magasin contenant des données métier d'inférence, puisqu'il n'en existe aucun.
 
-**Absence de tiers.** Les modèles à poids ouverts sont hébergés et exécutés sur les infrastructures précitées. Aucun appel n'est émis vers un fournisseur de modèle externe : le contenu des requêtes ne quitte jamais le périmètre Outscale SecNumCloud / Nubo.
+**Absence de tiers.** Les modèles à poids ouverts sont hébergés et exécutés sur les infrastructures précitées. Aucun appel n'est émis vers un fournisseur de modèle externe. Hébergé sur nos serveurs, aucune donnée n'est envoyée à ces fournisseurs de modèles ni utilisée pour leur entraînement : le contenu des requêtes ne quitte jamais le périmètre Outscale SecNumCloud / Nubo (**aucune donnée n'est envoyée sur internet**).
 
-### 5. Conséquences opérationnelles
+**Environnement cloud souverain.** Les modèles et l'API bénéficient d'un environnement cloud souverain, grâce à la certification **SecNumCloud** de l'hébergeur [Outscale](https://fr.outscale.com/). Albert API garantit la sécurité de toutes les données qui entrent dans le cadre de son homologation. 
+
+## Conséquences opérationnelles
 
 Ce choix d'architecture est structurant et emporte des conséquences que l'administration utilisatrice doit intégrer :
 
@@ -59,13 +61,29 @@ Ce choix d'architecture est structurant et emporte des conséquences que l'admin
 * **la DINUM intervient en qualité de sous-traitant au sens de l'article 28 du RGPD.** L'administration utilisatrice demeure responsable de traitement : elle définit les finalités et les données transmises. La DINUM n'accède à aucune donnée à caractère personnel contenue dans les requêtes, ne les conserve pas et n'en fait aucun usage propre ;
 * **aucune réutilisation** des contenus, en particulier à des fins d'entraînement, d'ajustement ou d'évaluation de modèles, n'est possible ni pratiquée.
 
-### 6. Vérifiabilité
+## Données de santé
 
-Les affirmations de cette note sont vérifiables par l'administration utilisatrice. La DINUM s'engage à fournir sur demande:
+Aucune donnée de santé à caractère personnel n'est conservée par Albert API : aucun contenu de requête, aucune conversation, aucun entraînement ; les données de trace ne permettent pas de déduire d'informations sur la santé d'une personne.
+
+En conséquence, Albert API est compatible avec le traitement de données de santé et ne nécessite pas de certification HDS (hébergeur de données de santé).
+
+Toutefois, en tant qu'utilisateur d'Albert API, l'administration peut être dans l'obligation de recourir à un hébergeur certifié HDS et/ou de certifier son produit, notamment si elle conserve des données de santé à caractère personnel pour le compte de tiers.
+
+## Vérifiabilité
+
+Les affirmations de cette note sont vérifiables par l'administration utilisatrice. La DINUM s'engage à fournir sur demande :
 
 1. **le code source de la passerelle**, publié et auditable en permanence : [https://github.com/etalab-ia/OpenGateLLM](https://github.com/etalab-ia/OpenGateLLM).
-2. **les éléments du dossier de sécurité** relatifs à l'hébergement et à l'homologation : [https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-securisee/](https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-securisee/).
+2. **les éléments du dossier de sécurité** relatifs à l'hébergement et à l'homologation : [https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-securisee/](https://ia.numerique.gouv.fr/outils-ia/albert-api/infrastructure-securisee/). Sont notamment disponibles sur cette page :
+   * la [décision d'homologation d'Albert API](https://ia.numerique.gouv.fr/documents/11/20250828_DINUM_INT_AlbertAPI_Decision-Homologation_vDEF-1.pdf) (PDF) ;
+   * la [certification SecNumCloud](https://fr.outscale.com/nos-certifications/) de l'hébergeur Outscale ;
+   * la [note sur l'absence de rétention des données métier sur le chemin d'inférence](https://ia.numerique.gouv.fr/documents/33/0-albert-api--absence-de-retention-des-donnees-metier-sur-le-chemin-dinference.pdf) (PDF) ;
+   * les [modalités d'utilisation d'Albert API](https://ia.numerique.gouv.fr/documents/12/MU_albert_api.pdf) (PDF).
 3. **un atelier technique** avec l'équipe Albert API, pour instruire les questions résiduelles d'une analyse d'impact relative à la protection des données.
+
+***
+
+## Annexes
 
 ### Annexe 1 : flux de données sur le chemin d'inférence pure
 
@@ -73,7 +91,7 @@ Les affirmations de cette note sont vérifiables par l'administration utilisatri
 
 _Les flux en trait plein transportent de la donnée métier ; ils sont éphémères. Les flux en pointillés transportent exclusivement des métadonnées et sont les seuls à alimenter un stockage durable._
 
-### &#x20;Annexe 2 : traitement du contenu, composant par composant
+### Annexe 2 : traitement du contenu, composant par composant
 
 | Composant                                           | Rôle                                                                           | Voit le contenu                                                     | Écrit le contenu                                                                                                                      |
 | --------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |

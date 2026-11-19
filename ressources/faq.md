@@ -160,3 +160,23 @@ Toutefois, en tant qu'utilisateur d'Albert API, vous pouvez être dans l'obligat
 Actuellement Albert API est uniquement accessible depuis [internet](https://albert.api.etalab.gouv.fr). Nous travaillons à rendre l'API accessible également depuis le Réseau interministériel de l'État (RIE) prochainement. Suivez le [changelog](changelog.md) pour vous tenir informé. 
 
 </details>
+
+<details>
+
+<summary><strong>Faut-il utiliser un compte nominatif ou un compte de service en production ?</strong></summary>
+
+Pour des raisons de traçabilité et de sécurité, l'utilisation d'un compte nominatif est à privilégier, y compris en production.
+
+Nous prévoyons de permettre prochainement le partage de clés API entre plusieurs comptes nominatifs, afin d'éviter le recours à des comptes de service.
+
+Dans l'attente de cette fonctionnalité, si vous avez besoin d'un compte de service, vous pouvez créer une adresse e-mail dédiée et l'utiliser pour vous connecter à Albert API via ProConnect. Vous pouvez consulter le [changelog](changelog.md) pour vous tenir informé des évolutions de la plateforme.
+
+</details>
+
+<details>
+
+<summary><strong>Quelle est la durée maximale d'une requête ?</strong></summary>
+
+La durée maximale d'une requête sur Albert API est de 4 minutes. Au-delà, la requête est interrompue pour dépassement du délai d'attente (_timeout_).
+
+</details>

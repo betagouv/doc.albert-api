@@ -43,7 +43,7 @@ Remplacez la valeur `$ALBERT_API_KEY` par la valeur de votre clef API.
 {% tabs %}
 {% tab title="Bash" icon="square-terminal" %}
 ```bash
-curl -x POST "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
+curl -X POST "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
   -H "Authorization: Bearer $ALBERT_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -53,7 +53,6 @@ curl -x POST "https://albert.api.etalab.gouv.fr/v1/chat/completions" \
       {"role": "user", "content": "Explique ce qu’est une API compatible OpenAI en deux phrases."}
     ]
   }'
-
 ```
 {% endtab %}
 

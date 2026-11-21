@@ -21,8 +21,8 @@ Lorsque `stream` est à `true`, vous pouvez renseigner **`stream_options`** pour
 }
 ```
 
-{% hint style="warning" %}
-⚠️ À vérifier — Clés exactes supportées dans `stream_options` et compatibilité `include_usage` selon les modèles : consulter le schéma `CreateChatCompletion` dans la [page de l’endpoint Chat](https://doc.incubateur.net/alliance/albert-api/api-reference/liste-des-endpoint/chat).
+{% hint style="info" %}
+Sur `POST /v1/chat/completions`, `include_usage` est toujours considéré comme `true`, même si vous n’avez pas renseigné `stream_options`. L’avant-dernier fragment du flux, juste avant `data: [DONE]`, contient donc toujours le champ `usage` : celui renvoyé par le modèle lorsqu’il est disponible, sinon calculé par Albert API avec Tiktoken. Si vous coupez le flux avant la fin, seuls les tokens déjà reçus sont décomptés de vos [limites](../compte-and-usage/quotas.md#quand-les-limites-sont-elles-decomptees).
 {% endhint %}
 
 ## Exemples (curl / Python / JavaScript)

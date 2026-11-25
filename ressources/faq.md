@@ -135,9 +135,9 @@ Exemple :
 La ponctuation est comptabilisée comme un token !
 {% endhint %}
 
-Le _tokenizer_, c'est-à-dire l'algorithme permettant de transformer le texte en tokens, est généralement celui du modèle utilisé. Sur Albert API, pour que toutes les requêtes soient comptabilisées dans les mêmes conditions, nous utilisons un tokenizer opensource, [_Tiktoken o200k\_base_](https://github.com/openai/tiktoken).
+Le _tokenizer_, c'est-à-dire l'algorithme permettant de transformer le texte en tokens, est propre à chaque modèle. Lorsque le modèle renvoie son propre décompte de tokens, Albert API le reprend tel quel. Sinon, ainsi que pour estimer le prompt avant l'appel au modèle et pour les transcriptions audio, Albert API utilise un tokenizer opensource, [_Tiktoken o200k\_base_](https://github.com/openai/tiktoken). Pour en savoir plus, consultez [Quotas et limites](../compte-and-usage/quotas.md#decompte-du-modele-ou-dalbert-api).
 
-Vous pouvez tester le tokenizer sur des textes sur [ce simulateur](https://tiktokenizer.vercel.app/?model=o200k_base).
+Vous pouvez tester ce tokenizer sur des textes sur [ce simulateur](https://tiktokenizer.vercel.app/?model=o200k_base).
 
 </details>
 

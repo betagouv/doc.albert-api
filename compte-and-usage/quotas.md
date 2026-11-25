@@ -338,7 +338,7 @@ Les requêtes sont comptabilisées uniquement sur les endpoints qui appellent un
 1. **Avant l'appel au modèle** : la requête est refusée (**429**) s'il ne vous reste plus de requête dans votre limite RPM ou RPD, ou s'il vous reste moins de tokens dans votre limite TPM ou TPD que n'en compte le prompt. Le prompt est alors estimé avec le tokenizer d'Albert API, car le modèle n'a pas encore répondu.
 2. **Après une réponse réussie** : la requête compte pour 1 dans vos limites RPM et RPD, et ses tokens sont décomptés de vos limites TPM et TPD.
 
-Une requête refusée ou en échec n'est jamais décomptée. En streaming, la requête est décomptée à la fin du flux ; si vous coupez le flux avant la fin, seuls les tokens déjà reçus sont décomptés.
+Une requête refusée ou en échec n'est jamais décomptée. En streaming, la requête est décomptée à la fin du flux. Si vous coupez le flux avant la fin, la requête est décomptée avec les tokens du prompt et les tokens générés déjà reçus.
 
 ## Comment suivre sa consommation ?
 
@@ -442,17 +442,23 @@ Connectez-vous sur le [Playground Albert API](https://albert.playground.etalab.g
 {% endtab %}
 
 {% tab title="API" icon="square-terminal" %}
-Appelez l’endpoint [GET /v1/me/usage](https://guides.ia.numerique.gouv.fr/albert-api/api-reference/liste-des-endpoint/me#get-v1-me-usage) :
+Appelez l’endpoint [GET /v1/usage](https://guides.ia.numerique.gouv.fr/albert-api/api-reference/liste-des-endpoint/usage#get-v1-usage) en indiquant la période souhaitée (timestamps Unix, paramètres obligatoires) :
 
 ```bash
-curl -X GET "https://albert.api.etalab.gouv.fr/v1/me/usage" \
-  -H "Authorization: Bearer $API_KEY"
+curl -G "https://albert.api.etalab.gouv.fr/v1/usage" \
+  -H "Authorization: Bearer $API_KEY" \
+  -d start_time=... \
+  -d end_time=...
 ```
 
-Pour le détail des paramètres et du format de réponse : [Usage & facturation](usage.md).
+La réponse contient votre consommation regroupée par jour (UTC). Pour le détail des paramètres et du format de réponse : [Usage & facturation](usage.md).
 {% endtab %}
 {% endtabs %}
 
 ### Dépassement de limites
 
 Lorsqu’une de vos limites est atteinte, l’API répond **429 Too Many Requests** et le message d’erreur indique la limite dépassée. Stratégie recommandée : attendre la durée indiquée par `x-ratelimit-reset-requests` ou `x-ratelimit-reset-tokens` avant de réessayer, appliquer un **backoff exponentiel** et réduire le parallélisme.
+
+### Modèle saturé
+
+Indépendamment de vos limites, un modèle qui reçoit trop de requêtes simultanées peut répondre **503 Model is too busy**. Cette réponse inclut un en-tête **`Retry-After`** indiquant le nombre de secondes à attendre avant de réessayer. Une requête refusée en 503 n’est pas décomptée de vos limites. Pour éviter d’être bloqué en production, prévoyez un repli vers un autre modèle, voir la FAQ *[Pourquoi l'API renvoie une erreur 503 « Model is too busy » ?](../ressources/faq.md#pourquoi-lapi-renvoi-une-erreur-503-model-is-too-busy)*.
